@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-jjk59sryhez0&++_2eyz$l-xcla!)qg!1fhg1$gb6^^+pv(_5d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://nutri-site.onrender.com']
+ALLOWED_HOSTS = ['nutri-site.onrender.com']
 
 
 # Application definition
