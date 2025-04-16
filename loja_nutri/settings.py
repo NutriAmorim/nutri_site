@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'loja_nutri.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://<usuario>:<senha>@<host>:<porta>/<banco_de_dados>')
+     'default': dj_database_url.config(conn_max_age=600)
 }
 
 # Password validation
