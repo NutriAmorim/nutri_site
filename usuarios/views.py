@@ -7,11 +7,11 @@ from django.contrib import messages
 
 
 def login_view(request):
-    if request.method == "GET":
+    if request.method == "POST":
         return render(request, 'usuarios/login.html')
     else:
         username = request.POST.get('username')
-        senha = request.POST.get('senha')
+        senha = request.POST.get('password')
 
         user = authenticate(username=username, password=senha)
 
@@ -23,12 +23,12 @@ def login_view(request):
              return redirect('login')
         
 def cadastro_view(request):
-    if request.method == "GET":  # Corrigido de "GTE" para "GET"
+    if request.method == "POST":  # Corrigido de "GTE" para "GET"
         return render(request, 'usuarios/cadastro.html')
     else:
         # Processando os dados do formulário de cadastro (POST)
         username = request.POST.get('username', '').strip()
-        senha = request.POST.get('senha', '').strip()
+        senha = request.POST.get('password', '').strip()
         email = request.POST.get('email', '').strip()
         
         usuario_existente = User.objects.filter(username=username).first()

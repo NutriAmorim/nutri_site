@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  {% load static %}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nutri Amorim</title>
+  <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
   <style>
     body {
       margin: 0;
@@ -12,7 +14,7 @@
 
     /* Topbar */
     .topbar {
-      background-color: #5FA052; /* Muted Green */
+      background-color: #5FA052;
       color: white;
       padding: 10px 20px;
       display: flex;
@@ -46,7 +48,7 @@
 
     .topbar .auth-button button {
       background-color: white;
-      color: #5FA052; /* Muted Green */
+      color: #5FA052;
       border: none;
       padding: 8px 12px;
       border-radius: 5px;
@@ -57,10 +59,10 @@
     /* Sidebar */
     .sidebar {
       width: 200px;
-      background-color: #5FA052; /* Muted Green */
+      background-color: #5FA052;
       color: white;
       padding: 20px;
-      height: calc(100vh - 60px); /* desconta topbar */
+      height: calc(100vh - 60px);
       position: fixed;
       top: 60px;
       left: 0;
@@ -107,7 +109,7 @@
       content: " ▶";
     }
 
-    /* Main content */
+    /* Conteúdo principal */
     .content {
       margin-left: 220px;
       margin-top: 80px;
@@ -117,34 +119,35 @@
 </head>
 <body>
 
-  <!-- Topbar -->
+  <!-- 🔝 Topbar -->
   <div class="topbar">
     <div class="logo">Nutri Amorim</div>
+
     <div class="search-box">
       <input type="text" placeholder="Pesquisar...">
     </div>
+
+    <!-- 🔐 Área de autenticação -->
     <div class="auth-button">
-        {% if user.is_authenticated %}
-        <!-- Botão de sair se o usuário estiver logado -->
-    <a href="{% url 'logout' %}">
-        <button>Sair</button>
-      </a>
-    {% else %}
-      <!-- Botão de login se o usuário não estiver logado -->
-        <a href="http://127.0.0.1:8000/usuarios/login/">
-      <button>Entrar / Criar Conta</button>
-    </a>
-    {% endif %}
+      {% if user.is_authenticated %}
+        <!-- ✅ Botão de sair se o usuário estiver logado -->
+        <a href="{% url 'logout' %}">
+          <button>Sair</button>
+        </a>
+      {% else %}
+        <!-- 🔒 Botão de login se o usuário não estiver logado -->
+        <a href="{% url 'login' %}">
+          <button>Entrar / Criar Conta</button>
+        </a>
+      {% endif %}
     </div>
   </div>
 
-  <!-- Sidebar -->
+  <!-- 📂 Sidebar -->
   <div class="sidebar">
     <ul>
-      <li>
-        <a href="{% url 'home' %}">Inicio</a>  <!-- Link direto para a página inicial -->
-      </li>
-      <!-- As outras abas seguem aqui -->
+      <li><a href="{% url 'home' %}">Início</a></li>
+
       <li>
         <a class="toggle">Performance Esportiva</a>
         <ul class="submenu">
@@ -154,6 +157,7 @@
           <li><a href="#">Recuperação Muscular</a></li>
         </ul>
       </li>
+
       <li>
         <a class="toggle">Nutrição Funcional</a>
         <ul class="submenu">
@@ -163,6 +167,7 @@
           <li><a href="#">Alimentos Funcionais</a></li>
         </ul>
       </li>
+
       <li>
         <a class="toggle">Objetivos</a>
         <ul class="submenu">
@@ -172,6 +177,7 @@
           <li><a href="#">Energia e Disposição</a></li>
         </ul>
       </li>
+
       <li>
         <a class="toggle">Receitas Medicinais</a>
         <ul class="submenu">
@@ -179,6 +185,7 @@
           <li><a href="#">Sub-Aba 2</a></li>
         </ul>
       </li>
+
       <li>
         <a class="toggle">Pesquisas Científicas</a>
         <ul class="submenu">
@@ -186,6 +193,7 @@
           <li><a href="#">Sub-Aba 2</a></li>
         </ul>
       </li>
+
       <li>
         <a class="toggle">Consultas</a>
         <ul class="submenu">
@@ -194,21 +202,21 @@
           <li><a href="#">Planos Alimentares</a></li>
         </ul>
       </li>
+
       <li><a href="#">Quem Sou Eu</a></li>
       <li><a href="#">Quem Somos Nós</a></li>
     </ul>
   </div>
 
-  <!-- Conteúdo -->
+  <!-- 📄 Conteúdo Principal -->
   <div class="content">
     <h1>Bem-vindo ao Nutri Amorim!</h1>
     <p>Seu portal de saúde, bem-estar e nutrição.</p>
   </div>
 
-  <!-- Script para submenu -->
+  <!-- 📜 Script para menu com subitens -->
   <script>
     const toggles = document.querySelectorAll('.toggle');
-
     toggles.forEach(toggle => {
       toggle.classList.add('closed');
       toggle.addEventListener('click', () => {
