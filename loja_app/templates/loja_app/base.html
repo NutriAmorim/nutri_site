@@ -6,7 +6,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutri Amorim</title>
+    <!-- Link para o arquivo CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Topbar */
+        .topbar {
+            background-color: #5FA052;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .topbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .topbar .search-box {
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .topbar .search-box input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .topbar .auth-button button {
+            background-color: white;
+            color: #5FA052;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            background-color: #5FA052;
+            color: white;
+            padding: 20px;
+            height: calc(100vh - 60px);
+            position: fixed;
+            top: 60px;
+            left: 0;
+            overflow-y: auto;
+            border-right: 1px solid black;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar li {
+            margin: 10px 0;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar ul ul {
+            padding-left: 15px;
+            display: none;
+        }
+
+        .sidebar ul ul.show {
+            display: block;
+        }
+
+        .toggle::after {
+            content: " ▼";
+            font-size: 12px;
+        }
+
+        .toggle.closed::after {
+            content: " ▶";
+        }
+
+        /* Conteúdo principal */
+        .content {
+            margin-left: 220px;
+            margin-top: 80px;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
     <!-- Topbar -->
@@ -36,19 +147,18 @@
                     <li><a href="#">Pesquisa 2</a></li>
                 </ul>
             </li>
-            <li><a href="#"></a></li>
             <li><a href="#">Quem Sou Eu</a></li>
             <li><a href="#">Quem Somos Nós</a></li>
         </ul>
     </div>
 
-    <!-- Conteúdo principal -->
+    <!-- Conteúdo Principal -->
     <div class="content">
         {% block content %}
         {% endblock %}
     </div>
 
-    <!-- Script para toggle do menu -->
+    <!-- Script para toggle do submenu -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const toggles = document.querySelectorAll('.toggle');
