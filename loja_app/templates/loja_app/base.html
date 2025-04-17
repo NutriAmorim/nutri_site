@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nutri Amorim</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <style>
     body {
       margin: 0;
@@ -119,7 +121,10 @@
 
   <!-- Topbar -->
   <div class="topbar">
-    <div class="logo">Nutri Amorim</div>
+    <div class="logo">
+      <img src="{% static 'imagens/logo.png' %}" alt="Logo" style="height: 40px;">
+      Nutri Amorim
+    </div>
     <div class="search-box">
       <input type="text" placeholder="Pesquisar...">
     </div>
@@ -129,7 +134,7 @@
           <button>Sair</button>
         </a>
       {% else %}
-        <a href="http://127.0.0.1:8000/usuarios/login/">
+        <a href="{% url 'login' %}">
           <button>Entrar / Criar Conta</button>
         </a>
       {% endif %}
@@ -140,7 +145,6 @@
   <div class="sidebar">
     <ul>
       <li><a href="{% url 'home' %}">Início</a></li>
-
       <li>
         <a class="toggle">Performance Esportiva</a>
         <ul class="submenu">
@@ -150,7 +154,6 @@
           <li><a href="#">Recuperação Muscular</a></li>
         </ul>
       </li>
-
       <li>
         <a class="toggle">Nutrição Funcional</a>
         <ul class="submenu">
@@ -160,7 +163,6 @@
           <li><a href="#">Alimentos Funcionais</a></li>
         </ul>
       </li>
-
       <li>
         <a class="toggle">Objetivos</a>
         <ul class="submenu">
@@ -170,26 +172,20 @@
           <li><a href="#">Energia e Disposição</a></li>
         </ul>
       </li>
-
       <li>
         <a class="toggle">Receitas Medicinais</a>
         <ul class="submenu">
-          <li><a href="#">Chás Terapêuticos</a></li>
-          <li><a href="#">Sucos Funcionais</a></li>
-          <li><a href="#">Caldos e Sopas</a></li>
-          <li><a href="#">Remédios Caseiros</a></li>
+          <li><a href="#">Sub-Aba 1</a></li>
+          <li><a href="#">Sub-Aba 2</a></li>
         </ul>
       </li>
-
       <li>
         <a class="toggle">Pesquisas Científicas</a>
         <ul class="submenu">
-          <li><a href="#">Estudos sobre Nutrição</a></li>
-          <li><a href="#">Artigos Recentes</a></li>
-          <li><a href="#">Referências Bibliográficas</a></li>
+          <li><a href="#">Sub-Aba 1</a></li>
+          <li><a href="#">Sub-Aba 2</a></li>
         </ul>
       </li>
-
       <li>
         <a class="toggle">Consultas</a>
         <ul class="submenu">
@@ -198,22 +194,22 @@
           <li><a href="#">Planos Alimentares</a></li>
         </ul>
       </li>
-
       <li><a href="#">Quem Sou Eu</a></li>
       <li><a href="#">Quem Somos Nós</a></li>
     </ul>
   </div>
 
-  <!-- Conteúdo -->
+  <!-- Conteúdo dinâmico das páginas -->
   <div class="content">
+    {% block content %}
     <h1>Bem-vindo ao Nutri Amorim!</h1>
     <p>Seu portal de saúde, bem-estar e nutrição.</p>
+    {% endblock %}
   </div>
 
-  <!-- Script para submenu -->
+  <!-- Script para menu toggle -->
   <script>
     const toggles = document.querySelectorAll('.toggle');
-
     toggles.forEach(toggle => {
       toggle.classList.add('closed');
       toggle.addEventListener('click', () => {
