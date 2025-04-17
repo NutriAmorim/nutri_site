@@ -6,5 +6,5 @@ urlpatterns = [
     path('cadastro/', views.cadastro_view, name='cadastro'),
     path('painel/', views.painel_view, name='painel'),
     path('logout/', views.logout_view, name='logout'),
-    path('', views.home, name='home'),  # Página inicial
+    path('home/', views.home, name='home'),  # Página inicial alterada para evitar conflito
 ]
