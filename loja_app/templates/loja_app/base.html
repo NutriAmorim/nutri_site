@@ -122,7 +122,7 @@
   <!-- Topbar -->
   <div class="topbar">
     <div class="logo">
-      <img src="{% static 'img/favicon.ico.png' %}" alt="Logo" style="height: 40px;">
+      <img src="{% static 'img/favicon.ico' %}" alt="Logo" style="height: 40px;">
       Nutri Amorim
     </div>
     <div class="search-box">
@@ -151,7 +151,8 @@
           <li><a href="{% url 'nutricao_para_atletas' %}">Nutrição para Atletas</a></li>
           <li><a href="{% url 'suplementacao_esportiva' %}">Suplementação Esportiva</a></li>
           <li><a href="{% url 'protocolo_de_treino' %}">Protocolo de Treino</a></li>
-          <li><a href="{% url 'recuperacao_muscular' %}">Recuperação Muscular</a></li>        </ul>
+          <li><a href="{% url 'recuperacao_muscular' %}">Recuperação Muscular</a></li>
+        </ul>
       </li>
       <li>
         <a class="toggle">Nutrição Funcional</a>
@@ -159,7 +160,8 @@
           <li><a href="{% url 'alimentacao_alcalina' %}">Alimentação Alcalina</a></li>
           <li><a href="{% url 'fitoterapia' %}">Fitoterapia</a></li>
           <li><a href="{% url 'protocolos_anti_inflamatorios' %}">Protocolos Anti-inflamatórios</a></li>
-          <li><a href="{% url 'alimentos_funcionais' %}">Alimentos Funcionais</a></li>        </ul>
+          <li><a href="{% url 'alimentos_funcionais' %}">Alimentos Funcionais</a></li>
+        </ul>
       </li>
       <li>
         <a class="toggle">Objetivos</a>
@@ -167,29 +169,34 @@
           <li><a href="{% url 'massa_magra' %}">Ganho de Massa Magra</a></li>
           <li><a href="{% url 'definicao_muscular' %}">Definição Muscular</a></li>
           <li><a href="{% url 'emagrecimento' %}">Emagrecimento Saudável</a></li>
-          <li><a href="{% url 'energia_disposicao' %}">Energia e Disposição</a></li>        </ul>
+          <li><a href="{% url 'energia_disposicao' %}">Energia e Disposição</a></li>
+        </ul>
       </li>
       <li>
         <a class="toggle">Receitas Medicinais</a>
         <ul class="submenu">
           <li><a href="{% url 'receitas1' %}">Sub-Aba 1</a></li>
-          <li><a href="{% url 'receitas2' %}">Sub-Aba 2</a></li>        </ul>
+          <li><a href="{% url 'receitas2' %}">Sub-Aba 2</a></li>
+        </ul>
       </li>
       <li>
         <a class="toggle">Pesquisas Científicas</a>
         <ul class="submenu">
           <li><a href="{% url 'pesquisas1' %}">Sub-Aba 1</a></li>
-          <li><a href="{% url 'pesquisas2' %}">Sub-Aba 2</a></li>        </ul>
+          <li><a href="{% url 'pesquisas2' %}">Sub-Aba 2</a></li>
+        </ul>
       </li>
       <li>
         <a class="toggle">Consultas</a>
         <ul class="submenu">
           <li><a href="{% url 'agendamento_online' %}">Agendamento Online</a></li>
           <li><a href="{% url 'avaliacao_fisica' %}">Avaliação Física</a></li>
-          <li><a href="{% url 'planos_alimentares' %}">Planos Alimentares</a></li>        </ul>
+          <li><a href="{% url 'planos_alimentares' %}">Planos Alimentares</a></li>
+        </ul>
       </li>
       <li><a href="{% url 'quem_sou_eu' %}">Quem Sou Eu</a></li>
-      <li><a href="{% url 'quem_somos_nos' %}">Quem Somos Nós</a></li>    </ul>
+      <li><a href="{% url 'quem_somos_nos' %}">Quem Somos Nós</a></li>
+    </ul>
   </div>
 
   <!-- Conteúdo dinâmico das páginas -->
