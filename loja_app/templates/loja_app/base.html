@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nutri Amorim</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <style>
@@ -46,7 +46,7 @@
       font-size: 14px;
     }
 
-    .topbar .auth-button button {
+    .topbar .auth-button a {
       background-color: white;
       color: #5FA052;
       border: none;
@@ -54,6 +54,7 @@
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
+      text-decoration: none;
     }
 
     /* Sidebar */
@@ -131,11 +132,11 @@
     <div class="auth-button">
       {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">
-          <button>Sair</button>
+          Sair
         </a>
       {% else %}
         <a href="{% url 'login' %}">
-          <button>Entrar / Criar Conta</button>
+          Entrar / Criar Conta
         </a>
       {% endif %}
     </div>
