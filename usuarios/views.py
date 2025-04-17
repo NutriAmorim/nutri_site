@@ -45,7 +45,7 @@ def cadastro_view(request):
         # Por enquanto, retornamos os dados para verificar
         messages.success(request, f'Cadastro feito com sucesso! Bem-vindo, {username}!')
         login(request, user)
-        return redirect('login')
+        return redirect('home')
     
 def painel_view(request):
     return render(request, 'usuarios/painel.html')
