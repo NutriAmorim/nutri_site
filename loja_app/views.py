@@ -62,8 +62,7 @@ def logout_view(request):
 
 # Página inicial (home)
 def home(request):
-    return render(request, 'home.html')
-
+    return render(request, 'loja_app/home.html')
 # Performance Esportiva
 def nutricao_para_atletas(request): 
     return render(request, 'loja_app/nutricao_para_atletas.html')
