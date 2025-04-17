@@ -2,21 +2,21 @@ from pathlib import Path
 import dj_database_url
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Definindo os caminhos dentro do projeto, como BASE_DIR / 'subdiretório'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# Configurações iniciais de desenvolvimento - não recomendado para produção
+# Veja https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# AVISO DE SEGURANÇA: mantenha a chave secreta usada em produção em segredo!
 SECRET_KEY = 'django-insecure-jjk59sryhez0&++_2eyz$l-xcla!)qg!1fhg1$gb6^^+pv(_5d'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# AVISO DE SEGURANÇA: não execute com o debug ativado em produção!
 DEBUG = True
 
 ALLOWED_HOSTS = ['nutri-site.onrender.com']
 
-# Application definition
+# Definição das aplicações
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -59,14 +59,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'loja_nutri.wsgi.application'
 
-# Database
+# Banco de dados
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-     'default': dj_database_url.config(conn_max_age=600)
-}
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
-# Password validation
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+# Validação de senha
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -84,7 +94,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
+# Internacionalização
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
@@ -94,7 +104,7 @@ TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Arquivos estáticos (CSS, JavaScript, Imagens)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
@@ -105,7 +115,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Default primary key field type
+# Tipo de chave primária padrão
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
