@@ -85,30 +85,30 @@ def alimentos_funcionais(request):
 
 # Objetivos
 def massa_magra(request): 
-    return render(request, 'massa_magra.html')
+    return render(request, 'ganho_de_massa_magra.html')
 
 def definicao_muscular(request): 
     return render(request, 'definicao_muscular.html')
 
 def emagrecimento(request): 
-    return render(request, 'emagrecimento.html')
+    return render(request, 'emagrecimento_saudavel.html')
 
 def energia_disposicao(request): 
-    return render(request, 'energia_disposicao.html')
+    return render(request, 'energia_e_disposicao.html')
 
 # Receitas Medicinais
 def receitas1(request): 
-    return render(request, 'receitas1.html')
+    return render(request, 'receitas_sub_aba1.html')
 
 def receitas2(request): 
-    return render(request, 'receitas2.html')
+    return render(request, 'receitas_sub_aba2.html')
 
 # Pesquisas Científicas
 def pesquisas1(request): 
-    return render(request, 'pesquisas1.html')
+    return render(request, 'pesquisas_sub_aba1.html')
 
 def pesquisas2(request): 
-    return render(request, 'pesquisas2.html')
+    return render(request, 'pesquisas_sub_aba2.html')
 
 # Consultas
 def agendamento_online(request): 
