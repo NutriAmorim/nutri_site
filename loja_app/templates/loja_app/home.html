@@ -4,14 +4,31 @@
 {% block title %}Página Inicial{% endblock %}
 
 {% block content %}
-  <h1>Bem-vindo ao Nutri Amorim</h1>
+  <!-- Título principal em verde -->
+  <h1 style="color: #5FA052;">Bem-vindo ao Nutri Amorim</h1>
   <p>Transforme sua saúde através da nutrição alcalina, funcional e esportiva, aliada ao poder da fitoterapia.</p>
 
-  <!-- Forçando imagens com caminhos absolutos do static -->
+  <!-- Container de imagens -->
   <div class="imagens-container">
-    <img src="{% static 'img/dieta_alcalina_p1.jpg' %}" alt="Dieta Alcalina" class="imagem-grande" loading="lazy" />
-    <img src="{% static 'img/nutricao_esportiva_p3.jpeg' %}" alt="Nutrição Esportiva" class="imagem-grande" />
-    <img src="{% static 'img/nutricao_funcional_p4.jpeg' %}" alt="Nutrição Funcional" class="imagem-grande" />
-    <img src="{% static 'img/favicon_nutri.ico' %}" alt="Favicon" class="imagem-icone" />
-    <img src="{% static 'img/minha_foto_p2.jpg' %}" alt="Minha Foto" class="imagem-foto" />  </div>
+    <!-- Dieta Alcalina -->
+    <div class="imagem-section">
+      <h2 style="color: #5FA052;">Dieta Alcalina</h2>
+      <img src="{% static 'img/dieta_alcalina_p1.jpg' %}" alt="Dieta Alcalina" class="imagem-grande" loading="lazy" />
+      <p>Uma introdução à dieta alcalina, que visa equilibrar o pH do corpo e promover a saúde através da alimentação.</p>
+    </div>
+
+    <!-- Nutrição Esportiva -->
+    <div class="imagem-section">
+      <h2 style="color: #5FA052;">Nutrição Esportiva</h2>
+      <img src="{% static 'img/nutricao_esportiva_p3.jpeg' %}" alt="Nutrição Esportiva" class="imagem-grande" />
+      <p>Nutrição voltada para o desempenho esportivo, otimizando a recuperação e a performance dos atletas.</p>
+    </div>
+
+    <!-- Nutrição Funcional -->
+    <div class="imagem-section">
+      <h2 style="color: #5FA052;">Nutrição Funcional</h2>
+      <img src="{% static 'img/nutricao_funcional_p4.jpeg' %}" alt="Nutrição Funcional" class="imagem-grande" />
+      <p>Alimentos que auxiliam no bom funcionamento do organismo, prevenindo doenças e promovendo bem-estar.</p>
+    </div>
+  </div>
 {% endblock %}
