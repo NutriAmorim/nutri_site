@@ -39,7 +39,7 @@ urlpatterns = [
     path('planos_alimentares/', views.planos_alimentares, name='planos_alimentares'),
 
     # Institucional
-    path('quem_sou_eu/', views.sobre_mim, name='quem_sou_eu'),
+    path('quem-sou-eu/', views.quem_sou_eu, name='quem_sou_eu'),
     path('quem_somos_nos/', views.quem_somos_nos, name='quem_somos_nos'),
     ]
 
