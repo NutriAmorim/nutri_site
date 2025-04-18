@@ -42,7 +42,7 @@ p {
 .imagem-section h2 {
   color: #5FA052; /* Cor verde */
   font-size: 1.5rem;
-  text-align: left; /* Alinha o título à esquerda */
+  text-align: center; /* Alinha o título ao centro */
   margin-bottom: 10px;
   padding-left: 10px; /* Adiciona um pouco de espaçamento à esquerda */
 }
@@ -50,7 +50,7 @@ p {
 /* Estilo para a introdução abaixo das imagens */
 .imagem-section p {
   font-size: 1rem;
-  text-align: left; /* Alinha a introdução à esquerda */
+  text-align: center; /* Alinha a introdução ao centro */
   margin-top: 10px;
   padding-left: 10px; /* Adiciona um pouco de espaçamento à esquerda */
 }
