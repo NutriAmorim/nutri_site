@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jjk59sryhez0&++_2eyz$l-xcla!)qg!1fhg1$gb6^^+pv(_5d'
 
 # AVISO DE SEGURANÇA: não execute com o debug ativado em produção!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['nutri-site.onrender.com']
+ALLOWED_HOSTS = ['nutri-site.onrender.com', 'localhost', '127.0.0.1']
 
 # Definição das aplicações
 
@@ -45,7 +45,7 @@ ROOT_URLCONF = 'loja_nutri.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'loja_app', 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'loja_app', 'templates', 'loja_app')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
