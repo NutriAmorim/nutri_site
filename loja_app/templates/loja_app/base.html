@@ -120,23 +120,21 @@
       cursor: pointer;
       font-weight: bold;
       text-decoration: none;
-      margin-top: auto; /* Para fixar no final */
+      margin-top: auto;
       align-self: center;
     }
 
-    /* Media Query para dispositivos móveis */
     @media (max-width: 768px) {
       .sidebar {
-        height: 100vh; /* Garantir que a sidebar ocupe toda a altura da tela */
-        flex-direction: column; /* Manter a coluna */
+        height: 100vh;
+        flex-direction: column;
       }
 
-      /* Fixar o botão de login no final apenas em dispositivos móveis */
       .auth-button {
         position: fixed;
-        bottom: 20px; /* Distância do fundo da tela */
-        left: 20px; /* Distância da lateral esquerda */
-        width: calc(100% - 40px); /* Garantir que ocupe toda a largura da tela */
+        bottom: 20px;
+        left: 20px;
+        width: calc(100% - 40px);
       }
     }
   </style>
@@ -230,18 +228,20 @@
     {% endblock %}
   </div>
 
-  <!-- Script para menu toggle -->
   <script>
-    const toggles = document.querySelectorAll('.toggle');
-    toggles.forEach(toggle => {
-      toggle.classList.add('closed');
-      toggle.addEventListener('click', () => {
-        const submenu = toggle.nextElementSibling;
-        submenu.classList.toggle('show');
-        toggle.classList.toggle('closed');
+    document.querySelectorAll('.toggle').forEach(toggle => {
+      toggle.addEventListener('click', function () {
+        const submenu = this.nextElementSibling;
+        const isOpen = submenu.classList.contains('show');
+        document.querySelectorAll('.submenu').forEach(menu => menu.classList.remove('show'));
+        document.querySelectorAll('.toggle').forEach(btn => btn.classList.add('closed'));
+
+        if (!isOpen) {
+          submenu.classList.add('show');
+          this.classList.remove('closed');
+        }
       });
     });
   </script>
-
 </body>
 </html>
