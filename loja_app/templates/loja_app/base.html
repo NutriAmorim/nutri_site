@@ -47,17 +47,6 @@
       font-size: 14px;
     }
 
-    .topbar .auth-button a {
-      background-color: white;
-      color: #5FA052;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
     /* Sidebar */
     .sidebar {
       width: 200px;
@@ -70,6 +59,9 @@
       left: 0;
       overflow-y: auto;
       border-right: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .sidebar ul {
@@ -116,6 +108,36 @@
       margin-left: 220px;
       margin-top: 80px;
       padding: 20px;
+    }
+
+    /* Botão de Login (posição no final) */
+    .auth-button {
+      background-color: white;
+      color: #5FA052;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: auto; /* Para fixar no final */
+      align-self: center;
+    }
+
+    /* Media Query para dispositivos móveis */
+    @media (max-width: 768px) {
+      .sidebar {
+        height: 100vh; /* Garantir que a sidebar ocupe toda a altura da tela */
+        flex-direction: column; /* Manter a coluna */
+      }
+
+      /* Fixar o botão de login no final apenas em dispositivos móveis */
+      .auth-button {
+        position: fixed;
+        bottom: 20px; /* Distância do fundo da tela */
+        left: 20px; /* Distância da lateral esquerda */
+        width: calc(100% - 40px); /* Garantir que ocupe toda a largura da tela */
+      }
     }
   </style>
 </head>
