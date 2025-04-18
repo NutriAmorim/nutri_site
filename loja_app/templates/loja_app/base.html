@@ -122,6 +122,14 @@
       text-decoration: none;
       margin-top: auto; /* Para fixar no final */
       align-self: center;
+      width: 100%; /* Garante que o botão tenha largura total */
+      text-align: center; /* Centraliza o texto */
+    }
+
+    .auth-button a {
+      display: block;
+      color: #5FA052;
+      text-decoration: none;
     }
 
     /* Media Query para dispositivos móveis */
@@ -129,14 +137,28 @@
       .sidebar {
         height: 100vh; /* Garantir que a sidebar ocupe toda a altura da tela */
         flex-direction: column; /* Manter a coluna */
+        position: relative; /* Mudar para relativo para ajustar o conteúdo */
       }
 
-      /* Fixar o botão de login no final apenas em dispositivos móveis */
+      /* Ajustar a largura do botão de login no mobile */
       .auth-button {
         position: fixed;
         bottom: 20px; /* Distância do fundo da tela */
         left: 20px; /* Distância da lateral esquerda */
         width: calc(100% - 40px); /* Garantir que ocupe toda a largura da tela */
+        margin-top: 0; /* Remover margem para não afetar o layout */
+      }
+      
+      /* Ajuste na barra lateral para dispositivos móveis */
+      .sidebar {
+        width: 100%; /* Sidebar ocupa toda a largura da tela */
+      }
+
+      /* Alterar comportamento da barra de pesquisa para mobile */
+      .topbar .search-box {
+        flex: 0; /* Desativa a flexibilidade da barra de pesquisa */
+        width: 100%; /* Ocupa toda a largura */
+        margin: 10px 0;
       }
     }
   </style>
