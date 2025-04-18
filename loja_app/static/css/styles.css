@@ -55,3 +55,51 @@ p {
   text-align: center;
   margin-top: 10px;
 }
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  /* Ajusta o tamanho das imagens para dispositivos móveis */
+  .imagem-grande {
+    height: 300px; /* Menor altura para imagens em telas pequenas */
+  }
+
+  /* Ajusta o tamanho do título principal em telas pequenas */
+  h1 {
+    font-size: 1.8rem; /* Um pouco menor para caber melhor na tela */
+    margin-top: 15px;
+  }
+
+  /* Ajuste nos parágrafos */
+  p {
+    font-size: 1rem;
+    margin: 8px 0;
+  }
+
+  /* Ajusta a largura da seção de imagem */
+  .imagem-section {
+    width: 90%; /* Menor largura em telas pequenas */
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ajustes extras para telas muito pequenas (celulares) */
+  .imagem-grande {
+    height: 250px; /* Menor altura para telas muito pequenas */
+  }
+
+  /* Ajusta o título */
+  h1 {
+    font-size: 1.6rem; /* Menor para telas muito pequenas */
+  }
+
+  /* Ajusta o tamanho do parágrafo */
+  p {
+    font-size: 0.9rem;
+  }
+
+  /* Ajuste ainda maior para imagens em dispositivos móveis pequenos */
+  .imagem-section {
+    width: 95%;
+  }
+}
