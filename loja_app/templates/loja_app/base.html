@@ -117,26 +117,6 @@
       margin-top: 80px;
       padding: 20px;
     }
-
-    /* Seções com as imagens e títulos */
-    .section-title {
-      color: #5FA052; /* verde */
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 40px;
-    }
-
-    .section-intro {
-      color: black;
-      font-size: 16px;
-      margin-top: 10px;
-    }
-
-    .section-image {
-      width: 100%;
-      height: auto;
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
@@ -144,7 +124,7 @@
   <!-- Topbar -->
   <div class="topbar">
     <div class="logo">
-      <img src="{% static 'img/favicon_nutri.ico' %}" alt="Logo" style="height: 40px;"> Nutri Amorim
+      <img src="{% static 'img/favicon_nutri.ico' %}" alt="Logo" style="height: 40px;">      Nutri Amorim
     </div>
     <div class="search-box">
       <input type="text" placeholder="Pesquisar...">
@@ -166,45 +146,65 @@
   <div class="sidebar">
     <ul>
       <li><a href="{% url 'home' %}">Início</a></li>
-      <!-- Aqui você já tem o restante da sidebar -->
+      <li>
+        <a class="toggle">Performance Esportiva</a>
+        <ul class="submenu">
+          <li><a href="{% url 'nutricao_para_atletas' %}">Nutrição para Atletas</a></li>
+          <li><a href="{% url 'suplementacao_esportiva' %}">Suplementação Esportiva</a></li>
+          <li><a href="{% url 'protocolo_de_treino' %}">Protocolo de Treino</a></li>
+          <li><a href="{% url 'recuperacao_muscular' %}">Recuperação Muscular</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Nutrição Funcional</a>
+        <ul class="submenu">
+          <li><a href="{% url 'alimentacao_alcalina' %}">Alimentação Alcalina</a></li>
+          <li><a href="{% url 'fitoterapia' %}">Fitoterapia</a></li>
+          <li><a href="{% url 'protocolos_anti_inflamatorios' %}">Protocolos Anti-inflamatórios</a></li>
+          <li><a href="{% url 'alimentos_funcionais' %}">Alimentos Funcionais</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Objetivos</a>
+        <ul class="submenu">
+          <li><a href="{% url 'massa_magra' %}">Ganho de Massa Magra</a></li>
+          <li><a href="{% url 'definicao_muscular' %}">Definição Muscular</a></li>
+          <li><a href="{% url 'emagrecimento' %}">Emagrecimento Saudável</a></li>
+          <li><a href="{% url 'energia_disposicao' %}">Energia e Disposição</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Receitas Medicinais</a>
+        <ul class="submenu">
+          <li><a href="{% url 'receitas1' %}">Sub-Aba 1</a></li>
+          <li><a href="{% url 'receitas2' %}">Sub-Aba 2</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Pesquisas Científicas</a>
+        <ul class="submenu">
+          <li><a href="{% url 'pesquisas1' %}">Sub-Aba 1</a></li>
+          <li><a href="{% url 'pesquisas2' %}">Sub-Aba 2</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Consultas</a>
+        <ul class="submenu">
+          <li><a href="{% url 'agendamento_online' %}">Agendamento Online</a></li>
+          <li><a href="{% url 'avaliacao_fisica' %}">Avaliação Física</a></li>
+          <li><a href="{% url 'planos_alimentares' %}">Planos Alimentares</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'quem_sou_eu' %}">Quem Sou Eu</a></li>
+      <li><a href="{% url 'quem_somos_nos' %}">Quem Somos Nós</a></li>
     </ul>
   </div>
 
   <!-- Conteúdo dinâmico das páginas -->
   <div class="content">
     {% block content %}
-    
     <h1>Bem-vindo ao Nutri Amorim!</h1>
     <p>Seu portal de saúde, bem-estar e nutrição.</p>
-
-    <!-- Dieta Alcalina -->
-    <div class="section">
-      <h2 class="section-title">Dieta Alcalina</h2>
-      <img src="{% static 'img/dieta_alcalina_p1.jpg' %}" alt="Dieta Alcalina" class="section-image">
-      <p class="section-intro">
-        A Dieta Alcalina promove um equilíbrio no pH do organismo, ajudando a prevenir doenças e melhorar a qualidade de vida. 
-        Descubra os benefícios de seguir um estilo de vida com alimentos alcalinos.
-      </p>
-    </div>
-
-    <!-- Nutrição Esportiva -->
-    <div class="section">
-      <h2 class="section-title">Nutrição Esportiva</h2>
-      <img src="{% static 'img/nutricao_esportiva_p3.jpeg' %}" alt="Nutrição Esportiva" class="section-image">
-      <p class="section-intro">
-        A Nutrição Esportiva é fundamental para otimizar o desempenho físico. Saiba como a alimentação adequada pode transformar sua performance nos treinos e competições.
-      </p>
-    </div>
-
-    <!-- Nutrição Funcional -->
-    <div class="section">
-      <h2 class="section-title">Nutrição Funcional</h2>
-      <img src="{% static 'img/nutricao_funcional_p4.jpeg' %}" alt="Nutrição Funcional" class="section-image">
-      <p class="section-intro">
-        A Nutrição Funcional foca no uso de alimentos para prevenir doenças e melhorar a saúde, contribuindo para um bem-estar duradouro e equilibrado.
-      </p>
-    </div>
-
     {% endblock %}
   </div>
 
