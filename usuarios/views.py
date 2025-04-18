@@ -33,19 +33,34 @@ def cadastro_view(request):
         senha = request.POST.get('password', '').strip()
         email = request.POST.get('email', '').strip()
 
+        # Verificando se todos os campos foram preenchidos
+        if not username or not senha or not email:
+            messages.error(request, 'Todos os campos devem ser preenchidos.')
+            return redirect('cadastro')
+
         # Verificando se o usuário já existe
         if User.objects.filter(username=username).exists():
             messages.error(request, 'Já existe um usuário com esse nome.')
             return redirect('cadastro')
 
-        # Criando o usuário
-        user = User.objects.create_user(username=username, email=email, password=senha)
-        user.save()
+        # Verificando se o e-mail já está cadastrado
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Já existe um usuário com esse e-mail.')
+            return redirect('cadastro')
 
-        # Mensagem de sucesso
-        messages.success(request, f'Cadastro feito com sucesso! Bem-vindo, {username}!')
-        login(request, user)  # Realiza o login após o cadastro
-        return redirect('home')  # Redireciona para a home após o cadastro
+        try:
+            # Criando o usuário
+            user = User.objects.create_user(username=username, email=email, password=senha)
+            user.save()
+
+            # Login automático e mensagem de sucesso
+            login(request, user)
+            messages.success(request, f'Cadastro feito com sucesso! Bem-vindo, {username}!')
+            return redirect('home')
+
+        except Exception as e:
+            messages.error(request, f'Ocorreu um erro durante o cadastro: {str(e)}')
+            return redirect('cadastro')
 
     return render(request, 'usuarios/cadastro.html')
 
