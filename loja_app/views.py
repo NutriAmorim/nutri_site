@@ -121,7 +121,7 @@ def planos_alimentares(request):
     return render(request, 'planos_alimentares.html')
 
 # Institucional
-def quem_sou_eu(request): 
+def sobre_mim(request):
     return render(request, 'quem_sou_eu.html')
 
 def quem_somos_nos(request): 
