@@ -45,7 +45,7 @@ def cadastro_view(request):
         # Mensagem de sucesso
         messages.success(request, f'Cadastro feito com sucesso! Bem-vindo, {username}!')
         login(request, user)  # Realiza o login após o cadastro
-        return redirect('home')  # Redireciona para a home após o cadastro
+        return redirect('login')  # Redireciona para a home após o cadastro
 
     return render(request, 'usuarios/cadastro.html')
 

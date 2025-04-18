@@ -3,6 +3,8 @@ from.import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+     path('cadastro/', views.cadastro, name='cadastro'),
+    path('login/', views.login_view, name='login'),
     path('nutricao_para_atletas/', views.nutricao_para_atletas, name='nutricao_para_atletas'),
     path('suplementacao_esportiva/', views.suplementacao_esportiva, name='suplementacao_esportiva'),
     path('protocolo_de_treino/', views.protocolo_de_treino, name='protocolo_de_treino'),
