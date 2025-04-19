@@ -1,30 +1,105 @@
-/* Estilo para as imagens */
+/* Estilo para o título principal */
+h1 {
+  text-align: center;
+  color: #5FA052; /* Cor verde */
+  margin-top: 20px;
+}
+
+/* Estilo para os parágrafos principais */
+p {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+/* Container que envolve todos os blocos de imagem */
 .imagens-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px; /* Margem nas laterais */
+  max-width: 1000px;
+  margin: 40px auto 0 auto; /* Centraliza horizontalmente */
+}
+
+/* Estilo para cada bloco com imagem, título e parágrafo */
+.imagem-section {
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+/* Estilo para as imagens */
+.imagem-grande {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Título de cada imagem */
+.imagem-section h2 {
+  color: #5FA052;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Parágrafo da descrição da imagem */
+.imagem-section p {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  /* Ajusta o tamanho das imagens para dispositivos móveis */
   .imagem-grande {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 8px;
+    height: 300px; /* Menor altura para imagens em telas pequenas */
   }
-  
-  .imagem-icone {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+
+  /* Ajusta o tamanho do título principal em telas pequenas */
+  h1 {
+    font-size: 1.8rem; /* Um pouco menor para caber melhor na tela */
+    margin-top: 15px;
   }
-  
-  .imagem-foto {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 3px solid #5FA052;
-    object-fit: cover;
+
+  /* Ajuste nos parágrafos */
+  p {
+    font-size: 1rem;
+    margin: 8px 0;
   }
-  
+
+  /* Ajusta a largura da seção de imagem */
+  .imagem-section {
+    width: 90%; /* Menor largura em telas pequenas */
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ajustes extras para telas muito pequenas (celulares) */
+  .imagem-grande {
+    height: 250px; /* Menor altura para telas muito pequenas */
+  }
+
+  /* Ajusta o título */
+  h1 {
+    font-size: 1.6rem; /* Menor para telas muito pequenas */
+  }
+
+  /* Ajusta o tamanho do parágrafo */
+  p {
+    font-size: 0.9rem;
+  }
+
+  /* Ajuste ainda maior para imagens em dispositivos móveis pequenos */
+  .imagem-section {
+    width: 95%;
+  }
+}

@@ -1,6 +1,6 @@
 from django.urls import path
-from usuarios import views as usuarios_views
-from usuarios.views import cadastro_view  
+from usuarios import views as usuarios_views  # Importa as views do app 'usuarios'
+from loja_app import views as loja_views      # Importa as views do app 'loja_app'
 from . import views
 
 
@@ -39,7 +39,7 @@ urlpatterns = [
     path('planos_alimentares/', views.planos_alimentares, name='planos_alimentares'),
 
     # Institucional
-    path('quem-sou-eu/', views.quem_sou_eu, name='quem_sou_eu'),
+    path('sobre-mim/', loja_views.sobre_mim, name='sobre_mim'),
     path('quem_somos_nos/', views.quem_somos_nos, name='quem_somos_nos'),
     ]
 
