@@ -321,17 +321,17 @@
       toggle.addEventListener('click', function () {
         const submenu = this.nextElementSibling;
         const isOpen = submenu.classList.contains('show');
-  
+    
         if (isOpen) {
-          submenu.classList.remove('show');
-          this.classList.add('closed');
+          submenu.classList.remove('show'); // remove 'show' (exibir)
+          this.classList.add('closed'); // adiciona 'closed' (fechado)
         } else {
-          submenu.classList.add('show');
-          this.classList.remove('closed');
+          submenu.classList.add('show'); // adiciona 'show' (exibir)
+          this.classList.remove('closed'); // remove 'closed' (fechado)
         }
       });
-    });
-  
+    });  
+    
     // Ao clicar em "Início", fecha todos os submenus
     const inicioLink = document.getElementById('inicio-link');
     if (inicioLink) {
@@ -343,9 +343,9 @@
   
     // Menu mobile
     document.getElementById('menu-icon').addEventListener('click', function () {
-      document.getElementById('sidebar').classList.toggle('show');
-      document.querySelector('.content').style.marginLeft = document.getElementById('sidebar').classList.contains('show') ? '200px' : '0';
+      document.getElementById('sidebar').classList.toggle('show'); // alterna 'show' (exibir)
+      document.querySelector('.content').style.marginLeft = document.getElementById('sidebar').classList.contains('show') ? '200px' : '0'; // ajusta a margem do conteúdo
     });
   </script>
   </body>
-</html>
+  </html>
