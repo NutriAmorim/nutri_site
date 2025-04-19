@@ -7,6 +7,8 @@
   <title>Nutri Amorim</title>
   <link rel="icon" href="{% static 'img/favicon_nutri.ico' %}" type="image/x-icon">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Adicionando o link para Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
       margin: 0;
@@ -19,9 +21,9 @@
       color: white;
       padding: 10px 20px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
+      align-items: center; /* Centraliza verticalmente */
+      justify-content: space-between; /* Espaço entre o conteúdo */
+      line-height: 5px; /* Garante o alinhamento vertical */
       position: fixed;
       top: 0;
       left: 0;
@@ -36,7 +38,10 @@
 
     .topbar .search-box {
       flex: 1;
-      margin: 0 20px;
+      margin: 0 40px; /* Reduz a margem lateral */
+      padding: 0 30px; /* Adiciona um pouco de espaço nas laterais internas */
+      display: flex;
+      align-items: center;
     }
 
     .topbar .search-box input {
@@ -45,7 +50,45 @@
       border: none;
       border-radius: 5px;
       font-size: 14px;
+      margin-right: 10px; /* Espaço entre a caixa de pesquisa e o ícone */
     }
+    .topbar .search-box .search-btn {
+    background: transparent;
+    border: none;
+    color: #f9faf9;
+    cursor: pointer;
+    font-size: 18px; /* Tamanho do ícone */
+   }
+    .search-box button i {
+    font-size: 18px;
+    color: #ffffff;
+    padding: 5px; /* Espaço em branco ao redor do ícone */
+   }
+
+    .topbar .auth-button {
+    margin-left: 20px; /* Garante que o botão de login fique à direita da caixa de pesquisa */
+    background-color: white;
+    color: #5FA052;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    height: 20px; /* Garantir a altura adequada dos botões */
+    margin-top: 20px; /* Distância do botão para o topo do contêiner */
+    margin-bottom: 20px; /* Distância do botão para o fundo do contêiner */
+    display: flex;
+    justify-content: center; /* Garante que o conteúdo do botão fique centralizado */
+    align-items: center; /* Garante o alinhamento vertical */
+    line-height: 40px; /* Garante o alinhamento vertical do texto */
+  }
+
+/* Link dentro do botão */
+  .topbar .auth-button a {
+    color: #5FA052;
+    text-decoration: none;
+  }
 
     /* Sidebar */
     .sidebar {
@@ -58,7 +101,7 @@
       top: 60px;
       left: 0;
       overflow-y: auto;
-      border-right: 1px solid black;
+      border-right: 1px solid rgb(255, 255, 255);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -130,12 +173,12 @@
     @media (max-width: 768px) {
       .sidebar {
         display: none; /* Esconde o menu na versão mobile */
-        transform: translateX(-100%);
+        transform: translateX(-100%); /* Inicialmente fora da tela */
       }
 
       .sidebar.show {
         display: flex;
-        transform: translateX(0);
+        transform: translateX(0); /* Desliza para dentro da tela */
       }
 
       .auth-button {
@@ -182,10 +225,13 @@
   <!-- Topbar -->
   <div class="topbar">
     <div class="logo">
-      <img src="{% static 'img/favicon_nutri.ico' %}" alt="Logo" style="height: 60px;">
+      <img src="{% static 'img/favicon_nutri.ico' %}" alt="Logo" style="height: 80px;">
     </div>
     <div class="search-box">
       <input type="text" placeholder="Pesquisar...">
+      <button type="submit" class="search-btn">
+        <i class="fas fa-search"></i> <!-- Ícone de lupa -->
+      </button>
     </div>
     <div class="auth-button">
       {% if user.is_authenticated %}
@@ -259,6 +305,7 @@
       <li><a href="{% url 'quem_sou_eu' %}">Quem Sou Eu</a></li>
       <li><a href="{% url 'quem_somos_nos' %}">Quem Somos Nós</a></li>
     </ul>
+  </li>
   </div>
 
   <!-- Conteúdo dinâmico das páginas -->
@@ -274,21 +321,31 @@
       toggle.addEventListener('click', function () {
         const submenu = this.nextElementSibling;
         const isOpen = submenu.classList.contains('show');
-        document.querySelectorAll('.submenu').forEach(menu => menu.classList.remove('show'));
-        document.querySelectorAll('.toggle').forEach(btn => btn.classList.add('closed'));
-
-        if (!isOpen) {
+  
+        if (isOpen) {
+          submenu.classList.remove('show');
+          this.classList.add('closed');
+        } else {
           submenu.classList.add('show');
           this.classList.remove('closed');
         }
       });
     });
-
-    // Função para abrir e fechar o menu em dispositivos móveis
+  
+    // Ao clicar em "Início", fecha todos os submenus
+    const inicioLink = document.getElementById('inicio-link');
+    if (inicioLink) {
+      inicioLink.addEventListener('click', function () {
+        document.querySelectorAll('.submenu').forEach(menu => menu.classList.remove('show'));
+        document.querySelectorAll('.toggle').forEach(btn => btn.classList.add('closed'));
+      });
+    }
+  
+    // Menu mobile
     document.getElementById('menu-icon').addEventListener('click', function () {
       document.getElementById('sidebar').classList.toggle('show');
       document.querySelector('.content').style.marginLeft = document.getElementById('sidebar').classList.contains('show') ? '200px' : '0';
     });
   </script>
-</body>
+  </body>
 </html>
