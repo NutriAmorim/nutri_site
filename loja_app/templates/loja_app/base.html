@@ -124,10 +124,16 @@
       align-self: center;
     }
 
+    /* Mobile */
     @media (max-width: 768px) {
       .sidebar {
         height: 100vh;
         flex-direction: column;
+        display: none; /* Esconde o menu na versão mobile */
+      }
+
+      .sidebar.show {
+        display: flex;
       }
 
       .auth-button {
@@ -135,6 +141,37 @@
         bottom: 20px;
         left: 20px;
         width: calc(100% - 40px);
+      }
+
+      .topbar .search-box {
+        flex: 1;
+        margin: 0;
+      }
+
+      /* Menu Mobile */
+      .menu-icon {
+        display: block;
+        cursor: pointer;
+        background-color: #5FA052;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 20px;
+      }
+
+      .menu-icon.open {
+        display: block;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .auth-button {
+        display: flex;
+        align-items: center;
+      }
+
+      .menu-icon {
+        display: none;
       }
     }
   </style>
@@ -160,10 +197,13 @@
         </a>
       {% endif %}
     </div>
+    <div class="menu-icon" id="menu-icon">
+      &#9776; <!-- Ícone de hambúrguer -->
+    </div>
   </div>
 
   <!-- Sidebar -->
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <ul>
       <li><a href="{% url 'home' %}">Início</a></li>
       <li>
@@ -241,6 +281,11 @@
           this.classList.remove('closed');
         }
       });
+    });
+
+    // Função para abrir e fechar o menu em dispositivos móveis
+    document.getElementById('menu-icon').addEventListener('click', function () {
+      document.getElementById('sidebar').classList.toggle('show');
     });
   </script>
 </body>
