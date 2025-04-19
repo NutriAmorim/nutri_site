@@ -62,7 +62,6 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      transition: transform 0.3s ease-in-out;
     }
 
     .sidebar ul {
@@ -109,7 +108,6 @@
       margin-left: 220px;
       margin-top: 80px;
       padding: 20px;
-      transition: margin-left 0.3s ease;
     }
 
     /* Botão de Login (posição no final) */
@@ -129,18 +127,22 @@
     /* Mobile */
     @media (max-width: 768px) {
       .sidebar {
+        height: 100vh;
+        flex-direction: column;
         display: none; /* Esconde o menu na versão mobile */
-        transform: translateX(-100%);
       }
 
       .sidebar.show {
         display: flex;
-        transform: translateX(0);
       }
 
       .auth-button {
-        width: calc(100% - 40px);
-        margin: 20px 20px;
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        margin-left: 0; /* Para que ocupe toda a largura */
+        text-align: center;
       }
 
       .topbar .search-box {
@@ -157,7 +159,8 @@
         padding: 10px;
         border-radius: 5px;
         font-size: 20px;
-        order: -1; /* Coloca o ícone de menu à esquerda */
+        position: absolute;
+        left: 20px;
       }
 
       .menu-icon.open {
@@ -186,17 +189,6 @@
     </div>
     <div class="search-box">
       <input type="text" placeholder="Pesquisar...">
-    </div>
-    <div class="auth-button">
-      {% if user.is_authenticated %}
-        <a href="{% url 'logout' %}">
-          Sair
-        </a>
-      {% else %}
-        <a href="{% url 'login' %}">
-          Entrar / Criar Conta
-        </a>
-      {% endif %}
     </div>
     <div class="menu-icon" id="menu-icon">
       &#9776; <!-- Ícone de hambúrguer -->
@@ -259,36 +251,23 @@
       <li><a href="{% url 'quem_sou_eu' %}">Quem Sou Eu</a></li>
       <li><a href="{% url 'quem_somos_nos' %}">Quem Somos Nós</a></li>
     </ul>
+
+    <!-- Botão Entrar / Criar Conta no fim da Sidebar -->
+    <div class="auth-button">
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">
+          Sair
+        </a>
+      {% else %}
+        <a href="{% url 'login' %}">
+          Entrar / Criar Conta
+        </a>
+      {% endif %}
+    </div>
   </div>
 
   <!-- Conteúdo dinâmico das páginas -->
   <div class="content">
     {% block content %}
     <h1>Bem-vindo ao Nutri Amorim!</h1>
-    <p>Seu portal de saúde, bem-estar e nutrição.</p>
-    {% endblock %}
-  </div>
-
-  <script>
-    document.querySelectorAll('.toggle').forEach(toggle => {
-      toggle.addEventListener('click', function () {
-        const submenu = this.nextElementSibling;
-        const isOpen = submenu.classList.contains('show');
-        document.querySelectorAll('.submenu').forEach(menu => menu.classList.remove('show'));
-        document.querySelectorAll('.toggle').forEach(btn => btn.classList.add('closed'));
-
-        if (!isOpen) {
-          submenu.classList.add('show');
-          this.classList.remove('closed');
-        }
-      });
-    });
-
-    // Função para abrir e fechar o menu em dispositivos móveis
-    document.getElementById('menu-icon').addEventListener('click', function () {
-      document.getElementById('sidebar').classList.toggle('show');
-      document.querySelector('.content').style.marginLeft = document.getElementById('sidebar').classList.contains('show') ? '200px' : '0';
-    });
-  </script>
-</body>
-</html>
+    <p>Seu portal de
