@@ -22,14 +22,36 @@
 
 /* Para telas menores que 768px (dispositivos móveis) */
 @media (max-width: 767px) {
-    body {
-        background-color: lightcoral; /* Exemplo de mudança para dispositivos móveis */
-    }
-    .container {
-        max-width: 100%;
-        padding: 10px;
-    }
+  body {
+    background-color: rgb(160, 82, 82); /* Exemplo de mudança para dispositivos móveis */
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .sidebar {
+    position: absolute;
+    left: -220px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+  }
 }
+  /* Ícone de hambúrguer para abrir e fechar o menu lateral */
+  .menu-icon {
+    display: block;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
 
 body {
   margin: 0;
@@ -91,7 +113,6 @@ body {
   top: 60px;
   left: 0;
   overflow-y: auto;
-  border-right: 1px solid black;
 }
 
 .sidebar ul {
