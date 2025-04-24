@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <title>Nutri Amorim</title>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="logo">Nutri Amorim</div>
+    <div class="search-box">
+      <input type="text" placeholder="Pesquisar...">
+    </div>
+    <div class="auth-button">
+        {% if user.is_authenticated %}
+        <!-- Botão de sair se o usuário estiver logado -->
+    <a href="{% url 'logout' %}">
+        <button>Sair</button>
+      </a>
+    {% else %}
+      <!-- Botão de login se o usuário não estiver logado -->
+        <a href="http://127.0.0.1:8000/usuarios/login/">
+      <button>Entrar / Criar Conta</button>
+    </a>
+    {% endif %}
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <ul>
+      <li>
+        <a href="{% url 'home' %}">Inicio</a>  <!-- Link direto para a página inicial -->
+      </li>
+      <!-- As outras abas seguem aqui -->
+      <li>
+        <a class="toggle">Performance Esportiva</a>
+        <ul class="submenu">
+          <li><a href="#">Nutrição para Atletas</a></li>
+          <li><a href="#">Suplementação Esportiva</a></li>
+          <li><a href="#">Protocolo de Treino</a></li>
+          <li><a href="#">Recuperação Muscular</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Nutrição Funcional</a>
+        <ul class="submenu">
+          <li><a href="#">Alimentação Alcalina</a></li>
+          <li><a href="#">Fitoterapia</a></li>
+          <li><a href="#">Protocolos Anti-inflamatórios</a></li>
+          <li><a href="#">Alimentos Funcionais</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Objetivos</a>
+        <ul class="submenu">
+          <li><a href="#">Ganho de Massa Magra</a></li>
+          <li><a href="#">Definição Muscular</a></li>
+          <li><a href="#">Emagrecimento Saudável</a></li>
+          <li><a href="#">Energia e Disposição</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Receitas Medicinais</a>
+        <ul class="submenu">
+          <li><a href="#">Sub-Aba 1</a></li>
+          <li><a href="#">Sub-Aba 2</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Pesquisas Científicas</a>
+        <ul class="submenu">
+          <li><a href="#">Sub-Aba 1</a></li>
+          <li><a href="#">Sub-Aba 2</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class="toggle">Consultas</a>
+        <ul class="submenu">
+          <li><a href="#">Agendamento Online</a></li>
+          <li><a href="#">Avaliação Física</a></li>
+          <li><a href="#">Planos Alimentares</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Quem Sou Eu</a></li>
+      <li><a href="#">Quem Somos Nós</a></li>
+    </ul>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="content">
+    <h1>Bem-vindo ao Nutri Amorim!</h1>
+    <p>Seu portal de saúde, bem-estar e nutrição.</p>
+  </div>
+
+  <!-- Script para submenu -->
+  <script>
+    const toggles = document.querySelectorAll('.toggle');
+
+    toggles.forEach(toggle => {
+      toggle.classList.add('closed');
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('show');
+        toggle.classList.toggle('closed');
+      });
+    });
+  </script>
+
+</body>
+</html>

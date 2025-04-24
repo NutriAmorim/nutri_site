@@ -1,0 +1,141 @@
+/* Para telas maiores que 1024px (desktops) */
+@media (min-width: 1024px) {
+    body {
+        background-color: lightblue; /* Exemplo de mudança para desktops */
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* Para telas entre 768px e 1024px (tablets) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        background-color: lightgreen; /* Exemplo de mudança para tablets */
+    }
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+}
+
+/* Para telas menores que 768px (dispositivos móveis) */
+@media (max-width: 767px) {
+    body {
+        background-color: lightcoral; /* Exemplo de mudança para dispositivos móveis */
+    }
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Topbar */
+.topbar {
+  background-color: #5FA052; /* Muted Green */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.topbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.topbar .search-box {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.topbar .search-box input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.topbar .auth-button button {
+  background-color: white;
+  color: #5FA052; /* Muted Green */
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background-color: #5FA052; /* Muted Green */
+  color: white;
+  padding: 20px;
+  height: calc(100vh - 60px); /* desconta topbar */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  overflow-y: auto;
+  border-right: 1px solid black;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  cursor: pointer;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar ul ul {
+  padding-left: 15px;
+  display: none;
+}
+
+.sidebar ul ul.show {
+  display: block;
+}
+
+.toggle::after {
+  content: " ▼";
+  font-size: 12px;
+}
+
+.toggle.closed::after {
+  content: " ▶";
+}
+
+/* Main content */
+.content {
+  margin-left: 220px;
+  margin-top: 80px;
+  padding: 20px;
+}

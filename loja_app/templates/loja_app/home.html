@@ -1,0 +1,22 @@
+{% extends 'loja_app/base.html' %}
+
+{% load static %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+    <h1>Bem-vindo ao Nutri Amorim</h1>
+    <p>Transforme sua saúde através da nutrição alcalina, funcional e esportiva, aliada ao poder da fitoterapia.</p>
+
+    <h2 style="color: red;">Teste de Imagem</h2>
+    <img src="{% static 'img/dieta_alcalina.jpg' %}" alt="Teste de imagem" width="300" />
+
+    <hr />
+
+    <!-- Exibindo imagens -->
+    <div class="imagens" style="display: flex; gap: 20px;">
+      <img src="{% static 'img/dieta_alcalina.jpg' %}" alt="Dieta Alcalina" width="200" />
+      <img src="{% static 'img/nutricao_esportiva.jpeg' %}" alt="Nutrição Esportiva" width="200" />
+      <img src="{% static 'img/nutricao_funcional.jpeg' %}" alt="Nutrição Funcional" width="200" />
+    </div>
+{% endblock %}
