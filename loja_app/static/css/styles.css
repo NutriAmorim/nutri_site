@@ -1,3 +1,84 @@
+/* Centraliza título e define cor */
+.titulo-principal {
+  color: #5FA052;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.descricao-principal {
+  text-align: center;
+  margin: 0 20px;
+  font-size: 18px;
+  color: #000000;
+}
+
+/* Seções de conteúdo */
+.imagem-section {
+  text-align: left; /* Ajustado para alinhar o conteúdo à esquerda */
+  padding: 20px;
+}
+
+.subtitulo {
+  color: #5FA052;
+  font-size: 32px;
+  text-align: left;
+  margin-left: 0; /* Subtítulos alinhados à esquerda */
+  margin-bottom: 10px; /* Espaçamento inferior */
+  font-weight: bold;
+}
+
+.subsubtitulo {
+  color: #5FA052;
+  font-size: 24px;
+  text-align: left; /* Subtítulos das seções também à esquerda */
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.imagens-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 20px;
+}
+
+/* Seções de conteúdo */
+.imagem-section {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Subtítulos */
+.subtitulo {
+  color: #5FA052;
+  font-size: 32px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Parágrafos */
+.texto-justificado {
+  text-align: justify;
+  font-size: 16px;
+  color: #000;
+  margin: 0 20px;
+}
+
+/* Destaque */
+.destaque {
+  color: #5FA052;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Imagens */
+.imagem-grande {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Estilos gerais */
 body {
   margin: 0;
@@ -144,7 +225,7 @@ body {
 /* Para telas menores que 768px (dispositivos móveis) */
 @media (max-width: 767px) {
   body {
-    background-color: rgb(160, 82, 82); /* Exemplo de mudança para dispositivos móveis */
+    background-color: rgb(255, 255, 255); /* Exemplo de mudança para dispositivos móveis */
   }
 
   .container {
@@ -186,7 +267,7 @@ body {
 /* Para telas entre 768px e 1024px (tablets) */
 @media (min-width: 768px) and (max-width: 1024px) {
   body {
-    background-color: lightgreen; /* Exemplo de mudança para tablets */
+    background-color: rgb(255, 255, 255); /* Exemplo de mudança para tablets */
   }
 
   .container {
@@ -213,7 +294,7 @@ body {
 /* Para telas maiores que 1024px (desktops) */
 @media (min-width: 1025px) {
   body {
-    background-color: rgb(173, 230, 206); /* Exemplo de mudança para desktops */
+    background-color: rgb(255, 255, 255); /* Exemplo de mudança para desktops */
   }
 
   .container {
