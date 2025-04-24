@@ -1,58 +1,4 @@
-/* Para telas maiores que 1024px (desktops) */
-@media (min-width: 1024px) {
-    body {
-        background-color: lightblue; /* Exemplo de mudança para desktops */
-    }
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-}
-
-/* Para telas entre 768px e 1024px (tablets) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    body {
-        background-color: lightgreen; /* Exemplo de mudança para tablets */
-    }
-    .container {
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-}
-
-/* Para telas menores que 768px (dispositivos móveis) */
-@media (max-width: 767px) {
-  body {
-    background-color: rgb(160, 82, 82); /* Exemplo de mudança para dispositivos móveis */
-  }
-
-  .container {
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  .sidebar {
-    position: absolute;
-    left: -220px;
-    transition: left 0.3s ease;
-  }
-
-  .sidebar.show {
-    left: 0;
-  }
-
-  .content {
-    margin-left: 0;
-  }
-}
-  /* Ícone de hambúrguer para abrir e fechar o menu lateral */
-  .menu-icon {
-    display: block;
-    font-size: 30px;
-    cursor: pointer;
-  }
-
-
+/* Estilos gerais */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -60,7 +6,7 @@ body {
 
 /* Topbar */
 .topbar {
-  background-color: #5FA052; /* Muted Green */
+  background-color: #5FA052; /* Cor verde suave */
   color: white;
   padding: 10px 20px;
   display: flex;
@@ -94,7 +40,7 @@ body {
 
 .topbar .auth-button button {
   background-color: white;
-  color: #5FA052; /* Muted Green */
+  color: #5FA052; /* Cor verde suave */
   border: none;
   padding: 8px 12px;
   border-radius: 5px;
@@ -102,17 +48,41 @@ body {
   font-weight: bold;
 }
 
+/* Estilo para o botão da sidebar */
+.sidebar-auth button {
+  background-color: white;
+  color: #5FA052; /* Cor verde suave */
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%; /* Faz com que o botão ocupe toda a largura do item */
+  text-align: center; /* Alinha o texto no centro do botão */
+}
+
+.sidebar-auth button:hover {
+  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+}
+
 /* Sidebar */
 .sidebar {
-  width: 200px;
-  background-color: #5FA052; /* Muted Green */
+  width: 220px; /* Tamanho fixo para todos os dispositivos */
+  background-color: #5FA052; /* Cor verde suave */
   color: white;
   padding: 20px;
-  height: calc(100vh - 60px); /* desconta topbar */
+  height: calc(100vh - 60px); /* Altura da tela - altura da topbar */
   position: fixed;
-  top: 60px;
+  top: -100vh; /* Começa fora da tela, acima da viewport */
   left: 0;
+  transition: top 0.3s ease; /* Efeito de transição suave */
+  z-index: 999; /* Fica atrás da topbar (que tem z-index: 1000) */
   overflow-y: auto;
+}
+
+/* Quando estiver visível */
+.sidebar.show {
+  top: 60px; /* Desce abaixo da topbar (que tem 60px de altura) */
 }
 
 .sidebar ul {
@@ -159,4 +129,123 @@ body {
   margin-left: 220px;
   margin-top: 80px;
   padding: 20px;
+}
+
+/* Ícone de hambúrguer para abrir e fechar o menu lateral */
+.menu-icon {
+  display: none; /* Esconde o ícone de hambúrguer por padrão */
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 20px; /* Adiciona um espaço entre o ícone e o logo */
+}
+
+/* Regras de Mídia */
+
+/* Para telas menores que 768px (dispositivos móveis) */
+@media (max-width: 767px) {
+  body {
+    background-color: rgb(160, 82, 82); /* Exemplo de mudança para dispositivos móveis */
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .sidebar {
+    position: absolute;
+    width: 220px; /* Tamanho fixo para todos os dispositivos */
+    left: -220px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  /* Exibe o ícone de hambúrguer apenas em dispositivos móveis */
+  .menu-icon {
+    display: block;
+  }
+
+  /* Exibe a sidebar-auth apenas em dispositivos móveis */
+  .sidebar-auth {
+    display: block; /* Mostra os botões em dispositivos móveis */
+  }
+
+  /* Esconde o botão da topbar em dispositivos móveis */
+  .topbar .auth-button {
+    display: none;
+  }
+}
+
+/* Para telas entre 768px e 1024px (tablets) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    background-color: lightgreen; /* Exemplo de mudança para tablets */
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* Exibe o ícone de hambúrguer apenas em tablets */
+  .menu-icon {
+    display: block;
+  }
+
+  /* Exibe a sidebar-auth apenas em tablets */
+  .sidebar-auth {
+    display: block; /* Mostra os botões em tablets */
+  }
+
+  /* Esconde o botão da topbar em tablets */
+  .topbar .auth-button {
+    display: none;
+  }
+}
+
+/* Para telas maiores que 1024px (desktops) */
+@media (min-width: 1025px) {
+  body {
+    background-color: rgb(173, 230, 206); /* Exemplo de mudança para desktops */
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Exibe o botão da topbar apenas em desktops */
+  .topbar .auth-button {
+    display: block;
+  }
+
+  /* Esconde a sidebar-auth em desktops */
+  .sidebar-auth {
+    display: none;
+  }
+
+  /* Esconde o ícone de hambúrguer em desktops */
+  .menu-icon {
+    display: none;
+  }
+    
+  /* Faz a sidebar ficar visível no desktop */
+  .sidebar {
+    position: fixed;
+    top: 60px; /* A sidebar vai começar abaixo da topbar */
+    left: 0; /* A sidebar vai ocupar toda a altura da tela */
+    height: calc(100vh - 60px); /* Ocupa toda a altura da tela, menos a altura da topbar */
+    width: 220px; /* Largura da sidebar */
+ }
+  /* Garantir que o conteúdo se ajuste ao espaço da sidebar */
+  .content {
+    margin-left: 250px; /* Deixa um espaço à esquerda para a sidebar */
+ }
 }
