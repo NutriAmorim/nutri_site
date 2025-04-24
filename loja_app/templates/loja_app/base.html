@@ -41,55 +41,61 @@
       <li>
         <a class="toggle">Performance Esportiva</a>
         <ul class="submenu">
-          <li><a href="#">Nutrição para Atletas</a></li>
-          <li><a href="#">Suplementação Esportiva</a></li>
-          <li><a href="#">Protocolo de Treino</a></li>
-          <li><a href="#">Recuperação Muscular</a></li>
+          <li><a href="{% url 'nutricao_para_atletas' %}">Nutrição para Atletas</a></li>
+          <li><a href="{% url 'suplementacao_esportiva' %}">Suplementação Esportiva</a></li>
+          <li><a href="{% url 'protocolo_de_treino' %}">Protocolo de Treino</a></li>
+          <li><a href="{% url 'recuperacao_muscular' %}">Recuperação Muscular</a></li>
         </ul>
       </li>
+    
       <li>
         <a class="toggle">Nutrição Funcional</a>
         <ul class="submenu">
-          <li><a href="#">Alimentação Alcalina</a></li>
-          <li><a href="#">Fitoterapia</a></li>
-          <li><a href="#">Protocolos Anti-inflamatórios</a></li>
-          <li><a href="#">Alimentos Funcionais</a></li>
+          <li><a href="{% url 'alimentacao_alcalina' %}">Alimentação Alcalina</a></li>
+          <li><a href="{% url 'fitoterapia' %}">Fitoterapia</a></li>
+          <li><a href="{% url 'protocolos_antiinflamatorios' %}">Protocolos Anti-inflamatórios</a></li>
+          <li><a href="{% url 'alimentos_funcionais' %}">Alimentos Funcionais</a></li>
         </ul>
       </li>
+    
       <li>
         <a class="toggle">Objetivos</a>
         <ul class="submenu">
-          <li><a href="#">Ganho de Massa Magra</a></li>
-          <li><a href="#">Definição Muscular</a></li>
-          <li><a href="#">Emagrecimento Saudável</a></li>
-          <li><a href="#">Energia e Disposição</a></li>
+          <li><a href="{% url 'massa_magra' %}">Ganho de Massa Magra</a></li>
+          <li><a href="{% url 'definicao_muscular' %}">Definição Muscular</a></li>
+          <li><a href="{% url 'emagrecimento_saudavel' %}">Emagrecimento Saudável</a></li>
+          <li><a href="{% url 'energia_disposicao' %}">Energia e Disposição</a></li>
         </ul>
       </li>
+    
       <li>
         <a class="toggle">Receitas Medicinais</a>
         <ul class="submenu">
-          <li><a href="#">Sub-Aba 1</a></li>
-          <li><a href="#">Sub-Aba 2</a></li>
+          <li><a href="{% url 'receita_1' %}">Receita 1</a></li>
+          <li><a href="{% url 'receita_2' %}">Receita 2</a></li>
         </ul>
       </li>
+    
       <li>
         <a class="toggle">Pesquisas Científicas</a>
         <ul class="submenu">
-          <li><a href="#">Sub-Aba 1</a></li>
-          <li><a href="#">Sub-Aba 2</a></li>
+          <li><a href="{% url 'pesquisa_1' %}">Pesquisa 1</a></li>
+          <li><a href="{% url 'pesquisa_2' %}">Pesquisa 2</a></li>
         </ul>
       </li>
+    
       <li>
         <a class="toggle">Consultas</a>
         <ul class="submenu">
-          <li><a href="#">Agendamento Online</a></li>
-          <li><a href="#">Avaliação Física</a></li>
-          <li><a href="#">Planos Alimentares</a></li>
+          <li><a href="{% url 'agendamento_online' %}">Agendamento Online</a></li>
+          <li><a href="{% url 'avaliacao_fisica' %}">Avaliação Física</a></li>
+          <li><a href="{% url 'planos_alimentares' %}">Planos Alimentares</a></li>
         </ul>
       </li>
-      <li><a href="#">Quem Sou Eu</a></li>
-      <li><a href="#">Quem Somos Nós</a></li>
-
+    
+      <li><a href="{% url 'quem_sou_eu' %}">Quem Sou Eu</a></li>
+      <li><a href="{% url 'quem_somos_nos' %}">Quem Somos Nós</a></li>
+    
       <li class="sidebar-auth">
         {% if user.is_authenticated %}
           <a href="{% url 'logout' %}"><button>Sair</button></a>
@@ -100,11 +106,11 @@
       </ul>
       </div>
 
-  <!-- Conteúdo -->
-  <div class="content">
-    <h1>Bem-vindo!</h1>
-    <p>Seu portal de saúde, bem-estar e nutrição.</p>
-  </div>
+<!-- Conteúdo principal -->
+<div class="content">
+  {% block content %}
+  {% endblock %}
+</div>
 
 <!-- Scripts -->
 <script>
