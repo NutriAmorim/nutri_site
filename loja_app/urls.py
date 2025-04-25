@@ -3,7 +3,14 @@ from .import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+
+    # Vendas no site
     path('suplementos/', views.suplementos, name='suplementos'),
+    path('produtos_naturais/', views.produtos_naturais, name='produtos_naturais'),
+    path('produtos_corporais/', views.produtos_corporais, name='produtos_corporais'),
+    path('equipamentos_fitness/', views.equipamentos_fitness, name='equipamentos_fitness'),
+    path('treinos_personalizados/', views.treinos_personalizados, name='treinos_personalizados'),
+    path('ebooks_exclusivos/', views.ebooks_exclusivos, name='ebooks_exclusivos'),
 
     # Performance Esportiva
     path('nutricao-para-atletas/', views.nutricao_para_atletas, name='nutricao_para_atletas'),
@@ -24,11 +31,15 @@ urlpatterns = [
     path('energia-disposicao/', views.energia_disposicao, name='energia_disposicao'),
 
     # Receitas Medicinais
-    path('receita-1/', views.receita_1, name='receita_1'),
-    path('receita-2/', views.receita_2, name='receita_2'),
+    path('informativo', views.informativo, name='informativo'),
+    path('entenda_doencas_e_causas', views.entenda_doencas_e_causas, name='entenda_doencas_e_causas'),
+    path('guia_de_ervas_medicinais/', views.guia_de_ervas_medicinais, name='guia_de_ervas_medicinais'),
+    path('doencas_comuns_e_solucoes_naturais/', views.doencas_comuns_e_solucoes_naturais, name='doencas_comuns_e_solucoes_naturais'),
+    path('receitas_para_imunidade/', views.receitas_para_imunidade, name='receitas_para_imunidade'),
+
     # Pesquisas Científicas
-    path('pesquisa_1/', views.pesquisa_1, name='pesquisa_1'),
-    path('pesquisa_2/', views.pesquisa_2, name='pesquisa_2'),
+    path('comprovacao_cientifica/', views.comprovacao_cientifica, name='comprovacao_cientifica'),
+    path('remedios_naturais_que_a_ciencia_comprova/', views.remedios_naturais_que_a_ciencia_comprova, name='remedios_naturais_que_a_ciencia_comprova'),
 
     # Consultas
     path('agendamento-online/', views.agendamento_online, name='agendamento_online'),
@@ -36,6 +47,10 @@ urlpatterns = [
     path('planos-alimentares/', views.planos_alimentares, name='planos_alimentares'),
 
     # Quem Somos
-    path('quem-sou-eu/', views.quem_sou_eu, name='quem_sou_eu'),
-    path('quem-somos-nos/', views.quem_somos_nos, name='quem_somos_nos'),
+    path('sobre_mim/', views.sobre_mim, name='sobre_mim'),
+    path('conheca_nosso_trabalho/', views.conheca_nosso_trabalho, name='conheca_nosso_trabalho'),
+
+
+    path('normas_e_regulamento/', views.normas_e_regulamento, name='normas_e_regulamento'),
+    path('conhecimento_na_pratica/', views.conhecimento_na_pratica, name='conhecimento_na_pratica'),
 ]

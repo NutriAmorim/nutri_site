@@ -38,65 +38,82 @@
         <a href="{% url 'home' %}">Inicio</a>  <!-- Link direto para a página inicial -->
       </li>
       <!-- As outras abas seguem aqui -->
-      <li>
-        <li><a href="{% url 'suplementos' %}">Suplementos</a></li>
+
+        <li>
+          <a class="toggle">Ofertas Naturais</a>
+          <ul class="submenu">
+            <li><a href="{% url 'suplementos' %}">💊 Suplementos Essenciais</a></li>
+            <li><a href="{% url 'produtos_naturais' %}">🌱 Produtos Naturais</a></li>
+            <li><a href="{% url 'produtos_corporais' %}">🧴 Cuidados Corporais</a></li>
+            <li><a href="{% url 'equipamentos_fitness' %}">🏋️ Equipamentos Fitness</a></li>
+            <li><a href="{% url 'treinos_personalizados' %}">📋 Treinos Personalizados</a></li>
+            <li><a href="{% url 'ebooks_exclusivos' %}">📚 E-books Exclusivos</a></li>
+          </ul>
+        </li>
+
+        <li>
         <a class="toggle">Performance Esportiva</a>
-        <ul class="submenu">
-          <li><a href="{% url 'nutricao_para_atletas' %}">Nutrição para Atletas</a></li>
-          <li><a href="{% url 'suplementacao_esportiva' %}">Suplementação Esportiva</a></li>
-          <li><a href="{% url 'protocolo_de_treino' %}">Protocolo de Treino</a></li>
-          <li><a href="{% url 'recuperacao_muscular' %}">Recuperação Muscular</a></li>
-        </ul>
-      </li>
-    
-      <li>
+          <ul>
+            <li><a href="{% url 'nutricao_para_atletas' %}">🍽️ Nutrição para Atletas</a></li>
+            <li><a href="{% url 'suplementacao_esportiva' %}">💪 Suplementação Esportiva</a></li>
+            <li><a href="{% url 'protocolo_de_treino' %}">📈 Protocolo de Treino</a></li>
+            <li><a href="{% url 'recuperacao_muscular' %}">🛌 Recuperação Muscular</a></li>
+          </ul>
+        </li>
+
+        <li>
         <a class="toggle">Nutrição Funcional</a>
         <ul class="submenu">
-          <li><a href="{% url 'alimentacao_alcalina' %}">Alimentação Alcalina</a></li>
-          <li><a href="{% url 'fitoterapia' %}">Fitoterapia</a></li>
-          <li><a href="{% url 'protocolos_antiinflamatorios' %}">Protocolos Anti-inflamatórios</a></li>
-          <li><a href="{% url 'alimentos_funcionais' %}">Alimentos Funcionais</a></li>
+          <li><a href="{% url 'alimentacao_alcalina' %}">🥦 Alimentação Alcalina</a></li>
+          <li><a href="{% url 'fitoterapia' %}">🌿 Fitoterapia</a></li>
+          <li><a href="{% url 'protocolos_antiinflamatorios' %}">🔥 Protocolos Anti-inflamatórios</a></li>
+          <li><a href="{% url 'alimentos_funcionais' %}">🥗 Alimentos Funcionais</a></li>
         </ul>
       </li>
     
       <li>
         <a class="toggle">Objetivos</a>
         <ul class="submenu">
-          <li><a href="{% url 'massa_magra' %}">Ganho de Massa Magra</a></li>
-          <li><a href="{% url 'definicao_muscular' %}">Definição Muscular</a></li>
-          <li><a href="{% url 'emagrecimento_saudavel' %}">Emagrecimento Saudável</a></li>
-          <li><a href="{% url 'energia_disposicao' %}">Energia e Disposição</a></li>
+          <li><a href="{% url 'massa_magra' %}">🏋️‍♀️ Massa Magra</a></li>
+          <li><a href="{% url 'definicao_muscular' %}">💪 Definição Muscular</a></li>
+          <li><a href="{% url 'emagrecimento_saudavel' %}">⚖️ Emagrecimento Saudável</a></li>
+          <li><a href="{% url 'energia_disposicao' %}">⚡ Energia e Disposição</a></li>
         </ul>
       </li>
     
       <li>
         <a class="toggle">Receitas Medicinais</a>
         <ul class="submenu">
-          <li><a href="{% url 'receita_1' %}">Receita 1</a></li>
-          <li><a href="{% url 'receita_2' %}">Receita 2</a></li>
+          <li><a href="{% url 'informativo' %}">📰 Informativo</a></li>
+          <li><a href="{% url 'entenda_doencas_e_causas' %}">🔍 Entenda Doenças e Causas</a></li>
+          <li><a href="{% url 'guia_de_ervas_medicinais' %}">🌿 Guia de Ervas</a></li>
+          <li><a href="{% url 'doencas_comuns_e_solucoes_naturais' %}">🩺 Doenças e Soluções</a></li>
+          <li><a href="{% url 'receitas_para_imunidade' %}">🛡️ Imunidade Natural</a></li>
         </ul>
       </li>
     
       <li>
         <a class="toggle">Pesquisas Científicas</a>
         <ul class="submenu">
-          <li><a href="{% url 'pesquisa_1' %}">Pesquisa 1</a></li>
-          <li><a href="{% url 'pesquisa_2' %}">Pesquisa 2</a></li>
+          <li><a href="{% url 'comprovacao_cientifica' %}">🔬 Comprovação Científica</a></li>
+          <li><a href="{% url 'remedios_naturais_que_a_ciencia_comprova' %}">🌱 Remédios Naturais</a></li>
         </ul>
       </li>
     
       <li>
         <a class="toggle">Consultas</a>
         <ul class="submenu">
-          <li><a href="{% url 'agendamento_online' %}">Agendamento Online</a></li>
-          <li><a href="{% url 'avaliacao_fisica' %}">Avaliação Física</a></li>
-          <li><a href="{% url 'planos_alimentares' %}">Planos Alimentares</a></li>
+          <li><a href="{% url 'agendamento_online' %}">📅 Agendamento Online</a></li>
+          <li><a href="{% url 'avaliacao_fisica' %}">📏 Avaliação Física</a></li>
+          <li><a href="{% url 'planos_alimentares' %}">📋 Planos Alimentares</a></li>
         </ul>
       </li>
     
-      <li><a href="{% url 'quem_sou_eu' %}">Quem Sou Eu</a></li>
-      <li><a href="{% url 'quem_somos_nos' %}">Quem Somos Nós</a></li>
-    
+      <li><a href="{% url 'sobre_mim' %}">👤 Sobre Mim</a></li>
+      <li><a href="{% url 'conheca_nosso_trabalho' %}">🧑‍🤝‍🧑 Nosso Trabalho</a></li>
+      <li><a href="{% url 'normas_e_regulamento' %}">📑 Normas</a></li>
+      <li><a href="{% url 'conhecimento_na_pratica' %}">🧠 Conhecimento na Prática</a></li>
+
       <li class="sidebar-auth">
         {% if user.is_authenticated %}
           <a href="{% url 'logout' %}"><button>Sair</button></a>

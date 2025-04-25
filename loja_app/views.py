@@ -1,10 +1,5 @@
 from django.shortcuts import render
 
-def home(request):
-    print("A view home foi chamada!")
-    return render(request, 'loja_app/home.html')
-
-
 # Página inicial
 def home(request):
     return render(request, 'loja_app/home.html')
@@ -100,3 +95,67 @@ def quem_sou_eu(request):
 
 def quem_somos_nos(request):
     return render(request, 'loja_app/quem_somos_nos.html')
+
+
+def conhecimento_na_pratica(request):
+    return render(request, 'loja_app/conhecimento_na_pratica.html')
+
+
+def normas_e_regulamento(request):
+    return render(request, 'loja_app/normas_e_regulamento.html')
+
+
+def conheca_nosso_trabalho(request):
+    return render(request, 'loja_app/conheca_nosso_trabalho.html')
+
+
+def sobre_mim(request):
+    return render(request, 'loja_app/sobre_mim.html')
+
+
+def remedios_naturais_que_a_ciencia_comprova(request):
+    return render(request, 'loja_app/remedios_naturais_que_a_ciencia_comprova.html')
+
+
+def comprovacao_cientifica(request):
+    return render(request, 'loja_app/comprovacao_cientifica.html')
+
+
+def receitas_para_imunidade(request):
+    return render(request, 'loja_app/receitas_para_imunidade.html')
+
+
+def doencas_comuns_e_solucoes_naturais(request):
+    return render(request, 'loja_app/doencas_comuns_e_solucoes_naturais.html')
+
+
+def guia_de_ervas_medicinais(request):
+    return render(request, 'loja_app/guia_de_ervas_medicinais.html')
+
+
+def entenda_doencas_e_causas(request):
+    return render(request, 'loja_app/entenda_doencas_e_causas.html')
+
+
+def informativo(request):
+    return render(request, 'loja_app/informativo.html')
+
+
+def ebooks_exclusivos(request):
+    return render(request, 'loja_app/ebooks_exclusivos.html')
+
+
+def treinos_personalizados(request):
+    return render(request, 'loja_app/treinos_personalizados.html')
+
+
+def equipamentos_fitness(request):
+    return render(request, 'loja_app/equipamentos_fitness.html')
+
+
+def produtos_corporais(request):
+    return render(request, 'loja_app/produtos_corporais.html')
+
+
+def produtos_naturais(request):
+    return render(request, 'loja_app/produtos_naturais.html')

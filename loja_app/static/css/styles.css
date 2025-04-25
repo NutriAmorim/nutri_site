@@ -330,3 +330,20 @@ body {
     margin-left: 250px; /* Deixa um espaço à esquerda para a sidebar */
  }
 }
+
+/* Estilização padrão para todos os títulos das páginas */
+h1, h2, h3, .titulo-principal, .subtitulo, .subsubtitulo {
+  color: #5FA052; /* Verde padrão */
+  font-weight: bold;
+}
+
+/* Estilo padrão para textos */
+p, .texto-justificado, .descricao-principal {
+  color: #000000; /* Preto padrão */
+}
+
+/* Espaçamento entre filtros do menu na sidebar */
+.sidebar ul ul li {
+  margin-bottom: 10px; /* Espaço entre itens */
+  
+}
