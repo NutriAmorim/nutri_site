@@ -132,22 +132,69 @@
 
 <!-- Scripts -->
 <script>
-  // Script para submenu
-  const toggles = document.querySelectorAll('.toggle');
-  toggles.forEach(toggle => {
-    toggle.classList.add('closed');
-    toggle.addEventListener('click', () => {
-      const submenu = toggle.nextElementSibling;
-      submenu.classList.toggle('show');
-      toggle.classList.toggle('closed');
-    });
-  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggles = document.querySelectorAll('.toggle');
+    const submenuState = JSON.parse(localStorage.getItem('openSubmenus')) || [];
 
-  // Script para mostrar/ocultar a sidebar
-  function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('show');
-  }
+    // Inicializa o estado das sub-abas baseado no localStorage
+    toggles.forEach((toggle, index) => {
+      const submenu = toggle.nextElementSibling;
+      if (submenuState.includes(index)) {
+        submenu.classList.add('show'); // Abre as sub-abas que estavam abertas
+        toggle.classList.remove('closed'); // Ícone de aba aberta
+      } else {
+        submenu.classList.remove('show'); // Fecha as sub-abas que estavam fechadas
+        toggle.classList.add('closed');   // Ícone de aba fechada
+      }
+
+      toggle.addEventListener('click', () => {
+        const isOpen = submenu.classList.contains('show');
+        
+        // Atualiza o estado da sub-aba
+        if (isOpen) {
+          submenu.classList.remove('show');
+          toggle.classList.add('closed'); // Muda o ícone para fechado
+        } else {
+          submenu.classList.add('show');
+          toggle.classList.remove('closed'); // Muda o ícone para aberto
+        }
+
+        // Atualiza o estado no localStorage
+        updateSubmenuState();
+      });
+    });
+
+    // Função para atualizar o estado das abas no localStorage
+    function updateSubmenuState() {
+      const openSubmenus = [];
+      toggles.forEach((toggle, index) => {
+        const submenu = toggle.nextElementSibling;
+        if (submenu.classList.contains('show')) {
+          openSubmenus.push(index);
+        }
+      });
+      localStorage.setItem('openSubmenus', JSON.stringify(openSubmenus));
+    }
+
+    // Função para fechar as abas quando clicar no botão "Inicio" ou "Reiniciar"
+    function resetSubmenus() {
+      toggles.forEach((toggle) => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.remove('show'); // Fecha as sub-abas
+        toggle.classList.add('closed');   // Coloca o ícone de fechado
+      });
+      localStorage.setItem('openSubmenus', JSON.stringify([])); // Limpa o estado das abas
+    }
+
+    // Script para mostrar/ocultar a sidebar
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('show');
+    }
+
+    // Expose the toggleSidebar function to global scope if necessary
+    window.toggleSidebar = toggleSidebar;
+  });
 </script>
 
 </body>
