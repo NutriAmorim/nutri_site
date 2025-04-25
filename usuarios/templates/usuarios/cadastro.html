@@ -6,6 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="{% static 'usuarios/styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #5FA052;
+            margin-bottom: 1em;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 0.8em;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 0.8em;
+            background-color: #5FA052;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4b8f41;
+        }
+
+        .create-account-btn, .home-btn {
+            width: 100%;
+            padding: 0.8em;
+            background-color: #4b8f41;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 10px;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+        }
+
+        .create-account-btn:hover, .home-btn:hover {
+            background-color: #3c7a35;
+        }
+
+        /* Remover o sublinhado nos botões dentro de links */
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -23,8 +97,15 @@
         <input type="password" placeholder="Senha..." name="senha" required>
         <br><br>
 
+        <!-- Botão de Cadastro com o mesmo estilo do botão de Voltar ao Login -->
         <input type="submit" value="Cadastrar">
-        <br>
+        <br><br>
+
+        <!-- Botão de Voltar ao Login com o mesmo estilo -->
+        <a href="{% url 'login' %}">
+            <button type="button" class="home-btn">Voltar ao Login</button>
+        </a>
+
     </form>
 
 </body>
