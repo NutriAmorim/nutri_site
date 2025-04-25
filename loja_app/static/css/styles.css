@@ -351,3 +351,50 @@ p, .texto-justificado, .descricao-principal {
   margin-bottom: 10px; /* Espaço entre itens */
   
 }
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.card {
+  background-color: #f5f5f5;
+  border-left: 5px solid #2e7d32; /* verde-mata */
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #2e7d32;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.btn-download {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background-color: #2e7d32;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-download:hover {
+  background-color: #1b5e20;
+}
