@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 # Página inicial
 def home(request):
     return render(request, 'loja_app/home.html')
@@ -47,6 +48,7 @@ def alimentos_funcionais(request):
 def massa_magra(request):
     return render(request, 'loja_app/massa_magra.html')
 
+
 def definicao_muscular(request):
     return render(request, 'loja_app/definicao_muscular.html')
 
@@ -58,9 +60,11 @@ def emagrecimento_saudavel(request):
 def energia_disposicao(request):
     return render(request, 'loja_app/energia_e_disposicao.html')
 
+
 # Receitas Medicinais (Sub-Abas)
 def receita_1(request):
     return render(request, 'loja_app/receita_1.html')
+
 
 def receita_2(request):
     return render(request, 'loja_app/receita_2.html')

@@ -11,7 +11,7 @@
 
   <!-- Topbar -->
   <div class="topbar">
-    <div class="menu-icon" onclick="toggleSidebar(this)">
+    <div class="menu-icon">
       <div class="bar bar1"></div>
       <div class="bar bar2"></div>
       <div class="bar bar3"></div>
@@ -35,16 +35,13 @@
   </div>
 
   <!-- Sidebar -->
-  <div class="sidebar">
-   </ul>
+  <div id="sidebar" class="sidebar">
       <div class="logo-container">
         <img src="{% static 'img/imagem_nutri.png' %}" alt="Logo Nutri Amorim" class="logo-img">
       </div>
-      <li>
-        <a href="{% url 'home' %}">Inicio</a>  <!-- Link direto para a página inicial -->
-      </li>
+      <ul>
+        <li><a href="{% url 'home' %}" class="inicio-link">Início</a></li>
       <!-- As outras abas seguem aqui -->
-
         <li>
           <a class="toggle">Ofertas Naturais</a>
           <ul class="submenu">
@@ -59,7 +56,7 @@
 
         <li>
         <a class="toggle">Performance Esportiva</a>
-          <ul>
+        <ul class="submenu">
             <li><a href="{% url 'nutricao_para_atletas' %}">🍽️ Nutrição para Atletas</a></li>
             <li><a href="{% url 'suplementacao_esportiva' %}">💪 Suplementação Esportiva</a></li>
             <li><a href="{% url 'protocolo_de_treino' %}">📈 Protocolo de Treino</a></li>
@@ -138,8 +135,8 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const toggles = document.querySelectorAll('.toggle');
-    const submenuState = JSON.parse(localStorage.getItem('openSubmenus')) || [];
+    const toggles = document.querySelectorAll('.toggle'); // Botões de alternância de submenu
+    const submenuState = JSON.parse(localStorage.getItem('openSubmenus')) || []; // Estado salvo no localStorage
 
     // Inicializa o estado das sub-abas baseado no localStorage
     toggles.forEach((toggle, index) => {
@@ -181,24 +178,36 @@
       localStorage.setItem('openSubmenus', JSON.stringify(openSubmenus));
     }
 
-    // Função para fechar as abas quando clicar no botão "Inicio" ou "Reiniciar"
-    function resetSubmenus() {
-      toggles.forEach((toggle) => {
-        const submenu = toggle.nextElementSibling;
-        submenu.classList.remove('show'); // Fecha as sub-abas
-        toggle.classList.add('closed');   // Coloca o ícone de fechado
+    // Script para mostrar/ocultar a sidebar ao clicar no menu hambúrguer
+    const menuIcon = document.querySelector('.menu-icon'); // Ícone do menu hambúrguer
+    const sidebar = document.querySelector('.sidebar'); // Sidebar a ser exibida/ocultada
+
+    if (menuIcon && sidebar) {
+      menuIcon.addEventListener('click', () => {
+        menuIcon.classList.toggle('open');  // Anima o ícone de hambúrguer
+        sidebar.classList.toggle('show');   // Exibe ou esconde a sidebar
       });
-      localStorage.setItem('openSubmenus', JSON.stringify([])); // Limpa o estado das abas
     }
 
-    // Script para mostrar/ocultar a sidebar
-    function toggleSidebar(icon) {
-      icon.classList.toggle("open");  // Isso alterna a classe "open" no menu hambúrguer
-      const sidebar = document.querySelector('.sidebar');
-      sidebar.classList.toggle('show');  // Mostra ou esconde a sidebar
+    // Função para ajustar a visibilidade da sidebar conforme o tamanho da tela
+    function adjustSidebarForScreenSize() {
+      const screenWidth = window.innerWidth;
+
+      if (screenWidth <= 1600) { // Para telas 
+        // No mobile/tablet, a sidebar deve estar escondida por padrão
+        sidebar.classList.remove('show');
+        menuIcon.classList.remove('open');
+      } else { // Para telas grandes (desktops)
+        // Para desktops, a sidebar pode ser fixada, sem necessidade de animação
+        sidebar.classList.add('show');
+        menuIcon.classList.add('open');
+      }
     }
 
-    // Expose the toggleSidebar function to global scope if necessary
-    window.toggleSidebar = toggleSidebar;
+    // Ajusta a sidebar quando a tela for redimensionada
+    window.addEventListener('resize', adjustSidebarForScreenSize);
+    
+    // Chama a função para configurar a visibilidade inicial da sidebar
+    adjustSidebarForScreenSize();
   });
 </script>

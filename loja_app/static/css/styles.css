@@ -129,36 +129,46 @@ body {
   font-weight: bold;
 }
 
-/* Estilo para o botão da sidebar */
 .sidebar-auth button {
   background-color: white;
-  color: #5FA052; /* Cor verde suave */
+  color: #5FA052;
   border: none;
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  width: 100%; /* Faz com que o botão ocupe toda a largura do item */
-  text-align: center; /* Alinha o texto no centro do botão */
+  width: 70%; /* Ou outro valor que você quiser */
+  margin: 0 auto; /* Essa linha centraliza o botão */
+  display: block; /* Botão como bloco pra aceitar margin auto */
+  text-align: center;
 }
 
 .sidebar-auth button:hover {
   background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
 }
 
-/* Sidebar */
 .sidebar {
-  width: 220px; /* Tamanho fixo para todos os dispositivos */
-  background-color: #728f7f; /* Cor verde suave */
+  width: 280px !important;
+  background-color: #728f7f;
   color: white;
-  padding: 20px;
-  height: calc(100vh - 60px); /* Altura da tela - altura da topbar */
+  padding: 20px 0;
+  height: calc(100vh - 60px);
   position: fixed;
-  top: -100vh; /* Começa fora da tela, acima da viewport */
-  left: 0;
-  transition: top 0.3s ease; /* Efeito de transição suave */
-  z-index: 999; /* Fica atrás da topbar (que tem z-index: 1000) */
+  top: -100vh;/* Inicialmente fora da tela */
+  left: -280px; /* Fora da tela inicialmente */
+  transition: top 0.3s ease;/* Suaviza a transição */
+  z-index: 999;
   overflow-y: auto;
+  
+  /* NOVO: Organização interna */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar.open {
+  top: 0;
+  left: 0;
 }
 
 /* Quando estiver visível */
@@ -181,17 +191,26 @@ body {
   font-size: 16px;
   display: block;
   cursor: pointer;
+  margin-left: 5px; /* Espaço à esquerda */
+  margin-right: 15px; /* Espaço à direita */
+}
+.inicio-link {
+  margin-left: 20px; /* Só o "Início" vai andar mais para a direita */
 }
 
+
+/* Hover em links */
 .sidebar a:hover {
   text-decoration: underline;
 }
 
+/* Submenu oculto por padrão */
 .sidebar ul ul {
   padding-left: 15px;
   display: none;
 }
 
+/* Quando o submenu estiver visível */
 .sidebar ul ul.show {
   display: block;
 }
@@ -207,16 +226,16 @@ body {
 
 /* Main content */
 .content {
-  margin-left: 220px;
+  margin-left: 280px;
   margin-top: 80px;
   padding: 20px;
 }
 /* Regras de Mídia */
 
 /* Para telas menores que 768px (dispositivos móveis) */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   body {
-    background-color: rgb(255, 255, 255); /* Exemplo de mudança para dispositivos móveis */
+    background-color: white;/* Exemplo de mudança para dispositivos móveis */
   }
 
   .container {
@@ -226,7 +245,7 @@ body {
 
   .sidebar {
     position: fixed;
-    width: 220px; /* Tamanho fixo para todos os dispositivos */
+    width: 280px; /* Tamanho fixo para todos os dispositivos */
     left: -220px;
     transition: left 0.3s ease;
   }
@@ -262,7 +281,7 @@ body {
   }
 
   body {
-    background-color: rgb(255, 255, 255); /* Exemplo de mudança para tablets */
+    background-color: white; /* Exemplo de mudança para tablets */
   }
 
   .container {
@@ -284,17 +303,31 @@ body {
   .topbar .auth-button {
     display: none;
   }
+/* Ajuste para a largura da sidebar em tablets */
+  .sidebar {
+    width: 280px !important; /* Ajuste a largura da sidebar conforme necessário */
+  }
 }
 
 /* Para telas maiores que 1024px (desktops) */
-@media (min-width: 1025px) {
+@media (min-width: 1025px) {  
   body {
-    background-color: rgb(255, 255, 255); /* Exemplo de mudança para desktops */
+    background-color: white; /* Exemplo de mudança para desktops */
   }
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
+  }
+  
+  /* Esconde a sidebar inicialmente no desktop */
+  .sidebar {
+    position: fixed;
+    top: 60px;
+    left: -280px; /* Inicialmente fora da tela */
+    height: calc(100vh - 60px);
+    width: 280px;
+    transition: left 0.3s ease; /* Suaviza a animação de entrada */
   }
 
   /* Exibe o botão da topbar apenas em desktops */
@@ -306,23 +339,15 @@ body {
   .sidebar-auth {
     display: none;
   }
-
-  /* Esconde o ícone de hambúrguer em desktops */
-  .menu-icon {
-    display: none;
+      
+  /* Quando a sidebar estiver visível (aberta), ela fica com left: 0 */
+  .sidebar.show {
+    left: 0;  /* Sidebar entra na tela */
   }
-    
-  /* Faz a sidebar ficar visível no desktop */
-  .sidebar {
-    position: fixed;
-    top: 60px; /* A sidebar vai começar abaixo da topbar */
-    left: 0; /* A sidebar vai ocupar toda a altura da tela */
-    height: calc(100vh - 60px); /* Ocupa toda a altura da tela, menos a altura da topbar */
-    width: 220px; /* Largura da sidebar */
- }
+ 
   /* Garantir que o conteúdo se ajuste ao espaço da sidebar */
   .content {
-    margin-left: 250px; /* Deixa um espaço à esquerda para a sidebar */
+    margin-left: 280px; /* Deixa um espaço à esquerda para a sidebar */
  }
 }
 
@@ -419,12 +444,6 @@ p, .texto-justificado, .descricao-principal {
 .menu-icon.open .bar3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
-/* Esconder o botão de hambúrguer no desktop */
-@media (min-width: 769px) {
-  .menu-icon {
-    display: none; /* Oculta o botão no desktop */
-  }
-}
 
 /* Mostrar o botão de hambúrguer apenas em telas pequenas */
 @media (max-width: 768px) {
@@ -461,3 +480,101 @@ p, .texto-justificado, .descricao-principal {
     font-size: 14px;
     margin-bottom: 10px;
   }
+  @media (min-width: 1025px) {
+    /* Exibe o ícone de hambúrguer também no desktop */
+    .menu-icon {
+      display: flex;
+    }
+  
+    .topbar .auth-button {
+      display: block;
+    }
+  
+    .sidebar-auth {
+      display: none;
+    }
+  
+    .sidebar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      height: calc(100vh - 60px);
+      width: 280px;
+    }
+  
+    .content {
+      margin-left: 250px;
+    }
+  }
+  .submenu {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+}
+
+.toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px 15px;
+    color: #2d2d2d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.toggle:hover {
+    text-decoration: none; /* Garante que não haverá sublinhado */
+    background-color: transparent;
+    color: white; /* A cor do texto permanece branca */
+}
+
+.submenu li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px 15px;
+    display: block;
+}
+
+.submenu li a:hover {
+    text-decoration: none; /* Garante que não haverá sublinhado */
+    background-color: transparent;
+    color: white; /* A cor do texto permanece branca */
+}
+.sidebar a {
+  text-decoration: none !important; /* Remove sublinhado de todos os links da sidebar */
+  color: white; /* Mantém a cor branca */
+}
+
+.sidebar a:hover {
+  text-decoration: none !important; /* Garante que não sublinhe no hover também */
+  background-color: transparent; /* Sem fundo ao passar o mouse */
+  color: white; /* Mantém branco ao passar o mouse */
+}
+/* Responsividade da Sidebar */
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 280px !important; /* Menor largura para telas médias */
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 280px !important; /* Menor largura para telas menores */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 280px !important; /* Ajuste ainda menor para tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 280px !important; /* Sidebar ocupa toda a largura para dispositivos móveis */
+    position: fixed; /* Ajusta a posição para ser não fixa */
+  }
+}
+/* Estilo para o link "Início" */
+.sidebar a:first-child {
+  font-weight: bold; /* Torna o texto em negrito */
+}
