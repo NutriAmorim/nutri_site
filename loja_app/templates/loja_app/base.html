@@ -11,8 +11,11 @@
 
   <!-- Topbar -->
   <div class="topbar">
-    <div class="menu-icon" onclick="toggleSidebar()">☰</div> <!-- Ícone de hambúrguer à esquerda -->
-    <div class="logo">Nutri Amorim</div>
+    <div class="menu-icon" onclick="toggleSidebar(this)">
+      <div class="bar bar1"></div>
+      <div class="bar bar2"></div>
+      <div class="bar bar3"></div>
+    </div>
     <div class="search-box">
       <input type="text" placeholder="Pesquisar...">
     </div>
@@ -33,7 +36,10 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <ul>
+   </ul>
+      <div class="logo-container">
+        <img src="{% static 'img/imagem_nutri.png' %}" alt="Logo Nutri Amorim" class="logo-img">
+      </div>
       <li>
         <a href="{% url 'home' %}">Inicio</a>  <!-- Link direto para a página inicial -->
       </li>
@@ -130,7 +136,6 @@
   {% endblock %}
 </div>
 
-<!-- Scripts -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const toggles = document.querySelectorAll('.toggle');
@@ -187,15 +192,13 @@
     }
 
     // Script para mostrar/ocultar a sidebar
-    function toggleSidebar() {
+    function toggleSidebar(icon) {
+      icon.classList.toggle("open");  // Isso alterna a classe "open" no menu hambúrguer
       const sidebar = document.querySelector('.sidebar');
-      sidebar.classList.toggle('show');
+      sidebar.classList.toggle('show');  // Mostra ou esconde a sidebar
     }
 
     // Expose the toggleSidebar function to global scope if necessary
     window.toggleSidebar = toggleSidebar;
   });
 </script>
-
-</body>
-</html>

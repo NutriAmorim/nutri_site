@@ -87,7 +87,7 @@ body {
 
 /* Topbar */
 .topbar {
-  background-color: #5FA052; /* Cor verde suave */
+  background-color: #728f7f; /* Cor verde suave */
   color: white;
   padding: 10px 20px;
   display: flex;
@@ -112,7 +112,7 @@ body {
 }
 
 .topbar .search-box input {
-  width: 100%;
+  width: 50%;
   padding: 8px;
   border: none;
   border-radius: 5px;
@@ -149,7 +149,7 @@ body {
 /* Sidebar */
 .sidebar {
   width: 220px; /* Tamanho fixo para todos os dispositivos */
-  background-color: #5FA052; /* Cor verde suave */
+  background-color: #728f7f; /* Cor verde suave */
   color: white;
   padding: 20px;
   height: calc(100vh - 60px); /* Altura da tela - altura da topbar */
@@ -211,15 +211,6 @@ body {
   margin-top: 80px;
   padding: 20px;
 }
-
-/* Ícone de hambúrguer para abrir e fechar o menu lateral */
-.menu-icon {
-  display: none; /* Esconde o ícone de hambúrguer por padrão */
-  font-size: 30px;
-  cursor: pointer;
-  margin-right: 20px; /* Adiciona um espaço entre o ícone e o logo */
-}
-
 /* Regras de Mídia */
 
 /* Para telas menores que 768px (dispositivos móveis) */
@@ -398,3 +389,75 @@ p, .texto-justificado, .descricao-principal {
 .btn-download:hover {
   background-color: #1b5e20;
 }
+
+/* Menu hambúrguer */
+.menu-icon {
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bar {
+  height: 4px;
+  width: 100%;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 2px;
+}
+
+.menu-icon.open .bar1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-icon.open .bar2 {
+  opacity: 0;
+}
+
+.menu-icon.open .bar3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+/* Esconder o botão de hambúrguer no desktop */
+@media (min-width: 769px) {
+  .menu-icon {
+    display: none; /* Oculta o botão no desktop */
+  }
+}
+
+/* Mostrar o botão de hambúrguer apenas em telas pequenas */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Exibe o botão de hambúrguer em telas menores */
+    width: 30px;     /* Defina a largura fixa para o botão */
+    height: 30px;    /* Defina a altura fixa para o botão */
+    position: absolute; /* Para posicionar corretamente */
+    top: 10px;       /* Alinhe o botão no topo, se necessário */
+    left: 10px;      /* Alinhe o botão à esquerda, se necessário */
+    z-index: 1000;   /* Certifique-se de que o botão está acima da sidebar */
+  }
+
+  /* Garantir que as barras do botão não se sobreponham */
+  .menu-icon .bar {
+    width: 100%;      /* Garantir que as barras ocupem 100% da largura */
+    height: 4px;      /* Defina uma altura para as barras */
+    margin: 4px 0;    /* Adiciona espaçamento entre as barras */
+    background-color: #fff; /* A cor das barras do hambúrguer */
+    transition: 0.3s ease; /* Adiciona transição suave */
+  }
+}
+  .logo-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain; /* mantém a proporção e evita distorção */
+    margin: 10px auto;   /* centraliza verticalmente e adiciona espaço */
+    display: block;
+}
+
+  .logo-nome {
+    text-align: center;
+    color: white; /* ou a cor que preferir */
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
