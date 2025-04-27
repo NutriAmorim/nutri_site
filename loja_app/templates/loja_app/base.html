@@ -52,9 +52,10 @@
 </div>
 
 </body>
-</html><!-- Subtopbar -->
-<div cl
-ass="subtopbar">
+</html>
+
+<!-- Subtopbar -->
+<div class="subtopbar">
   <ul class="subtopbar-links">
     <li><a href="#">Categorias</a></li>
     <li><a href="#">Whey Protein</a></li>
@@ -72,6 +73,13 @@ ass="subtopbar">
         <img src="{% static 'img/imagem_nutri.png' %}" alt="Logo Nutri Amorim" class="logo-img">
       </div>
       <ul>
+        <li class="sidebar-auth">
+          {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}"><button>Sair</button></a>
+          {% else %}
+            <a href="{% url 'login' %}"><button>Entrar / Criar Conta</button></a>
+          {% endif %}
+        </li>
         <li><a href="{% url 'home' %}" class="inicio-link">Início</a></li>
       <!-- As outras abas seguem aqui -->
         <li>
@@ -148,16 +156,8 @@ ass="subtopbar">
       <li><a href="{% url 'conheca_nosso_trabalho' %}">🧑‍🤝‍🧑 Nosso Trabalho</a></li>
       <li><a href="{% url 'normas_e_regulamento' %}">📑 Normas</a></li>
       <li><a href="{% url 'conhecimento_na_pratica' %}">🧠 Conhecimento na Prática</a></li>
-
-      <li class="sidebar-auth">
-        {% if user.is_authenticated %}
-          <a href="{% url 'logout' %}"><button>Sair</button></a>
-        {% else %}
-          <a href="{% url 'login' %}"><button>Entrar / Criar Conta</button></a>
-        {% endif %}
-      </li>
-      </ul>
-      </div>
+    </ul>
+   </div>
 
 <!-- Conteúdo principal -->
 <div class="content">

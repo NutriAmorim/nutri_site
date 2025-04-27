@@ -1,6 +1,6 @@
 /* Centraliza título e define cor */
 .titulo-principal {
-  color: #5FA052;
+  color: #728f7f;
   text-align: center;
   margin: 0 auto;
   margin-top: 20px;
@@ -21,7 +21,7 @@
 
 /* Subtítulos */
 .subtitulo {
-  color: #5FA052;
+  color: #728f7f;
   font-size: 32px;
   text-align: center;
   margin: 0 auto;
@@ -30,7 +30,7 @@
 }
 
 .subsubtitulo {
-  color: #5FA052;
+  color: #728f7f;
   font-size: 24px;
   text-align: left; /* Subtítulos das seções à esquerda */
   margin-top: 20px;
@@ -56,7 +56,7 @@
 
 /* Destaque */
 .destaque {
-  color: #5FA052;
+  color: #728f7f;
   font-weight: bold;
   text-align: center;
 }
@@ -78,6 +78,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #f4f4f4;
+  overflow-x: hidden; /* Remove o scroll horizontal */
 }
 
 /* Topbar */
@@ -88,7 +89,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 80px;
   position: fixed;
   top: 0;
   left: 0;
@@ -102,9 +103,14 @@ body {
 }
 
 .topbar .search-box {
-  flex: 1;
+  flex: 1; /* A barra de pesquisa vai ocupar o espaço restante */
+  display: flex;
   margin: 0 20px;
+  justify-content: center; /* Centraliza o input dentro da search-box */
+  margin-right: 10px; /* Espaço entre a barra de pesquisa e o botão */
+  margin-right: 10px; /* Margem direita */
 }
+
 
 .topbar .search-box input {
   width: 50%;
@@ -116,7 +122,7 @@ body {
 
 .topbar .auth-button button {
   background-color: white;
-  color: #5FA052; /* Cor verde suave */
+  color: #728f7f; /* Cor verde suave */
   border: none;
   padding: 8px 12px;
   border-radius: 5px;
@@ -134,29 +140,38 @@ body {
 .cart-card {
   background-color: #fff;
   border: 1px solid #ccc;
-  padding: 10px 15px;
+  padding: 10px; /* Espaçamento interno menor */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  width: 130px; /* Largura reduzida */
+  height: 60px; /* Altura para caber bem dentro da topbar */
+  flex-direction: column; /* Coloca "Meu Carrinho" em cima e "0,00" embaixo */
+  align-items: center; /* Centraliza na horizontal */
+  justify-content: flex-start; /* >>> coloca o conteúdo mais no topo */
+  text-align: center; /* Garante que o texto também esteja centralizado */
   margin-right: 10px;
 }
 
 .cart-title {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
-}
-
-.cart-value {
-  font-size: 14px;
-  color: #0066cc;
-  margin-top: 5px;
+  color:#728f7f;
 }
 
 .cart-icon {
   font-size: 18px; /* Tamanho pequeno do ícone */
   color: #ffffff; /* Cor azul do ícone */
   margin-left: 20px; /* Espaçamento à esquerda */
+}
+
+
+.cart-value {
+  font-size: 14px;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 8px; /* diminui para subir */
+  display: block; /* importante para a margem funcionar melhor */
 }
 
 .cart-icon a {
@@ -177,27 +192,29 @@ body {
 
 /* Estilo da subtopbar */
 .subtopbar {
-  background-color: yellow; /* Cor de fundo da subtopbar (amarelo) */
-  height: 110px; /* Altura da subtopbar */
+  background-color: #dae6df; /* Cor de fundo da subtopbar (amarelo) */
+  height: 50px; /* Altura da subtopbar */
   width: 100%; /* A subtopbar ocupa toda a largura */
   display: flex;
   justify-content: center; /* Centraliza os links */
   align-items: flex-end; /* Alinha os itens na parte inferior */
   border-bottom: 2px solid #ccc; /* Borda inferior */
-  margin-top: 10px; /* Espaço abaixo da topbar */
+  margin-top: 90px; /* Espaço abaixo da topbar */
   padding-bottom: 10px; /* Adiciona um pouco de espaço para os itens não ficarem colados no fundo */
   overflow-x: auto; /* Habilita o scroll horizontal */
   overflow-y: hidden; /* Esconde o scroll vertical */
   white-space: nowrap; /* Impede que o texto quebre linha */
   -webkit-overflow-scrolling: touch; /* Rola suave no iPhone */
   padding: 8px 16px;
+  z-index: 999; /* Garante que a subtopbar não fique atrás da topbar */
 }
 
 .subtopbar-links {
-  list-style-type: none; /* Remove os marcadores */
+  list-style: none; /* Remove os marcadores */
   padding: 0;
   margin: 0;
   display: flex; /* Exibe os itens horizontalmente */
+  gap: 20px;
 }
 
 .subtopbar-links li {
@@ -345,7 +362,8 @@ body {
 
   /* Exibe o ícone de hambúrguer apenas em dispositivos móveis */
   .menu-icon {
-    display: block;
+    display: block; /* Exibe o ícone de hambúrguer no mobile */
+    margin-top: 25px; /* Adiciona uma margem superior */
   }
 
   /* Exibe a sidebar-auth apenas em dispositivos móveis */
@@ -356,6 +374,14 @@ body {
   /* Esconde o botão da topbar em dispositivos móveis */
   .topbar .auth-button {
     display: none;
+  }
+
+  .subtopbar {
+    display: none; /* Remove a subtopbar no mobile */
+  }
+
+  .cart-card {
+    display: none; /* Oculta o card "Meu Carrinho" no mobile */
   }
 }
 
@@ -376,7 +402,7 @@ body {
 
   /* Exibe o ícone de hambúrguer apenas em tablets */
   .menu-icon {
-    display: block;
+    display: block; /* Exibe o ícone de hambúrguer no mobile */
   }
 
   /* Exibe a sidebar-auth apenas em tablets */
@@ -393,8 +419,12 @@ body {
     width: 280px !important; /* Ajuste a largura da sidebar conforme necessário */
   }
 
-  sidebar.show {
+  .sidebar.show {
     left: 0;
+  }
+
+  .cart-card {
+    display: none; /* Oculta o card "Meu Carrinho" no mobile */
   }
 
 }
@@ -442,7 +472,7 @@ body {
 
 /* Estilização padrão para todos os títulos das páginas */
 h1, h2, h3, .titulo-principal, .subtitulo, .subsubtitulo {
-  color: #5FA052; /* Verde padrão */
+  color: #728f7f; /* Verde padrão */
   font-weight: bold;
 }
 
@@ -467,7 +497,7 @@ p, .texto-justificado, .descricao-principal {
 
 .card {
   background-color: #f5f5f5;
-  border-left: 5px solid #2e7d32; /* verde-mata */
+  border-left: 5px solid #728f7f; /* verde-mata */
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -480,7 +510,7 @@ p, .texto-justificado, .descricao-principal {
 
 .card h2 {
   margin-top: 0;
-  color: #2e7d32;
+  color: #728f7f;
   font-size: 1.3rem;
 }
 
@@ -493,7 +523,7 @@ p, .texto-justificado, .descricao-principal {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.6rem 1rem;
-  background-color: #2e7d32;
+  background-color: #728f7f;
   color: #fff;
   text-decoration: none;
   border-radius: 8px;
@@ -501,7 +531,7 @@ p, .texto-justificado, .descricao-principal {
 }
 
 .btn-download:hover {
-  background-color: #1b5e20;
+  background-color: #728f7f;
 }
 
 /* Menu hambúrguer */
