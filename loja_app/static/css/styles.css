@@ -15,38 +15,7 @@
 
 /* Seções de conteúdo */
 .imagem-section {
-  text-align: left; /* Ajustado para alinhar o conteúdo à esquerda */
-  padding: 20px;
-}
-
-.subtitulo {
-  color: #5FA052;
-  font-size: 32px;
-  text-align: left;
-  margin-left: 0; /* Subtítulos alinhados à esquerda */
-  margin-bottom: 10px; /* Espaçamento inferior */
-  font-weight: bold;
-}
-
-.subsubtitulo {
-  color: #5FA052;
-  font-size: 24px;
-  text-align: left; /* Subtítulos das seções também à esquerda */
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.imagens-container {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  padding: 20px;
-}
-
-/* Seções de conteúdo */
-.imagem-section {
-  text-align: center;
+  text-align: center; /* Ajustado para centralizar o conteúdo */
   padding: 20px;
 }
 
@@ -56,6 +25,25 @@
   font-size: 32px;
   text-align: center;
   margin: 0 auto;
+  font-weight: bold;
+  margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+.subsubtitulo {
+  color: #5FA052;
+  font-size: 24px;
+  text-align: left; /* Subtítulos das seções à esquerda */
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Contêiner de Imagens */
+.imagens-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 20px;
 }
 
 /* Parágrafos */
@@ -91,7 +79,6 @@ body {
   min-height: 100vh;
   background-color: #f4f4f4;
 }
-
 
 /* Topbar */
 .topbar {
@@ -135,6 +122,46 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+}
+
+/* Estilo da cart-icon (Ícone de carrinho) */
+.cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Garante que o carrinho fique à direita */
+}
+
+.cart-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-right: 10px;
+}
+
+.cart-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.cart-value {
+  font-size: 14px;
+  color: #0066cc;
+  margin-top: 5px;
+}
+
+.cart-icon {
+  font-size: 18px; /* Tamanho pequeno do ícone */
+  color: #ffffff; /* Cor azul do ícone */
+  margin-left: 20px; /* Espaçamento à esquerda */
+}
+
+.cart-icon a {
+  color: #ffffff; /* Garante que o link tenha a cor azul */
+  text-decoration: none; /* Remove a linha de sublinhado do link */
 }
 
 /* Estilo da topbar */

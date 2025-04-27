@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <title>Nutri Amorim</title>
 </head>
@@ -11,31 +12,49 @@
 
   <!-- Topbar -->
   <div class="topbar">
+    <!-- Menu -->
     <div class="menu-icon">
       <div class="bar bar1"></div>
       <div class="bar bar2"></div>
       <div class="bar bar3"></div>
     </div>
+
+    <!-- Barra de Pesquisa -->
     <div class="search-box">
       <input type="text" placeholder="Pesquisar...">
     </div>
+
+    <!-- Botões de Login e Sair -->
     <div class="auth-button">
-        {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
         <!-- Botão de sair se o usuário estiver logado -->
-    <a href="{% url 'logout' %}">
-        <button>Sair</button>
-      </a>
-    {% else %}
-      <!-- Botão de login se o usuário não estiver logado -->
-      <a href="{% url 'login' %}">
-      <button>Entrar / Criar Conta</button>
-    </a>
-    {% endif %}
+        <a href="{% url 'logout' %}">
+          <button>Sair</button>
+        </a>
+      {% else %}
+        <!-- Botão de login se o usuário não estiver logado -->
+        <a href="{% url 'login' %}">
+          <button>Entrar / Criar Conta</button>
+        </a>
+      {% endif %}
+    </div>
+
+     <!-- Ícone de Carrinho com Card -->
+  <div class="cart-container">
+    <div class="cart-card">
+      <p class="cart-title">Meu Carrinho</p>
+      <p class="cart-value">R$ 0,00</p>
+    </div>
+    <div class="cart-icon">
+      <a href="/carrinho"><i class="fas fa-shopping-cart"></i></a>
     </div>
   </div>
+</div>
 
-<!-- Subtopbar -->
-<div class="subtopbar">
+</body>
+</html><!-- Subtopbar -->
+<div cl
+ass="subtopbar">
   <ul class="subtopbar-links">
     <li><a href="#">Categorias</a></li>
     <li><a href="#">Whey Protein</a></li>
