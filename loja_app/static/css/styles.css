@@ -79,11 +79,19 @@
   height: auto;
 }
 
-/* Estilos gerais */
+/* Estilos para o corpo da página */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
 }
+
 
 /* Topbar */
 .topbar {
@@ -129,9 +137,59 @@ body {
   font-weight: bold;
 }
 
+/* Estilo da topbar */
+.topbar {
+  background-color: #728f7f; /* Cor de fundo da topbar */
+  padding: 10px 20px;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilo da subtopbar */
+.subtopbar {
+  background-color: yellow; /* Cor de fundo da subtopbar (amarelo) */
+  height: 110px; /* Altura da subtopbar */
+  width: 100%; /* A subtopbar ocupa toda a largura */
+  display: flex;
+  justify-content: center; /* Centraliza os links */
+  align-items: flex-end; /* Alinha os itens na parte inferior */
+  border-bottom: 2px solid #ccc; /* Borda inferior */
+  margin-top: 10px; /* Espaço abaixo da topbar */
+  padding-bottom: 10px; /* Adiciona um pouco de espaço para os itens não ficarem colados no fundo */
+  overflow-x: auto; /* Habilita o scroll horizontal */
+  overflow-y: hidden; /* Esconde o scroll vertical */
+  white-space: nowrap; /* Impede que o texto quebre linha */
+  -webkit-overflow-scrolling: touch; /* Rola suave no iPhone */
+  padding: 8px 16px;
+}
+
+.subtopbar-links {
+  list-style-type: none; /* Remove os marcadores */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Exibe os itens horizontalmente */
+}
+
+.subtopbar-links li {
+  margin-right: 20px; /* Espaçamento entre os itens */
+}
+
+.subtopbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.subtopbar-links a:hover {
+  color: #728f7f; /* Cor ao passar o mouse */
+}
+
 .sidebar-auth button {
   background-color: white;
-  color: #5FA052;
+  color: #728f7f;
   border: none;
   padding: 8px 12px;
   border-radius: 5px;
@@ -307,6 +365,11 @@ body {
   .sidebar {
     width: 280px !important; /* Ajuste a largura da sidebar conforme necessário */
   }
+
+  sidebar.show {
+    left: 0;
+  }
+
 }
 
 /* Para telas maiores que 1024px (desktops) */
@@ -345,10 +408,9 @@ body {
     left: 0;  /* Sidebar entra na tela */
   }
  
-  /* Garantir que o conteúdo se ajuste ao espaço da sidebar */
   .content {
-    margin-left: 280px; /* Deixa um espaço à esquerda para a sidebar */
- }
+    margin-left: 0;
+  }
 }
 
 /* Estilização padrão para todos os títulos das páginas */
