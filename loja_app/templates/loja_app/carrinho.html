@@ -1,0 +1,62 @@
+<!-- carrinho.html -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+  <!-- Barra de Navegação -->
+  <nav>
+    <!-- Você pode adicionar links de navegação aqui -->
+  </nav>
+
+  <!-- Título do Carrinho -->
+  <div class="cart-header">
+    <h1>Carrinho de Compras</h1>
+  </div>
+
+  <!-- Lista de Produtos no Carrinho -->
+  <div class="cart-items">
+    {% if cart_items %}
+  <ul>
+    {% for item in cart_items %}
+      <li>
+        <div class="cart-item">
+          <img src="{{ item.produto.imagem.url }}" alt="{{ item.produto.nome }}" class="cart-item-image">
+          <div class="cart-item-details">
+            <h3>{{ item.produto.nome }}</h3>
+            <p>Preço: R$ {{ item.produto.preco }}</p>
+            <p>Quantidade: {{ item.quantidade }}</p>
+          </div>
+            <div class="cart-item-actions">
+              <a href="{% url 'remover_do_carrinho' item.produto.id %}" class="remove-item">Remover</a>
+              <a href="{% url 'aumentar_quantidade' item.produto.id %}" class="increase-quantity">Aumentar Quantidade</a>
+              <a href="{% url 'diminuir_quantidade' item.produto.id %}" class="decrease-quantity">Diminuir Quantidade</a>
+            </div>
+           </div>
+         </li>
+       {% endfor %}
+      </ul>
+    {% else %}
+      <p>Seu carrinho está vazio! <a href="/loja" class="go-shopping">Ir às compras</a></p>
+    {% endif %}
+  </div>
+
+  <!-- Total e Botão para Finalizar a Compra -->
+  <div class="cart-total">
+    <p>Total: R$ {{ cart_total }}</p>
+    <a href="/checkout" class="btn-checkout">Finalizar Compra</a>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <!-- Informações do Rodapé -->
+  </footer>
+
+</body>
+</html>
