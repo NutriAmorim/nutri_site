@@ -231,3 +231,8 @@ def finalizar_compra(request):
         return render(request, 'loja_app/compra_confirmada.html', {'pedido': pedido})
 
     return render(request, 'loja_app/finalizar_compra.html', {'pedido': pedido, 'endereco': endereco})
+
+
+def pedido_confirmado(request, pedido_id):
+    pedido = Pedido.objects.get(id=pedido_id)
+    return render(request, 'loja_app/pedido_confirmado.html', {'pedido': pedido})

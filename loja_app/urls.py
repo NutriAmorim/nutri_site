@@ -184,5 +184,6 @@ urlpatterns = [
     path('carrinho/', views.carrinho, name='carrinho'),
     path('remover_do_carrinho/<int:carrinho_id>/', views.remover_do_carrinho, name='remover_do_carrinho'),
     path('finalizar_compra/', views.finalizar_compra, name='finalizar_compra'),
+    path('produtos/', views.produtos, name='produtos'),
 ]
 
