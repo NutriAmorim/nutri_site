@@ -179,4 +179,10 @@ urlpatterns = [
         views.conhecimento_na_pratica,
         name='conhecimento_na_pratica'
     ),
+
+    path('adicionar_ao_carrinho/<int:produto_id>/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
+    path('carrinho/', views.carrinho, name='carrinho'),
+    path('remover_do_carrinho/<int:carrinho_id>/', views.remover_do_carrinho, name='remover_do_carrinho'),
+    path('finalizar_compra/', views.finalizar_compra, name='finalizar_compra'),
 ]
+

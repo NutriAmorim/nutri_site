@@ -732,7 +732,7 @@ p, .texto-justificado, .descricao-principal {
 .cart-dropdown button {
   margin-top: 10px;
   padding: 8px 12px;
-  background-color: #28a745;
+  background-color: #728f7f;
   color: white;
   border: none;
   border-radius: 5px;
@@ -740,5 +740,5 @@ p, .texto-justificado, .descricao-principal {
 }
 
 .cart-dropdown button:hover {
-  background-color: #218838;
+  background-color: #728f7f;
 }

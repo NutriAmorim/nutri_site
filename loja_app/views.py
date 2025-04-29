@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Produto, Carrinho
+from .models import Pedido, Endereco
 
 
 # Página inicial
@@ -163,3 +166,68 @@ def produtos_corporais(request):
 
 def produtos_naturais(request):
     return render(request, 'loja_app/produtos_naturais.html')
+
+
+@login_required
+def adicionar_ao_carrinho(request, produto_id):
+    produto = Produto.objects.get(id=produto_id)
+    carrinho, created = Carrinho.objects.get_or_create(usuario=request.user, produto=produto)
+    
+    if not created:
+        carrinho.quantidade += 1  # Adiciona 1 à quantidade existente
+        carrinho.save()
+
+    return redirect('carrinho')  # Redireciona para a página do carrinho
+
+@login_required
+def carrinho(request):
+    itens = Carrinho.objects.filter(usuario=request.user)
+    total = sum(item.total() for item in itens)
+    
+    return render(request, 'carrinho.html', {'itens': itens, 'total': total})
+
+@login_required
+def remover_do_carrinho(request, carrinho_id):
+    carrinho = Carrinho.objects.get(id=carrinho_id)
+    carrinho.delete()
+    return redirect('carrinho')  # Redireciona para a página do carrinho
+
+
+def produtos(request):
+    ebooks = [
+        {"nome": "Abcesso - Definição e Causas", "arquivo": "Abcesso-Definicao-e-Causas.pdf"},
+        {"nome": "Ácidos e Álcalis - Uma Introdução", "arquivo": "Acidos-e-Alcalis-Uma-Introducao.pdf"},
+        {"nome": "Código de Ética do Nutricionista", "arquivo": "codigo-de-etica-do-nutricionista.pdf"},
+        {"nome": "Guia Alimentar da População Brasileira", "arquivo": "ebook-guia-alimentar-da-população-brasileira.pdf"},
+        {"nome": "Exercício Ilegal da Profissão", "arquivo": "exercicio-ilegal-da-profissao.pdf"},
+        {"nome": "Frutas que Combatem o Ácido Úrico", "arquivo": "Frutas-que-Combatem-o-Acido-Urico.pdf"},
+        {"nome": "Tabela de Honorários 2024", "arquivo": "tabela-de-honorarios-2024.pdf"},
+    ]
+    return render(request, 'loja_app/produtos.html', {'ebooks': ebooks})
+
+
+def carrinho(request):
+    carrinho_items = Carrinho.objects.filter(usuario=request.user)
+    total = sum(item.total() for item in carrinho_items)
+    return render(request, 'loja_app/carrinho.html', {'carrinho_items': carrinho_items, 'total': total})
+
+
+def remover_do_carrinho(request, item_id):
+    item = Carrinho.objects.get(id=item_id)
+    item.delete()
+    return redirect('carrinho')
+
+
+def finalizar_compra(request):
+    # Suponha que o pedido e o endereço são recuperados do banco de dados
+    pedido = Pedido.objects.get(user=request.user)
+    endereco = Endereco.objects.get(user=request.user)
+
+    if request.method == "POST":
+        metodo_pagamento = request.POST.get('metodo_pagamento')
+        # Aqui você pode processar a compra com o método de pagamento escolhido
+        
+        # Após a finalização, redirecione ou mostre uma confirmação
+        return render(request, 'loja_app/compra_confirmada.html', {'pedido': pedido})
+
+    return render(request, 'loja_app/finalizar_compra.html', {'pedido': pedido, 'endereco': endereco})
