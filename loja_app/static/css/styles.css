@@ -697,3 +697,48 @@ p, .texto-justificado, .descricao-principal {
 .sidebar a:first-child {
   font-weight: bold; /* Torna o texto em negrito */
 }
+
+/* Estilo do ícone do carrinho */
+.cart-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Estilo da aba (popup) */
+.cart-dropdown {
+  display: none; /* Inicialmente oculta */
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.cart-dropdown.show {
+  display: block; /* Exibe a aba quando a classe 'show' é adicionada */
+}
+
+.cart-dropdown button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-dropdown button:hover {
+  background-color: #218838;
+}
