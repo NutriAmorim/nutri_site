@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Produto, Carrinho
-from .models import Pedido, Endereco
+from .models import Produto, Carrinho, Pedido, Endereco
 
 
 # Página inicial
@@ -184,7 +183,7 @@ def carrinho(request):
     itens = Carrinho.objects.filter(usuario=request.user)
     total = sum(item.total() for item in itens)
     
-    return render(request, 'carrinho.html', {'itens': itens, 'total': total})
+    return render(request, 'loja_app/carrinho.html', {'itens': itens, 'total': total})
 
 @login_required
 def remover_do_carrinho(request, carrinho_id):
@@ -206,18 +205,6 @@ def produtos(request):
     return render(request, 'loja_app/produtos.html', {'ebooks': ebooks})
 
 
-def carrinho(request):
-    carrinho_items = Carrinho.objects.filter(usuario=request.user)
-    total = sum(item.total() for item in carrinho_items)
-    return render(request, 'loja_app/carrinho.html', {'carrinho_items': carrinho_items, 'total': total})
-
-
-def remover_do_carrinho(request, item_id):
-    item = Carrinho.objects.get(id=item_id)
-    item.delete()
-    return redirect('carrinho')
-
-
 def finalizar_compra(request):
     # Suponha que o pedido e o endereço são recuperados do banco de dados
     pedido = Pedido.objects.get(user=request.user)
@@ -231,8 +218,3 @@ def finalizar_compra(request):
         return render(request, 'loja_app/compra_confirmada.html', {'pedido': pedido})
 
     return render(request, 'loja_app/finalizar_compra.html', {'pedido': pedido, 'endereco': endereco})
-
-
-def pedido_confirmado(request, pedido_id):
-    pedido = Pedido.objects.get(id=pedido_id)
-    return render(request, 'loja_app/pedido_confirmado.html', {'pedido': pedido})
