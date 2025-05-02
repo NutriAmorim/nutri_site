@@ -269,13 +269,13 @@ body {
 }
 
 .sidebar.open {
-  top: 0;
+  top: 80px; /* mesma altura da topbar */
   left: 0;
 }
 
 /* Quando estiver visível */
 .sidebar.show {
-  top: 60px; /* Desce abaixo da topbar (que tem 60px de altura) */
+  top: 100px; /* Desce abaixo da topbar (que tem 60px de altura) */
 }
 
 .sidebar ul {
@@ -443,11 +443,12 @@ body {
   /* Esconde a sidebar inicialmente no desktop */
   .sidebar {
     position: fixed;
-    top: 60px;
+    top: 80px;
     left: -280px; /* Inicialmente fora da tela */
     height: calc(100vh - 60px);
     width: 280px;
     transition: left 0.3s ease; /* Suaviza a animação de entrada */
+    z-index: 2; /* Coloca atrás da topbar inicialmente */
   }
 
   /* Exibe o botão da topbar apenas em desktops */
@@ -463,6 +464,7 @@ body {
   /* Quando a sidebar estiver visível (aberta), ela fica com left: 0 */
   .sidebar.show {
     left: 0;  /* Sidebar entra na tela */
+    z-index: 1000; /* Coloca a sidebar sobre a topbar */
   }
  
   .content {
@@ -599,32 +601,7 @@ p, .texto-justificado, .descricao-principal {
     font-size: 14px;
     margin-bottom: 10px;
   }
-  @media (min-width: 1025px) {
-    /* Exibe o ícone de hambúrguer também no desktop */
-    .menu-icon {
-      display: flex;
-    }
-  
-    .topbar .auth-button {
-      display: block;
-    }
-  
-    .sidebar-auth {
-      display: none;
-    }
-  
-    .sidebar {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      height: calc(100vh - 60px);
-      width: 280px;
-    }
-  
-    .content {
-      margin-left: 250px;
-    }
-  }
+
   .submenu {
     display: none;
     list-style: none;
@@ -741,4 +718,147 @@ p, .texto-justificado, .descricao-principal {
 
 .cart-dropdown button:hover {
   background-color: #728f7f;
+}
+
+.pagina-produtos {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1000px; /* Largura máxima opcional */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.produtos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  gap: 20px;
+  max-width: 1200px;
+}
+
+.produto-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 300px;
+  padding: 15px;
+  text-align: left;
+}
+
+
+/* Container principal do carrinho */
+.carrinho-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Container que envolve os produtos */
+.produtos-carrinho {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* Centraliza os itens na linha */
+  gap: 20px;  /* Espaçamento entre os produtos */
+  width: 100%;
+  max-width: 1200px;  /* Tamanho máximo para o contêiner dos produtos */
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/* Estilo de cada item de produto */
+.produto-item {
+  width: 250px; /* Ajuste o tamanho do produto conforme necessário */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Imagem do produto */
+.produto-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.produto-item button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px; /* Espaçamento entre os botões */
+}
+
+.produto-item button:hover {
+  background-color: darkred;
+}
+
+/* Centraliza o conteúdo do carrinho */
+#carrinho-cheio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px; /* Limita a largura */
+  width: 100%;
+}
+
+/* Estilos da tabela */
+#carrinho-cheio table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center; /* Centraliza as colunas */
+  margin-top: 20px;
+}
+
+#carrinho-cheio th, #carrinho-cheio td {
+  padding: 15px;
+  border: 1px solid #ddd;
+}
+
+/* Estilo do botão "Ir às Compras" */
+.acoes-carrinho a button {
+  background-color: red; /* Cor de fundo vermelha */
+  color: white; /* Cor do texto branca */
+  border: none; /* Remove a borda */
+  padding: 10px 20px; /* Espaçamento dentro do botão */
+  margin: 10px; /* Espaço ao redor do botão */
+  border-radius: 5px; /* Bordas arredondadas */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Indica que o botão é clicável */
+}
+
+.acoes-carrinho a button:hover {
+  background-color: darkred; /* Cor do fundo ao passar o mouse */
+}
+
+/* Estilos para o botão "Continuar Comprando" */
+.btn-continuar {
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* Estilos para o botão "Finalizar Compra" */
+.btn-finalizar {
+  background-color: #f0ad4e;
+  color: white;
 }

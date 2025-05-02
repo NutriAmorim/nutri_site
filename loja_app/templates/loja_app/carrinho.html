@@ -1,19 +1,7 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras - Loja Nutri</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-</head>
-<body>
-    <h1>Carrinho de Compras</h1>
-
     {% if carrinho_items %}
         <div id="carrinho-cheio" class="carrinho">
             <table>
@@ -26,13 +14,18 @@
                         <th>Remover</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="itens-carrinho">
                     {% for item in carrinho_items %}
-                        <tr>
+                        <tr id="item-{{ item.id }}">
                             <td>{{ item.produto.nome }}</td>
                             <td>R$ {{ item.produto.preco }}</td>
                             <td>
-                                <input type="number" value="{{ item.quantidade }}" min="1" onchange="atualizarTotal()">
+                                <input 
+                                    type="number" 
+                                    value="{{ item.quantidade }}" 
+                                    min="1" 
+                                    data-item-id="{{ item.id }}" 
+                                    onchange="atualizarCarrinho(this)">
                             </td>
                             <td class="total-item">R$ {{ item.total }}</td>
                             <td>
@@ -52,41 +45,54 @@
 
             <div class="acoes-carrinho">
                 <a href="{% url 'produtos' %}">
-                    <button>Continuar Comprando</button>
+                    <button class="btn-continuar">Continuar Comprando</button>
                 </a>
                 <a href="{% url 'finalizar_compra' %}">
-                    <button>Finalizar Compra</button>
+                    <button class="btn-finalizar">Finalizar Compra</button>
                 </a>
             </div>
         </div>
     {% else %}
         <div id="carrinho-vazio" class="carrinho">
             <h2>Seu Carrinho está Vazio</h2>
-            <p>Adicione ebooks ao seu carrinho para continuar a compra.</p>
+            <p>Adicione produtos ao seu carrinho para continuar a compra.</p>
             <a href="{% url 'produtos' %}">
                 <button>Continuar Comprando</button>
             </a>
         </div>
     {% endif %}
-    
-    <script>
-        // Atualizar o total após alteração da quantidade
-        function atualizarTotal() {
-            let totalCarrinho = 0;
-            let itens = document.querySelectorAll('#itens-carrinho tr');
-            
-            itens.forEach(function(item) {
-                let preco = parseFloat(item.cells[1].innerText.replace('R$ ', '').replace(',', '.'));
-                let quantidade = parseInt(item.querySelector('input').value);
-                let totalItem = preco * quantidade;
-                item.querySelector('.total-item').innerText = 'R$ ' + totalItem.toFixed(2).replace('.', ',');
-                
-                totalCarrinho += totalItem;
-            });
 
-            document.getElementById('total-carrinho').innerText = totalCarrinho.toFixed(2).replace('.', ',');
+    <script>
+        function atualizarCarrinho(inputElement) {
+            const carrinhoId = inputElement.getAttribute('data-item-id'); 
+            const novaQuantidade = inputElement.value;
+
+            if (!carrinhoId) {
+                console.error("Erro: carrinhoId não foi encontrado.");
+                return;
+            }
+
+            fetch(`/atualizar_quantidade_carrinho/${carrinhoId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ quantidade: novaQuantidade })
+            })
+            .then(resposta => resposta.json())
+            .then(data => {
+                const totalItemElement = document.querySelector(`#item-${carrinhoId} .total-item`);
+                totalItemElement.textContent = `R$ ${data.total_item.toFixed(2)}`;
+
+                const totalCarrinhoElement = document.getElementById('total-carrinho');
+                totalCarrinhoElement.textContent = `R$ ${data.total_carrinho.toFixed(2)}`;
+            })
+            .catch(error => console.error('Erro ao atualizar carrinho:', error));
         }
     </script>
-</body>
-</html>
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}

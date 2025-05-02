@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Produto, Carrinho, Pedido, Endereco
+from .models import Carrinho, Pedido, Endereco
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from babel.numbers import format_currency
+from .models import Produto
 
 
 # Página inicial
@@ -169,22 +173,46 @@ def produtos_naturais(request):
 
 @login_required
 def adicionar_ao_carrinho(request, produto_id):
-    produto = Produto.objects.get(id=produto_id)
-    carrinho, created = Carrinho.objects.get_or_create(usuario=request.user, produto=produto)
-    
-    if not created:
-        carrinho.quantidade += 1  # Adiciona 1 à quantidade existente
-        carrinho.save()
+    # Obtenha o carrinho da sessão (se não houver, inicie como um dicionário vazio)
+    carrinho = request.session.get('carrinho', {})
 
-    return redirect('carrinho')  # Redireciona para a página do carrinho
+    # Se o produto já estiver no carrinho, aumente a quantidade
+    if str(produto_id) in carrinho:
+        carrinho[str(produto_id)] += 1
+    else:
+        # Caso contrário, adicione o produto com quantidade 1
+        carrinho[str(produto_id)] = 1
+
+    # Salve o carrinho de volta na sessão
+    request.session['carrinho'] = carrinho
+
+    # Redirecione para a página do carrinho
+    return redirect('carrinho')
 
 @login_required
 def carrinho(request):
-    itens = Carrinho.objects.filter(usuario=request.user)
-    total = sum(item.total() for item in itens)
-    
-    return render(request, 'loja_app/carrinho.html', {'itens': itens, 'total': total})
+    # Pegando o carrinho da sessão
+    carrinho = request.session.get('carrinho', {})
 
+    # Inicializando o total
+    total = 0
+    produtos = []
+
+    # Se o carrinho não estiver vazio
+    if carrinho:
+        for produto_id, quantidade in carrinho.items():
+            # Aqui você pode buscar o produto no banco de dados usando o `produto_id`
+            produto = get_object_or_404(Produto, id=produto_id)
+            produtos.append({
+                'produto': produto,
+                'quantidade': quantidade,
+                'total_item': produto.preco * quantidade,
+            })
+            total += produto.preco * quantidade
+    else:
+        produtos = None  # Quando o carrinho estiver vazio, você pode retornar None ou uma lista vazia
+
+    return render(request, 'loja_app/carrinho.html', {'produtos': produtos, 'total': total})
 @login_required
 def remover_do_carrinho(request, carrinho_id):
     carrinho = Carrinho.objects.get(id=carrinho_id)
@@ -194,27 +222,90 @@ def remover_do_carrinho(request, carrinho_id):
 
 def produtos(request):
     ebooks = [
-        {"nome": "Abcesso - Definição e Causas", "arquivo": "Abcesso-Definicao-e-Causas.pdf"},
-        {"nome": "Ácidos e Álcalis - Uma Introdução", "arquivo": "Acidos-e-Alcalis-Uma-Introducao.pdf"},
-        {"nome": "Código de Ética do Nutricionista", "arquivo": "codigo-de-etica-do-nutricionista.pdf"},
-        {"nome": "Guia Alimentar da População Brasileira", "arquivo": "ebook-guia-alimentar-da-população-brasileira.pdf"},
-        {"nome": "Exercício Ilegal da Profissão", "arquivo": "exercicio-ilegal-da-profissao.pdf"},
-        {"nome": "Frutas que Combatem o Ácido Úrico", "arquivo": "Frutas-que-Combatem-o-Acido-Urico.pdf"},
-        {"nome": "Tabela de Honorários 2024", "arquivo": "tabela-de-honorarios-2024.pdf"},
+        {
+            "nome": "Abcesso - Definição e Causas",
+            "arquivo": "Abcesso-Definicao-e-Causas.pdf",
+            "imagem": "ebook1.jpg",
+            "preco": 19.90,
+            "descricao": "Este ebook aborda as principais causas e definições sobre abcessos e suas implicações na saúde."
+        },
+        {
+            "nome": "Ácidos e Alcalis - Uma Introdução",
+            "arquivo": "Acidos-e-Alcalis-Uma-Introducao.pdf",
+            "imagem": "ebook2.jpg",
+            "preco": 24.90,
+            "descricao": "Entenda os conceitos básicos de ácidos e alcalis e sua importância na alimentação."
+        },
+        {
+            "nome": "Código de Ética do Nutricionista",
+            "arquivo": "codigo-de-etica-do-nutricionista.pdf",
+            "imagem": "ebook3.jpg",
+            "preco": 15.90,
+            "descricao": "Este ebook detalha o código de ética que rege a profissão de nutricionista."
+        },
+        {
+            "nome": "Guia Alimentar da População Brasileira",
+            "arquivo": "ebook-guia-alimentar-da-população-brasileira.pdf",
+            "imagem": "ebook4.jpg",
+            "preco": 39.90,
+            "descricao": "Conheça as diretrizes alimentares para uma vida saudável e balanceada."
+        },
+        {
+            "nome": "Exercício Ilegal da Profissão",
+            "arquivo": "exercicio-ilegal-da-profissao.pdf",
+            "imagem": "ebook5.jpg",
+            "preco": 29.90,
+            "descricao": "Este ebook discute as implicações do exercício ilegal da profissão de nutricionista."
+        },
+        {
+            "nome": "Frutas que Combatem o Ácido Úrico",
+            "arquivo": "Frutas-que-Combatem-o-Acido-Urico.pdf",
+            "imagem": "ebook6.jpg",
+            "preco": 19.90,
+            "descricao": "Aprenda sobre as frutas que ajudam a combater o ácido úrico e promovem a saúde."
+        },
+        {
+            "nome": "Tabela de Honorários 2024",
+            "arquivo": "tabela-de-honorarios-2024.pdf",
+            "imagem": "ebook7.jpg",
+            "preco": 9.90,
+            "descricao": "Este ebook traz a tabela de honorários atualizada para profissionais de nutrição em 2024."
+        },
     ]
     return render(request, 'loja_app/produtos.html', {'ebooks': ebooks})
 
 
+# Sua view de finalizar compra
 def finalizar_compra(request):
-    # Suponha que o pedido e o endereço são recuperados do banco de dados
-    pedido = Pedido.objects.get(user=request.user)
-    endereco = Endereco.objects.get(user=request.user)
+    try:
+        # Tentamos buscar o pedido do usuário no banco de dados
+        pedido = Pedido.objects.get(usuario=request.user)
+    except Pedido.DoesNotExist:
+        # Se não existir, criamos um novo pedido para o usuário
+        pedido = Pedido.objects.create(usuario=request.user)
 
-    if request.method == "POST":
-        metodo_pagamento = request.POST.get('metodo_pagamento')
-        # Aqui você pode processar a compra com o método de pagamento escolhido
-        
-        # Após a finalização, redirecione ou mostre uma confirmação
-        return render(request, 'loja_app/compra_confirmada.html', {'pedido': pedido})
+    # Agora que temos o pedido (seja novo ou existente), podemos continuar o processo da compra
+    # Restante do código da finalização de compra...
+    
+    return render(request, 'finalizar_compra.html', {'pedido': pedido})
 
-    return render(request, 'loja_app/finalizar_compra.html', {'pedido': pedido, 'endereco': endereco})
+
+def atualizar_quantidade_carrinho(request, carrinho_id):
+    if request.is_ajax() and request.method == 'POST':
+        nova_quantidade = int(request.POST.get('quantidade'))
+        carrinho_item = get_object_or_404(Carrinho, id=carrinho_id)
+        carrinho_item.quantidade = nova_quantidade
+        carrinho_item.save()
+
+        total_item = carrinho_item.produto.preco * carrinho_item.quantidade
+        carrinho_total = sum(item.produto.preco * item.quantidade for item in Carrinho.objects.filter(usuario=request.user))
+
+        # Formata os valores como moeda brasileira
+        total_item_formatado = format_currency(total_item, 'BRL', locale='pt_BR')
+        carrinho_total_formatado = format_currency(carrinho_total, 'BRL', locale='pt_BR')
+
+        return JsonResponse({
+            'total_item': total_item_formatado,
+            'total_carrinho': carrinho_total_formatado
+        })
+    

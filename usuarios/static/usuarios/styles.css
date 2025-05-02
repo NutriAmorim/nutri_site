@@ -29,7 +29,7 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #728f7f;
     color: white;
     border: none;
     padding: 15px 20px;
@@ -40,9 +40,9 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #728f7f;
 }
 
 h2 {
-    color: #4CAF50; /* Verde */
+    color: #728f7f; /* Verde */
 }
