@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 
@@ -19,34 +18,37 @@ def login_view(request):
             login(request, user)
             return redirect('home')
         else:
-             messages.error(request, 'Usuário ou senha inválidos.')
-             return redirect('login')
-        
+            messages.error(request, 'Usuário ou senha inválidos.')
+            return redirect('login')
+
+
 def cadastro_view(request):
-    if request.method == "GET":  # Corrigido de "GTE" para "GET"
+    if request.method == "GET":
         return render(request, 'usuarios/cadastro.html')
     else:
-        # Processando os dados do formulário de cadastro (POST)
         username = request.POST.get('username', '').strip()
         senha = request.POST.get('senha', '').strip()
         email = request.POST.get('email', '').strip()
-        
-        usuario_existente = User.objects.filter(username=username).first()
 
-
-        # Verifique se o usuário com esse nome já existe
         if User.objects.filter(username=username).exists():
             messages.error(request, 'Já existe um usuário com esse nome.')
             return redirect('cadastro')
-        
-        user = User.objects.create_user(username=username, email=email, password=senha)
+
+        user = User.objects.create_user(
+            username=username,
+            email=email,
+            password=senha
+        )
         user.save()
-        # Aqui, você pode adicionar lógica para salvar esses dados no banco
-        # Por enquanto, retornamos os dados para verificar
-        messages.success(request, f'Cadastro feito com sucesso! Bem-vindo, {username}!')
+
+        messages.success(
+            request,
+            f'Cadastro feito com sucesso! Bem-vindo, {username}!'
+        )
         login(request, user)
-        return redirect('login')
-    
+        return redirect('home')
+
+
 def painel_view(request):
     return render(request, 'usuarios/painel.html')
 
@@ -56,11 +58,12 @@ def plataforma_view(request):
         return HttpResponse('Plataforma')
     return HttpResponse('Você precisa estar logado')
 
+
 def logout_view(request):
     logout(request)
     messages.success(request, 'Você saiu da sua conta com sucesso.')
     return redirect('home')
 
+
 def home(request):
     return render(request, 'home.html')
-

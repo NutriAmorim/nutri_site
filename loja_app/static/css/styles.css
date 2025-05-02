@@ -1,50 +1,95 @@
-/* Para telas maiores que 1024px (desktops) */
-@media (min-width: 1024px) {
-    body {
-        background-color: lightblue; /* Exemplo de mudança para desktops */
-    }
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+/* Centraliza título e define cor */
+.titulo-principal {
+  color: #728f7f;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
-/* Para telas entre 768px e 1024px (tablets) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    body {
-        background-color: lightgreen; /* Exemplo de mudança para tablets */
-    }
-    .container {
-        max-width: 1000px;
-        margin: 0 auto;
-    }
+.descricao-principal {
+  text-align: center;
+  margin: 0 20px;
+  font-size: 18px;
+  color: #000000;
 }
 
-/* Para telas menores que 768px (dispositivos móveis) */
-@media (max-width: 767px) {
-    body {
-        background-color: lightcoral; /* Exemplo de mudança para dispositivos móveis */
-    }
-    .container {
-        max-width: 100%;
-        padding: 10px;
-    }
+/* Seções de conteúdo */
+.imagem-section {
+  text-align: center; /* Ajustado para centralizar o conteúdo */
+  padding: 20px;
 }
 
+/* Subtítulos */
+.subtitulo {
+  color: #728f7f;
+  font-size: 32px;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: bold;
+  margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+.subsubtitulo {
+  color: #728f7f;
+  font-size: 24px;
+  text-align: left; /* Subtítulos das seções à esquerda */
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Contêiner de Imagens */
+.imagens-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 20px;
+}
+
+/* Parágrafos */
+.texto-justificado {
+  text-align: justify;
+  font-size: 16px;
+  color: #000;
+  margin: 0 20px;
+}
+
+/* Destaque */
+.destaque {
+  color: #728f7f;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Imagens */
+.imagem-grande {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos para o corpo da página */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  overflow-x: hidden; /* Remove o scroll horizontal */
 }
 
 /* Topbar */
 .topbar {
-  background-color: #5FA052; /* Muted Green */
+  background-color: #728f7f; /* Cor verde suave */
   color: white;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 80px;
   position: fixed;
   top: 0;
   left: 0;
@@ -58,12 +103,17 @@ body {
 }
 
 .topbar .search-box {
-  flex: 1;
+  flex: 1; /* A barra de pesquisa vai ocupar o espaço restante */
+  display: flex;
   margin: 0 20px;
+  justify-content: center; /* Centraliza o input dentro da search-box */
+  margin-right: 10px; /* Espaço entre a barra de pesquisa e o botão */
+  margin-right: 10px; /* Margem direita */
 }
 
+
 .topbar .search-box input {
-  width: 100%;
+  width: 50%;
   padding: 8px;
   border: none;
   border-radius: 5px;
@@ -72,7 +122,7 @@ body {
 
 .topbar .auth-button button {
   background-color: white;
-  color: #5FA052; /* Muted Green */
+  color: #728f7f; /* Cor verde suave */
   border: none;
   padding: 8px 12px;
   border-radius: 5px;
@@ -80,18 +130,152 @@ body {
   font-weight: bold;
 }
 
-/* Sidebar */
-.sidebar {
-  width: 200px;
-  background-color: #5FA052; /* Muted Green */
+/* Estilo da cart-icon (Ícone de carrinho) */
+.cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Garante que o carrinho fique à direita */
+}
+
+.cart-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px; /* Espaçamento interno menor */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 130px; /* Largura reduzida */
+  height: 60px; /* Altura para caber bem dentro da topbar */
+  flex-direction: column; /* Coloca "Meu Carrinho" em cima e "0,00" embaixo */
+  align-items: center; /* Centraliza na horizontal */
+  justify-content: flex-start; /* >>> coloca o conteúdo mais no topo */
+  text-align: center; /* Garante que o texto também esteja centralizado */
+  margin-right: 10px;
+}
+
+.cart-title {
+  font-size: 16px;
+  font-weight: bold;
+  color:#728f7f;
+}
+
+.cart-icon {
+  font-size: 18px; /* Tamanho pequeno do ícone */
+  color: #ffffff; /* Cor azul do ícone */
+  margin-left: 20px; /* Espaçamento à esquerda */
+}
+
+
+.cart-value {
+  font-size: 14px;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 8px; /* diminui para subir */
+  display: block; /* importante para a margem funcionar melhor */
+}
+
+.cart-icon a {
+  color: #ffffff; /* Garante que o link tenha a cor azul */
+  text-decoration: none; /* Remove a linha de sublinhado do link */
+}
+
+/* Estilo da topbar */
+.topbar {
+  background-color: #728f7f; /* Cor de fundo da topbar */
+  padding: 10px 20px;
   color: white;
-  padding: 20px;
-  height: calc(100vh - 60px); /* desconta topbar */
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilo da subtopbar */
+.subtopbar {
+  background-color: #dae6df; /* Cor de fundo da subtopbar (amarelo) */
+  height: 50px; /* Altura da subtopbar */
+  width: 100%; /* A subtopbar ocupa toda a largura */
+  display: flex;
+  justify-content: center; /* Centraliza os links */
+  align-items: flex-end; /* Alinha os itens na parte inferior */
+  border-bottom: 2px solid #ccc; /* Borda inferior */
+  margin-top: 90px; /* Espaço abaixo da topbar */
+  padding-bottom: 10px; /* Adiciona um pouco de espaço para os itens não ficarem colados no fundo */
+  overflow-x: auto; /* Habilita o scroll horizontal */
+  overflow-y: hidden; /* Esconde o scroll vertical */
+  white-space: nowrap; /* Impede que o texto quebre linha */
+  -webkit-overflow-scrolling: touch; /* Rola suave no iPhone */
+  padding: 8px 16px;
+  z-index: 999; /* Garante que a subtopbar não fique atrás da topbar */
+}
+
+.subtopbar-links {
+  list-style: none; /* Remove os marcadores */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Exibe os itens horizontalmente */
+  gap: 20px;
+}
+
+.subtopbar-links li {
+  margin-right: 20px; /* Espaçamento entre os itens */
+}
+
+.subtopbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.subtopbar-links a:hover {
+  color: #728f7f; /* Cor ao passar o mouse */
+}
+
+.sidebar-auth button {
+  background-color: white;
+  color: #728f7f;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 70%; /* Ou outro valor que você quiser */
+  margin: 0 auto; /* Essa linha centraliza o botão */
+  display: block; /* Botão como bloco pra aceitar margin auto */
+  text-align: center;
+}
+
+.sidebar-auth button:hover {
+  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+}
+
+.sidebar {
+  width: 280px !important;
+  background-color: #728f7f;
+  color: white;
+  padding: 20px 0;
+  height: calc(100vh - 60px);
   position: fixed;
-  top: 60px;
-  left: 0;
+  top: -100vh;/* Inicialmente fora da tela */
+  left: -280px; /* Fora da tela inicialmente */
+  transition: top 0.3s ease;/* Suaviza a transição */
+  z-index: 999;
   overflow-y: auto;
-  border-right: 1px solid black;
+  
+  /* NOVO: Organização interna */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar.open {
+  top: 80px; /* mesma altura da topbar */
+  left: 0;
+}
+
+/* Quando estiver visível */
+.sidebar.show {
+  top: 100px; /* Desce abaixo da topbar (que tem 60px de altura) */
 }
 
 .sidebar ul {
@@ -109,17 +293,26 @@ body {
   font-size: 16px;
   display: block;
   cursor: pointer;
+  margin-left: 5px; /* Espaço à esquerda */
+  margin-right: 15px; /* Espaço à direita */
+}
+.inicio-link {
+  margin-left: 20px; /* Só o "Início" vai andar mais para a direita */
 }
 
+
+/* Hover em links */
 .sidebar a:hover {
   text-decoration: underline;
 }
 
+/* Submenu oculto por padrão */
 .sidebar ul ul {
   padding-left: 15px;
   display: none;
 }
 
+/* Quando o submenu estiver visível */
 .sidebar ul ul.show {
   display: block;
 }
@@ -135,7 +328,537 @@ body {
 
 /* Main content */
 .content {
-  margin-left: 220px;
+  margin-left: 280px;
   margin-top: 80px;
   padding: 20px;
+}
+/* Regras de Mídia */
+
+/* Para telas menores que 768px (dispositivos móveis) */
+@media (max-width: 768px) {
+  body {
+    background-color: white;/* Exemplo de mudança para dispositivos móveis */
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .sidebar {
+    position: fixed;
+    width: 280px; /* Tamanho fixo para todos os dispositivos */
+    left: -220px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  /* Exibe o ícone de hambúrguer apenas em dispositivos móveis */
+  .menu-icon {
+    display: block; /* Exibe o ícone de hambúrguer no mobile */
+    margin-top: 25px; /* Adiciona uma margem superior */
+  }
+
+  /* Exibe a sidebar-auth apenas em dispositivos móveis */
+  .sidebar-auth {
+    display: block; /* Mostra os botões em dispositivos móveis */
+  }
+
+  /* Esconde o botão da topbar em dispositivos móveis */
+  .topbar .auth-button {
+    display: none;
+  }
+
+  .subtopbar {
+    display: none; /* Remove a subtopbar no mobile */
+  }
+
+  .cart-card {
+    display: none; /* Oculta o card "Meu Carrinho" no mobile */
+  }
+}
+
+/* Para telas entre 768px e 1024px (tablets) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .content {
+    margin-left: 0; /* Remove o espaço à esquerda */
+  }
+
+  body {
+    background-color: white; /* Exemplo de mudança para tablets */
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* Exibe o ícone de hambúrguer apenas em tablets */
+  .menu-icon {
+    display: block; /* Exibe o ícone de hambúrguer no mobile */
+  }
+
+  /* Exibe a sidebar-auth apenas em tablets */
+  .sidebar-auth {
+    display: block; /* Mostra os botões em tablets */
+  }
+
+  /* Esconde o botão da topbar em tablets */
+  .topbar .auth-button {
+    display: none;
+  }
+/* Ajuste para a largura da sidebar em tablets */
+  .sidebar {
+    width: 280px !important; /* Ajuste a largura da sidebar conforme necessário */
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .cart-card {
+    display: none; /* Oculta o card "Meu Carrinho" no mobile */
+  }
+
+}
+
+/* Para telas maiores que 1024px (desktops) */
+@media (min-width: 1025px) {  
+  body {
+    background-color: white; /* Exemplo de mudança para desktops */
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Esconde a sidebar inicialmente no desktop */
+  .sidebar {
+    position: fixed;
+    top: 80px;
+    left: -280px; /* Inicialmente fora da tela */
+    height: calc(100vh - 60px);
+    width: 280px;
+    transition: left 0.3s ease; /* Suaviza a animação de entrada */
+    z-index: 2; /* Coloca atrás da topbar inicialmente */
+  }
+
+  /* Exibe o botão da topbar apenas em desktops */
+  .topbar .auth-button {
+    display: block;
+  }
+
+  /* Esconde a sidebar-auth em desktops */
+  .sidebar-auth {
+    display: none;
+  }
+      
+  /* Quando a sidebar estiver visível (aberta), ela fica com left: 0 */
+  .sidebar.show {
+    left: 0;  /* Sidebar entra na tela */
+    z-index: 1000; /* Coloca a sidebar sobre a topbar */
+  }
+ 
+  .content {
+    margin-left: 0;
+  }
+}
+
+/* Estilização padrão para todos os títulos das páginas */
+h1, h2, h3, .titulo-principal, .subtitulo, .subsubtitulo {
+  color: #728f7f; /* Verde padrão */
+  font-weight: bold;
+}
+
+/* Estilo padrão para textos */
+p, .texto-justificado, .descricao-principal {
+  color: #000000; /* Preto padrão */
+}
+
+/* Espaçamento entre filtros do menu na sidebar */
+.sidebar ul ul li {
+  margin-bottom: 10px; /* Espaço entre itens */
+  
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.card {
+  background-color: #f5f5f5;
+  border-left: 5px solid #728f7f; /* verde-mata */
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #728f7f;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.btn-download {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background-color: #728f7f;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-download:hover {
+  background-color: #728f7f;
+}
+
+/* Menu hambúrguer */
+.menu-icon {
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bar {
+  height: 4px;
+  width: 100%;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 2px;
+}
+
+.menu-icon.open .bar1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-icon.open .bar2 {
+  opacity: 0;
+}
+
+.menu-icon.open .bar3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mostrar o botão de hambúrguer apenas em telas pequenas */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Exibe o botão de hambúrguer em telas menores */
+    width: 30px;     /* Defina a largura fixa para o botão */
+    height: 30px;    /* Defina a altura fixa para o botão */
+    position: absolute; /* Para posicionar corretamente */
+    top: 10px;       /* Alinhe o botão no topo, se necessário */
+    left: 10px;      /* Alinhe o botão à esquerda, se necessário */
+    z-index: 1000;   /* Certifique-se de que o botão está acima da sidebar */
+  }
+
+  /* Garantir que as barras do botão não se sobreponham */
+  .menu-icon .bar {
+    width: 100%;      /* Garantir que as barras ocupem 100% da largura */
+    height: 4px;      /* Defina uma altura para as barras */
+    margin: 4px 0;    /* Adiciona espaçamento entre as barras */
+    background-color: #fff; /* A cor das barras do hambúrguer */
+    transition: 0.3s ease; /* Adiciona transição suave */
+  }
+}
+  .logo-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain; /* mantém a proporção e evita distorção */
+    margin: 10px auto;   /* centraliza verticalmente e adiciona espaço */
+    display: block;
+}
+
+  .logo-nome {
+    text-align: center;
+    color: white; /* ou a cor que preferir */
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .submenu {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+}
+
+.toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px 15px;
+    color: #2d2d2d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.toggle:hover {
+    text-decoration: none; /* Garante que não haverá sublinhado */
+    background-color: transparent;
+    color: white; /* A cor do texto permanece branca */
+}
+
+.submenu li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px 15px;
+    display: block;
+}
+
+.submenu li a:hover {
+    text-decoration: none; /* Garante que não haverá sublinhado */
+    background-color: transparent;
+    color: white; /* A cor do texto permanece branca */
+}
+.sidebar a {
+  text-decoration: none !important; /* Remove sublinhado de todos os links da sidebar */
+  color: white; /* Mantém a cor branca */
+}
+
+.sidebar a:hover {
+  text-decoration: none !important; /* Garante que não sublinhe no hover também */
+  background-color: transparent; /* Sem fundo ao passar o mouse */
+  color: white; /* Mantém branco ao passar o mouse */
+}
+/* Responsividade da Sidebar */
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 280px !important; /* Menor largura para telas médias */
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 280px !important; /* Menor largura para telas menores */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 280px !important; /* Ajuste ainda menor para tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 280px !important; /* Sidebar ocupa toda a largura para dispositivos móveis */
+    position: fixed; /* Ajusta a posição para ser não fixa */
+  }
+}
+/* Estilo para o link "Início" */
+.sidebar a:first-child {
+  font-weight: bold; /* Torna o texto em negrito */
+}
+
+/* Estilo do ícone do carrinho */
+.cart-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Estilo da aba (popup) */
+.cart-dropdown {
+  display: none; /* Inicialmente oculta */
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.cart-dropdown.show {
+  display: block; /* Exibe a aba quando a classe 'show' é adicionada */
+}
+
+.cart-dropdown button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #728f7f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-dropdown button:hover {
+  background-color: #728f7f;
+}
+
+.pagina-produtos {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1000px; /* Largura máxima opcional */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.produtos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  gap: 20px;
+  max-width: 1200px;
+}
+
+.produto-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 300px;
+  padding: 15px;
+  text-align: left;
+}
+
+
+/* Container principal do carrinho */
+.carrinho-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Container que envolve os produtos */
+.produtos-carrinho {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* Centraliza os itens na linha */
+  gap: 20px;  /* Espaçamento entre os produtos */
+  width: 100%;
+  max-width: 1200px;  /* Tamanho máximo para o contêiner dos produtos */
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/* Estilo de cada item de produto */
+.produto-item {
+  width: 250px; /* Ajuste o tamanho do produto conforme necessário */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Imagem do produto */
+.produto-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.produto-item button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px; /* Espaçamento entre os botões */
+}
+
+.produto-item button:hover {
+  background-color: darkred;
+}
+
+/* Centraliza o conteúdo do carrinho */
+#carrinho-cheio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px; /* Limita a largura */
+  width: 100%;
+}
+
+/* Estilos da tabela */
+#carrinho-cheio table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center; /* Centraliza as colunas */
+  margin-top: 20px;
+}
+
+#carrinho-cheio th, #carrinho-cheio td {
+  padding: 15px;
+  border: 1px solid #ddd;
+}
+
+/* Estilo do botão "Ir às Compras" */
+.acoes-carrinho a button {
+  background-color: red; /* Cor de fundo vermelha */
+  color: white; /* Cor do texto branca */
+  border: none; /* Remove a borda */
+  padding: 10px 20px; /* Espaçamento dentro do botão */
+  margin: 10px; /* Espaço ao redor do botão */
+  border-radius: 5px; /* Bordas arredondadas */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Indica que o botão é clicável */
+}
+
+.acoes-carrinho a button:hover {
+  background-color: darkred; /* Cor do fundo ao passar o mouse */
+}
+
+/* Estilos para o botão "Continuar Comprando" */
+.btn-continuar {
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* Estilos para o botão "Finalizar Compra" */
+.btn-finalizar {
+  background-color: #f0ad4e;
+  color: white;
 }

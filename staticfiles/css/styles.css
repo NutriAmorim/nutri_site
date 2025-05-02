@@ -1,0 +1,353 @@
+/* Centraliza título e define cor */
+.titulo-principal {
+  color: #5FA052;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.descricao-principal {
+  text-align: center;
+  margin: 0 20px;
+  font-size: 18px;
+  color: #000000;
+}
+
+/* Seções de conteúdo */
+.imagem-section {
+  text-align: left; /* Ajustado para alinhar o conteúdo à esquerda */
+  padding: 20px;
+}
+
+.subtitulo {
+  color: #5FA052;
+  font-size: 32px;
+  text-align: left;
+  margin-left: 0; /* Subtítulos alinhados à esquerda */
+  margin-bottom: 10px; /* Espaçamento inferior */
+  font-weight: bold;
+}
+
+.subsubtitulo {
+  color: #5FA052;
+  font-size: 24px;
+  text-align: left; /* Subtítulos das seções também à esquerda */
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.imagens-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 20px;
+}
+
+/* Seções de conteúdo */
+.imagem-section {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Subtítulos */
+.subtitulo {
+  color: #5FA052;
+  font-size: 32px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Parágrafos */
+.texto-justificado {
+  text-align: justify;
+  font-size: 16px;
+  color: #000;
+  margin: 0 20px;
+}
+
+/* Destaque */
+.destaque {
+  color: #5FA052;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Imagens */
+.imagem-grande {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos gerais */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Topbar */
+.topbar {
+  background-color: #5FA052; /* Cor verde suave */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.topbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.topbar .search-box {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.topbar .search-box input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.topbar .auth-button button {
+  background-color: white;
+  color: #5FA052; /* Cor verde suave */
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Estilo para o botão da sidebar */
+.sidebar-auth button {
+  background-color: white;
+  color: #5FA052; /* Cor verde suave */
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%; /* Faz com que o botão ocupe toda a largura do item */
+  text-align: center; /* Alinha o texto no centro do botão */
+}
+
+.sidebar-auth button:hover {
+  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px; /* Tamanho fixo para todos os dispositivos */
+  background-color: #5FA052; /* Cor verde suave */
+  color: white;
+  padding: 20px;
+  height: calc(100vh - 60px); /* Altura da tela - altura da topbar */
+  position: fixed;
+  top: -100vh; /* Começa fora da tela, acima da viewport */
+  left: 0;
+  transition: top 0.3s ease; /* Efeito de transição suave */
+  z-index: 999; /* Fica atrás da topbar (que tem z-index: 1000) */
+  overflow-y: auto;
+}
+
+/* Quando estiver visível */
+.sidebar.show {
+  top: 60px; /* Desce abaixo da topbar (que tem 60px de altura) */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  cursor: pointer;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar ul ul {
+  padding-left: 15px;
+  display: none;
+}
+
+.sidebar ul ul.show {
+  display: block;
+}
+
+.toggle::after {
+  content: " ▼";
+  font-size: 12px;
+}
+
+.toggle.closed::after {
+  content: " ▶";
+}
+
+/* Main content */
+.content {
+  margin-left: 220px;
+  margin-top: 80px;
+  padding: 20px;
+}
+
+/* Ícone de hambúrguer para abrir e fechar o menu lateral */
+.menu-icon {
+  display: none; /* Esconde o ícone de hambúrguer por padrão */
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 20px; /* Adiciona um espaço entre o ícone e o logo */
+}
+
+/* Regras de Mídia */
+
+/* Para telas menores que 768px (dispositivos móveis) */
+@media (max-width: 767px) {
+  body {
+    background-color: rgb(255, 255, 255); /* Exemplo de mudança para dispositivos móveis */
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .sidebar {
+    position: fixed;
+    width: 220px; /* Tamanho fixo para todos os dispositivos */
+    left: -220px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  /* Exibe o ícone de hambúrguer apenas em dispositivos móveis */
+  .menu-icon {
+    display: block;
+  }
+
+  /* Exibe a sidebar-auth apenas em dispositivos móveis */
+  .sidebar-auth {
+    display: block; /* Mostra os botões em dispositivos móveis */
+  }
+
+  /* Esconde o botão da topbar em dispositivos móveis */
+  .topbar .auth-button {
+    display: none;
+  }
+}
+
+/* Para telas entre 768px e 1024px (tablets) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .content {
+    margin-left: 0; /* Remove o espaço à esquerda */
+  }
+
+  body {
+    background-color: rgb(255, 255, 255); /* Exemplo de mudança para tablets */
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* Exibe o ícone de hambúrguer apenas em tablets */
+  .menu-icon {
+    display: block;
+  }
+
+  /* Exibe a sidebar-auth apenas em tablets */
+  .sidebar-auth {
+    display: block; /* Mostra os botões em tablets */
+  }
+
+  /* Esconde o botão da topbar em tablets */
+  .topbar .auth-button {
+    display: none;
+  }
+}
+
+/* Para telas maiores que 1024px (desktops) */
+@media (min-width: 1025px) {
+  body {
+    background-color: rgb(255, 255, 255); /* Exemplo de mudança para desktops */
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Exibe o botão da topbar apenas em desktops */
+  .topbar .auth-button {
+    display: block;
+  }
+
+  /* Esconde a sidebar-auth em desktops */
+  .sidebar-auth {
+    display: none;
+  }
+
+  /* Esconde o ícone de hambúrguer em desktops */
+  .menu-icon {
+    display: none;
+  }
+    
+  /* Faz a sidebar ficar visível no desktop */
+  .sidebar {
+    position: fixed;
+    top: 60px; /* A sidebar vai começar abaixo da topbar */
+    left: 0; /* A sidebar vai ocupar toda a altura da tela */
+    height: calc(100vh - 60px); /* Ocupa toda a altura da tela, menos a altura da topbar */
+    width: 220px; /* Largura da sidebar */
+ }
+  /* Garantir que o conteúdo se ajuste ao espaço da sidebar */
+  .content {
+    margin-left: 250px; /* Deixa um espaço à esquerda para a sidebar */
+ }
+}
+
+/* Estilização padrão para todos os títulos das páginas */
+h1, h2, h3, .titulo-principal, .subtitulo, .subsubtitulo {
+  color: #5FA052; /* Verde padrão */
+  font-weight: bold;
+}
+
+/* Estilo padrão para textos */
+p, .texto-justificado, .descricao-principal {
+  color: #000000; /* Preto padrão */
+}
+
+/* Espaçamento entre filtros do menu na sidebar */
+.sidebar ul ul li {
+  margin-bottom: 10px; /* Espaço entre itens */
+  
+}
