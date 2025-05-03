@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Carrinho, Pedido, Endereco
+from .models import Carrinho, Pedido, PedidoProduto
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from babel.numbers import format_currency
 from .models import Produto
+from decimal import Decimal
 
 
 # Página inicial
@@ -276,20 +277,35 @@ def produtos(request):
     return render(request, 'loja_app/produtos.html', {'ebooks': ebooks})
 
 
-# Sua view de finalizar compra
 def finalizar_compra(request):
     try:
         # Tentamos buscar o pedido do usuário no banco de dados
-        pedido = Pedido.objects.get(usuario=request.user)
+        pedido = Pedido.objects.get(usuario=request.user, total__isnull=True)  # Garantir que o pedido esteja incompleto
     except Pedido.DoesNotExist:
         # Se não existir, criamos um novo pedido para o usuário
-        pedido = Pedido.objects.create(usuario=request.user)
+        pedido = Pedido.objects.create(usuario=request.user, total=Decimal(0))
 
-    # Agora que temos o pedido (seja novo ou existente), podemos continuar o processo da compra
-    # Restante do código da finalização de compra...
-    
+    # Adiciona os itens do carrinho ao pedido
+    carrinho = Carrinho.objects.filter(usuario=request.user)
+    total = Decimal(0)
+
+    for item in carrinho:
+        # Cria o registro do PedidoProduto
+        PedidoProduto.objects.create(
+            pedido=pedido,
+            produto=item.produto,
+            quantidade=item.quantidade
+        )
+        total += item.total()  # Soma o valor do item ao total
+
+    # Atualiza o total do pedido
+    pedido.total = total
+    pedido.save()
+
+    # Limpar o carrinho após a compra
+    carrinho.delete()
+
     return render(request, 'finalizar_compra.html', {'pedido': pedido})
-
 
 def atualizar_quantidade_carrinho(request, carrinho_id):
     if request.is_ajax() and request.method == 'POST':
@@ -310,3 +326,88 @@ def atualizar_quantidade_carrinho(request, carrinho_id):
             'total_carrinho': carrinho_total_formatado
         })
     
+def way_protein(request):
+    return render(request, 'loja_app/way_protein.html')
+
+
+def creatinas(request):
+    return render(request, 'loja_app/creatinas.html')  # ou o caminho correto do seu template
+
+def pre_treino(request):
+    return render(request, 'loja_app/pre_treino.html')
+
+def emagrecedores(request):
+    return render(request, 'loja_app/emagrecedores.html')
+
+def acessorios(request):
+    return render(request, 'loja_app/acessorios.html')
+
+def bcaa(request):
+    return render(request, 'loja_app/bcaa.html')
+
+def albumina(request):
+    return render(request, 'loja_app/albumina.html')
+
+def aumento_testosterona(request):
+    return render(request, 'loja_app/aumento_testosterona.html')
+
+def bebidas(request):
+    return render(request, 'loja_app/bebidas.html')
+
+def ciclistas(request):
+    return render(request, 'loja_app/ciclistas.html')
+
+def coffee(request):
+    return render(request, 'loja_app/coffee.html')
+
+def colageno(request):
+    return render(request, 'loja_app/colageno.html')
+
+def dose_unica(request):
+    return render(request, 'loja_app/dose_unica.html')
+
+def melatonina(request):
+    return render(request, 'loja_app/melatonina.html')
+
+def forca_energia(request):
+    return render(request, 'loja_app/forca_energia.html')
+
+def vitaminas(request):
+    return render(request, 'loja_app/vitaminas.html')
+
+def aumentar_massa_muscular(request):
+    return render(request, 'loja_app/aumentar_massa_muscular.html')
+
+def aminoacidos(request):
+    return render(request, 'loja_app/aminoacidos.html')
+
+def articulacoes_saudaveis(request):
+    return render(request, 'loja_app/articulacoes_saudaveis.html')
+
+def barras_de_proteinas(request):
+    return render(request, 'loja_app/barras_de_proteinas.html')
+
+def antioxidantes(request):
+    return render(request, 'loja_app/antioxidantes.html')
+
+def carboidratos(request):
+    return render(request, 'loja_app/carboidratos.html')
+
+def glutaminas(request):
+    return render(request, 'loja_app/glutaminas.html')
+
+def pastas_de_amendoim(request):
+    return render(request, 'loja_app/pastas_de_amendoim.html')
+
+def caldas_e_molhos(request):
+    return render(request, 'loja_app/caldas_e_molhos.html')
+
+def snacks_doces(request):
+    return render(request, 'loja_app/snacks_doces.html')
+
+def combos(request):
+    return render(request, 'loja_app/combos.html')
+
+def omega_3(request):
+    # Lógica da view aqui
+    return render(request, 'loja_app/omega3.html')
