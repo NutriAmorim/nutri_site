@@ -16,7 +16,7 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://nutri-site.onrender.com","http://127.0.0.1:8000/"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
