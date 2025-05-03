@@ -58,12 +58,32 @@
     </div>
   </div>
 
-      <li><a href="{% url 'way_protein' %}"><i class="fas fa-dumbbell"></i>Way Protein</a></li>
-      <li><a href="{% url 'creatinas' %}"><i class="fas fa-flask"></i> creatinas</a></li>
-      <li><a href="{% url 'pre_treino' %}"><i class="fas fa-bolt"></i>Pre Treino</a></li>
-      <li><a href="{% url 'emagrecedores' %}"><i class="fas fa-fire-alt"></i>Emagrecedores</a></li>
-      <li><a href="{% url 'acessorios' %}"><i class="fas fa-mug-hot"></i>Acessórios</a></li>
-
+  <li>
+    <a href="{% url 'way_protein' %}">
+      <img src="{% static 'img/whey.png' %}" alt="Way Protein" class="menu-icon"> Way Protein
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'creatinas' %}">
+      <img src="{% static 'img/dosadores.png' %}" alt="Creatinas" class="menu-icon"> Creatinas
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'pre_treino' %}">
+      <img src="{% static 'img/creatinas.png' %}" alt="Pré Treino" class="menu-icon"> Pré Treino
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'emagrecedores' %}">
+      <img src="{% static 'img/vitaminas.png' %}" alt="Emagrecedores" class="menu-icon"> Emagrecedores
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'acessorios' %}">
+      <img src="{% static 'img/acesorios.png' %}" alt="Acessórios" class="menu-icon"> Acessórios
+    </a>
+  </li>
+  
   <!-- Categorias à direita -->
   <div class="dropdown-right">
     <button class="dropbtn">Categorias</button>

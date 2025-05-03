@@ -215,6 +215,33 @@ body {
   list-style: none;
 }
 
+.menu-subtopbar li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.menu-subtopbar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+.menu-subtopbar .menu-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+
 /* Botões padrão e dropdown */
 .subtopbar-links a,
 .dropbtn {
