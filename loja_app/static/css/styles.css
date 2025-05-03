@@ -7,10 +7,13 @@
 }
 
 .descricao-principal {
-  text-align: center;
-  margin: 0 20px;
-  font-size: 18px;
-  color: #000000;
+  text-align: center;  /* Centraliza o texto */
+  margin: 0 20px;      /* Adiciona margens laterais para espaçamento (ajuste conforme necessário) */
+  font-size: 18px;     /* Ajuste o tamanho da fonte, se necessário */
+  color: #000000;      /* Cor do texto */
+  max-width: 90%;      /* Limita a largura máxima para que o texto não ocupe toda a tela */
+  margin-left: auto;   /* Centraliza o conteúdo dentro do contêiner */
+  margin-right: auto;  /* Centraliza o conteúdo dentro do contêiner */
 }
 
 /* Seções de conteúdo */
@@ -32,10 +35,12 @@
 .subsubtitulo {
   color: #728f7f;
   font-size: 24px;
-  text-align: left; /* Subtítulos das seções à esquerda */
-  margin-top: 20px;
-  margin-bottom: 10px;
+  text-align: center;  /* Centraliza o texto */
+  margin-top: 20px;  /* Espaçamento superior */
+  margin-bottom: 10px;  /* Espaçamento inferior */
   font-weight: bold;
+  width: 100%;  /* Garante que o texto ocupe toda a largura disponível */
+  display: block;  /* Faz o título se comportar como um bloco, ajudando na centralização */
 }
 
 /* Contêiner de Imagens */
@@ -49,9 +54,11 @@
 /* Parágrafos */
 .texto-justificado {
   text-align: justify;
-  font-size: 16px;
-  color: #000;
-  margin: 0 20px;
+  margin: 20px auto;
+  max-width: 900px; /* controla largura máxima da leitura */
+  padding: 0 20px; /* espaço interno para não colar nas bordas */
+  line-height: 1.6;
+  color: #333;
 }
 
 /* Destaque */
@@ -63,8 +70,12 @@
 
 /* Imagens */
 .imagem-grande {
-  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  max-width: 90%; /* Diminuir o tamanho da imagem */
   height: auto;
+  border-radius: 20px; /* Bordas mais arredondadas */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
 /* Estilos para o corpo da página */
@@ -79,6 +90,52 @@ body {
   min-height: 100vh;
   background-color: #f4f4f4;
   overflow-x: hidden; /* Remove o scroll horizontal */
+}
+
+.banner-rotativo {
+  width: 100%;
+  height: 300px; /* altura ajustável conforme seu gosto */
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.slides {
+  display: flex;
+  width: 400%;
+  height: 100%;
+  animation: slideBanner 16s infinite;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  height: 100%;
+  background-color: #cce0cc; /* cor de fundo temporária */
+  border-right: 2px solid #fff;
+}
+
+/* Efeito de troca automática */
+@keyframes slideBanner {
+  0% { transform: translateX(0%); }
+  20% { transform: translateX(0%); }
+
+  25% { transform: translateX(-100%); }
+  45% { transform: translateX(-100%); }
+
+  50% { transform: translateX(-200%); }
+  70% { transform: translateX(-200%); }
+
+  75% { transform: translateX(-300%); }
+  95% { transform: translateX(-300%); }
+
+  100% { transform: translateX(0%); }
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Topbar */
