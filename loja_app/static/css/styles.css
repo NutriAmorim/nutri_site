@@ -201,7 +201,7 @@ body {
   border-bottom: 2px solid #ccc;  /* Adiciona uma borda inferior de 2px, cor cinza clara */
   margin-top: 100px;  /* Espaço de 90px acima da subtopbar */
   padding: 8px 16px;  /* Espaçamento interno de 8px nas laterais e 16px no topo e fundo */
-  gap: 50px;  /* Espaço de 20px entre os itens dentro da subtopbar */
+  gap: 20px;  /* Espaço de 20px entre os itens dentro da subtopbar */
   z-index: 999;  /* Define a sobreposição da subtopbar, acima de outros elementos com z-index menor */
   position: relative;  /* Define a posição relativa para possibilitar o posicionamento absoluto de elementos filhos */
 }
@@ -228,42 +228,52 @@ body {
   font-weight: 500;
 }
 
-.menu-subtopbar .menu-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
+.subtopbar-menu li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.subtopbar-menu .icon {          /* Seleciona os elementos com a classe 'icon' dentro de '.subtopbar-menu' */
+  width: 32px;                  /* Define a largura da imagem ou ícone como 22 pixels */
+  height: 32px;                 /* Define a altura da imagem ou ícone como 22 pixels */
+  margin-right: 8px;            /* Adiciona um espaço de 8 pixels à direita (entre o ícone e o texto, por exemplo) */
+  object-fit: contain;          /* Faz a imagem se ajustar ao tamanho definido sem cortar ou distorcer */
 }
 
 .menu-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  vertical-align: middle;
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain;
 }
-
 
 /* Botões padrão e dropdown */
 .subtopbar-links a,
 .dropbtn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #728f7f;
-  color: white;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: bold;
-  text-decoration: none;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;   /* Exibe o conteúdo em linha (ícone + texto) */
+  align-items: center;  /* Alinha verticalmente ícone e texto ao centro */
+  gap: 8px; /* Espaço entre o ícone e o texto */
+  background-color: #bac9c1; /* Cor de fundo dos botões */
+  color: black;  /* Cor do texto */
+  padding: 10px 16px;  /* Espaçamento interno (vertical 10px, horizontal 16px) */
+  font-size: 14px;  /* Tamanho da fonte do texto */
+  font-weight: bold;  /* Deixa o texto em negrito */
+  text-decoration: none;  /* Remove sublinhado de links */
+  border: none;   /* Remove a borda padrão do botão */
+  border-radius: 4px;  /* Arredonda os cantos do botão */
+  cursor: pointer; /* Muda o cursor para "mãozinha" ao passar por cima */
+  transition: background-color 0.3s ease,  /* Animação suave da cor de fundo ao passar o mouse */
+              transform 0.2s ease;         /* Animação de leve elevação ao passar o mouse */
 }
 
 /* Hover moderno */
 .subtopbar-links a:hover,
 .dropbtn:hover {
-  background-color: #ffffff;
+  background-color: whitesmoke; /* Cor de fundo dos botões */
   transform: scale(1.03);
 }
 
@@ -304,11 +314,6 @@ body {
 .dropdown-left.active .dropdown-content,
 .dropdown-right.active .dropdown-content {
   display: block;
-}
-
-/* Ícones dentro dos botões */
-.subtopbar i {
-  font-size: 16px;
 }
 
 .sidebar-auth button {
