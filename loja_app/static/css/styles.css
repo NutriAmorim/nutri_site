@@ -3,7 +3,7 @@
   color: #728f7f;
   text-align: center;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 .descricao-principal {
@@ -11,7 +11,7 @@
   margin: 0 20px;      /* Adiciona margens laterais para espaçamento (ajuste conforme necessário) */
   font-size: 18px;     /* Ajuste o tamanho da fonte, se necessário */
   color: #000000;      /* Cor do texto */
-  max-width: 90%;      /* Limita a largura máxima para que o texto não ocupe toda a tela */
+  max-width: 100%;      /* Limita a largura máxima para que o texto não ocupe toda a tela */
   margin-left: auto;   /* Centraliza o conteúdo dentro do contêiner */
   margin-right: auto;  /* Centraliza o conteúdo dentro do contêiner */
 }
@@ -80,16 +80,16 @@
 
 /* Estilos para o corpo da página */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f4f4f4;
-  overflow-x: hidden; /* Remove o scroll horizontal */
+  font-family: Arial, sans-serif; /* Define a fonte do corpo da página como Arial, com uma alternativa sans-serif */
+  margin: 0; /* Remove a margem padrão do navegador, evitando espaços desnecessários ao redor da página */
+  padding: 0; /* Remove o padding padrão, garantindo que não haja espaços extras ao redor do conteúdo */
+  box-sizing: border-box; /* Faz com que padding e bordas sejam incluídos nas dimensões totais dos elementos */
+  display: block; /* Garante que o corpo da página seja tratado como um bloco */
+  justify-content: center; /* Centraliza os itens no eixo horizontal */
+  align-items: center; /* Centraliza os itens no eixo vertical (usado quando o body é flex container) */
+  min-height: 100vh; /* Define a altura mínima da página como 100% da altura da janela de visualização (viewport) */
+  background-color: #f4f4f4; /* Define a cor de fundo da página como um cinza claro */
+  overflow-x: hidden; /* Remove a rolagem horizontal da página */
 }
 
 .banner-rotativo {
@@ -174,7 +174,7 @@ body {
   padding: 8px;
   border: none;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 24px;
 }
 
 .topbar .auth-button button {
@@ -187,64 +187,15 @@ body {
   font-weight: bold;
 }
 
-/* Estilo da cart-icon (Ícone de carrinho) */
-.cart-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; /* Garante que o carrinho fique à direita */
-}
-
-.cart-card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px; /* Espaçamento interno menor */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 130px; /* Largura reduzida */
-  height: 60px; /* Altura para caber bem dentro da topbar */
-  flex-direction: column; /* Coloca "Meu Carrinho" em cima e "0,00" embaixo */
-  align-items: center; /* Centraliza na horizontal */
-  justify-content: flex-start; /* >>> coloca o conteúdo mais no topo */
-  text-align: center; /* Garante que o texto também esteja centralizado */
-  margin-right: 10px;
-}
-
-.cart-title {
-  font-size: 16px;
-  font-weight: bold;
-  color:#728f7f;
-}
-
-.cart-icon {
-  font-size: 18px; /* Tamanho pequeno do ícone */
-  color: #ffffff; /* Cor azul do ícone */
-  margin-left: 20px; /* Espaçamento à esquerda */
-}
-
-
-.cart-value {
-  font-size: 14px;
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 8px; /* diminui para subir */
-  display: block; /* importante para a margem funcionar melhor */
-}
-
-.cart-icon a {
-  color: #ffffff; /* Garante que o link tenha a cor azul */
-  text-decoration: none; /* Remove a linha de sublinhado do link */
-}
-
 /* Estilo da topbar */
 .topbar {
-  background-color: #728f7f; /* Cor de fundo da topbar */
-  padding: 10px 20px;
-  color: white;
-  font-size: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #728f7f; /* Define a cor de fundo da topbar (verde acinzentado) */
+  padding: 10px 20px;        /* Espaçamento interno: 10px acima/abaixo, 20px esquerda/direita */
+  color: white;              /* Cor do texto na topbar: branco */
+  font-size: 18px;           /* Tamanho da fonte do texto: 18 pixels */
+  display: flex;             /* Usa flexbox para organizar os elementos da topbar */
+  justify-content: space-between; /* Espaça os itens para ocuparem extremos (esquerda e direita) */
+  align-items: center;       /* Alinha os itens verticalmente ao centro */
 }
 
 /* Subtopbar principal */
@@ -257,7 +208,7 @@ body {
   align-items: center;  /* Alinha os itens verticalmente no centro */
   border-bottom: 2px solid #ccc;  /* Adiciona uma borda inferior de 2px, cor cinza clara */
   margin-top: 100px;  /* Espaço de 90px acima da subtopbar */
-  padding: 7px 16px;  /* Espaçamento interno de 8px nas laterais e 16px no topo e fundo */
+  padding: 10px 0;  /* Espaçamento interno de 8px nas laterais e 16px no topo e fundo */
   gap: 10px;  /* Espaço de 20px entre os itens dentro da subtopbar */
   z-index: 999;  /* Define a sobreposição da subtopbar, acima de outros elementos com z-index menor */
   position: relative;  /* Define a posição relativa para possibilitar o posicionamento absoluto de elementos filhos */
@@ -609,6 +560,10 @@ body {
   .content {
     margin-left: 0;
   }
+
+  .banner {
+    margin-top: 0; /* Garantir que o banner fique sem margem superior em telas menores */
+  }
 }
 
 /* Estilização padrão para todos os títulos das páginas */
@@ -809,20 +764,10 @@ p, .texto-justificado, .descricao-principal {
     position: fixed; /* Ajusta a posição para ser não fixa */
   }
 }
+
 /* Estilo para o link "Início" */
 .sidebar a:first-child {
   font-weight: bold; /* Torna o texto em negrito */
-}
-
-/* Estilo do ícone do carrinho */
-.cart-container {
-  position: relative;
-  display: inline-block;
-}
-
-.cart-icon {
-  font-size: 24px;
-  cursor: pointer;
 }
 
 /* Estilo da aba (popup) */
