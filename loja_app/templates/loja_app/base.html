@@ -39,16 +39,6 @@
       {% endif %}
     </div>
 
-<!-- Ícone de Carrinho com Card -->
-<div class="cart-container">
-  <div class="cart-icon" onclick="toggleCartDropdown()">
-    <i class="fas fa-shopping-cart"></i>
-  </div>
-  
-  <div class="cart-dropdown" id="cartDropdown">
-    <p>Não existem produtos no carrinho.</p>
-    <button onclick="irAsCompras()">Ir às Compras</button>
-  </div>
 </div>
 </div>
 
@@ -57,49 +47,56 @@
 
 <!-- Subtopbar -->
 <div class="subtopbar">
-  <ul class="subtopbar-links">
-    <a class="toggle">Categorias
-    <ul class="submenu">
-      <li><a href="{% url 'way_protein' %}">Way Protein</a></li>
-      <li><a href="{% url 'pre_treino' %}">Pré Treino</a></li>
-      <li><a href="{% url 'emagrecedores' %}">Emagrecedores</a></li>
-      <li><a href="{% url 'acessorios' %}">Acessórios</a></li>
-      <li><a href="{% url 'bcaa' %}">Bcaa</a></li>
-      <li><a href="{% url 'albumina' %}">Albumina</a></li>
-      <li><a href="{% url 'aumento_testosterona' %}">Aumento da Testosterona</a></li>
-      <li><a href="{% url 'bebidas' %}">Bebidas</a></li>
-      <li><a href="{% url 'ciclistas' %}">Ciclistas</a></li>
-      <li><a href="{% url 'coffee' %}">Coffee</a></li>
-      <li><a href="{% url 'colageno' %}">Colágeno</a></li>
-      <li><a href="{% url 'dose_unica' %}">Dose Única</a></li>
-      <li><a href="{% url 'melatonina' %}">Melatonina</a></li>
-      <li><a href="{% url 'omega_3' %}">Omega 3</a></li>
-      <li><a href="{% url 'forca_energia' %}">Força e Energia</a></li>
-      <li><a href="{% url 'vitaminas' %}">Vitaminas</a></li>
-      <li><a href="{% url 'aumentar_massa_muscular' %}">Aumentar Massa Muscular</a></li>
-      <li><a href="{% url 'aminoacidos' %}">Aminoácidos</a></li>
-      <li><a href="{% url 'articulacoes_saudaveis' %}">Articulações Saudáveis</a></li>
-      <li><a href="{% url 'barras_de_proteinas' %}">Barras de Proteínas</a></li>
-      <li><a href="{% url 'antioxidantes' %}">Antioxidantes</a></li>
-      <li><a href="{% url 'carboidratos' %}">Carboidratos</a></li>
-      <li><a href="{% url 'glutaminas' %}">Glutaminas</a></li>
-      <li><a href="{% url 'pastas_de_amendoim' %}">Pastas de Amendoim</a></li>
-      <li><a href="{% url 'caldas_e_molhos' %}">Caldas e Molhos</a></li>
-      <li><a href="{% url 'snacks_doces' %}">Snacks e Doces</a></li>
-      <li><a href="{% url 'combos' %}">Combos</a></li>
-  </ul>
-</li>
-    <li><a href="{% url 'way_protein' %}">Way Protein</a></li>
-    <li><a href="{% url 'creatinas' %}">creatinas</a></li>
-    <li><a href="{% url 'pre_treino' %}">Pre Treino</a></li>
-    <li><a href="{% url 'emagrecedores' %}">Emagrecedores</a></li>
-    <li><a href="{% url 'acessorios' %}">Acessórios</a></li>
-    <a class="toggle">Marcas
-  <ul class="submenu">
-        <li><a href="#">Marcas</a></li>
-    </ul>
-  </li>
-  </ul>
+  <!-- Marcas à esquerda -->
+  <div class="dropdown-left">
+    <button class="dropbtn">Marcas</button>
+    <div class="dropdown-content">
+      <a href="#">Marca 1</a>
+      <a href="#">Marca 2</a>
+      <a href="#">Marca 3</a>
+      <!-- Adicione mais marcas -->
+    </div>
+  </div>
+
+      <li><a href="{% url 'way_protein' %}"><i class="fas fa-dumbbell"></i>Way Protein</a></li>
+      <li><a href="{% url 'creatinas' %}"><i class="fas fa-flask"></i> creatinas</a></li>
+      <li><a href="{% url 'pre_treino' %}"><i class="fas fa-bolt"></i>Pre Treino</a></li>
+      <li><a href="{% url 'emagrecedores' %}"><i class="fas fa-fire-alt"></i>Emagrecedores</a></li>
+      <li><a href="{% url 'acessorios' %}"><i class="fas fa-mug-hot"></i>Acessórios</a></li>
+
+  <!-- Categorias à direita -->
+  <div class="dropdown-right">
+    <button class="dropbtn">Categorias</button>
+    <div class="dropdown-content">
+      <a href="{% url 'way_protein' %}">Way Protein</a>
+      <a href="{% url 'pre_treino' %}">Pré Treino</a>
+      <a href="{% url 'emagrecedores' %}">Emagrecedores</a>
+      <a href="{% url 'acessorios' %}">Acessórios</a>
+      <a href="{% url 'bcaa' %}">Bcaa</a>
+      <a href="{% url 'albumina' %}">Albumina</a>
+      <a href="{% url 'aumento_testosterona' %}">Aumento da Testosterona</a>
+      <a href="{% url 'bebidas' %}">Bebidas</a>
+      <a href="{% url 'ciclistas' %}">Ciclistas</a>
+      <a href="{% url 'coffee' %}">Coffee</a>
+      <a href="{% url 'colageno' %}">Colágeno</a>
+      <a href="{% url 'dose_unica' %}">Dose Única</a>
+      <a href="{% url 'melatonina' %}">Melatonina</a>
+      <a href="{% url 'omega_3' %}">Omega 3</a>
+      <a href="{% url 'forca_energia' %}">Força e Energia</a>
+      <a href="{% url 'vitaminas' %}">Vitaminas</a>
+      <a href="{% url 'aumentar_massa_muscular' %}">Aumentar Massa Muscular</a>
+      <a href="{% url 'aminoacidos' %}">Aminoácidos</a>
+      <a href="{% url 'articulacoes_saudaveis' %}">Articulações Saudáveis</a>
+      <a href="{% url 'barras_de_proteinas' %}">Barras de Proteínas</a>
+      <a href="{% url 'antioxidantes' %}">Antioxidantes</a>
+      <a href="{% url 'carboidratos' %}">Carboidratos</a>
+      <a href="{% url 'glutaminas' %}">Glutaminas</a>
+      <a href="{% url 'pastas_de_amendoim' %}">Pastas de Amendoim</a>
+      <a href="{% url 'caldas_e_molhos' %}">Caldas e Molhos</a>
+      <a href="{% url 'snacks_doces' %}">Snacks e Doces</a>
+      <a href="{% url 'combos' %}">Combos</a>
+    </div>
+  </div>
 </div>
 
 <!-- Sidebar -->
@@ -308,5 +305,31 @@ function irAsCompras() {
   window.location.href = '/produtos'; // Substitua pelo link da sua página de produtos
 }
 });
+
+document.addEventListener("click", function (event) {
+    // Fecha dropdowns se clicar fora
+    const isButton = event.target.classList.contains("dropbtn");
+    if (!isButton) {
+      document.querySelectorAll(".dropdown-content").forEach(dropdown => {
+        dropdown.style.display = "none";
+      });
+    }
+  });
+
+  document.querySelectorAll(".dropbtn").forEach(button => {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const dropdown = this.nextElementSibling;
+      const isOpen = dropdown.style.display === "block";
+
+      // Fecha todos
+      document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
+
+      // Abre se não estava aberto
+      if (!isOpen) {
+        dropdown.style.display = "block";
+      }
+    });
+  });
 
 </script>

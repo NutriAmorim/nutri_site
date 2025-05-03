@@ -190,45 +190,98 @@ body {
   align-items: center;
 }
 
-/* Estilo da subtopbar */
+/* Subtopbar principal */
 .subtopbar {
-  background-color: #dae6df; /* Cor de fundo da subtopbar (amarelo) */
-  height: 50px; /* Altura da subtopbar */
-  width: 100%; /* A subtopbar ocupa toda a largura */
-  display: flex;
-  justify-content: center; /* Centraliza os links */
-  align-items: flex-end; /* Alinha os itens na parte inferior */
-  border-bottom: 2px solid #ccc; /* Borda inferior */
-  margin-top: 90px; /* Espaço abaixo da topbar */
-  padding-bottom: 10px; /* Adiciona um pouco de espaço para os itens não ficarem colados no fundo */
-  overflow-x: auto; /* Habilita o scroll horizontal */
-  overflow-y: hidden; /* Esconde o scroll vertical */
-  white-space: nowrap; /* Impede que o texto quebre linha */
-  -webkit-overflow-scrolling: touch; /* Rola suave no iPhone */
-  padding: 8px 16px;
-  z-index: 999; /* Garante que a subtopbar não fique atrás da topbar */
+  background-color: #dae6df;  /* Cor de fundo da subtopbar */
+  height: auto;  /* Altura ajustada automaticamente com base no conteúdo */
+  width: 100%;  /* Largura ocupa toda a largura da página */
+  display: flex;  /* Utiliza o layout flexbox para organizar os itens */
+  justify-content: center;  /* Centraliza os itens horizontalmente */
+  align-items: center;  /* Alinha os itens verticalmente no centro */
+  border-bottom: 2px solid #ccc;  /* Adiciona uma borda inferior de 2px, cor cinza clara */
+  margin-top: 100px;  /* Espaço de 90px acima da subtopbar */
+  padding: 8px 16px;  /* Espaçamento interno de 8px nas laterais e 16px no topo e fundo */
+  gap: 50px;  /* Espaço de 20px entre os itens dentro da subtopbar */
+  z-index: 999;  /* Define a sobreposição da subtopbar, acima de outros elementos com z-index menor */
+  position: relative;  /* Define a posição relativa para possibilitar o posicionamento absoluto de elementos filhos */
 }
 
+/* Lista de botões */
 .subtopbar-links {
-  list-style: none; /* Remove os marcadores */
+  display: flex;
+  gap: 30px;
   padding: 0;
   margin: 0;
-  display: flex; /* Exibe os itens horizontalmente */
-  gap: 20px;
+  list-style: none;
 }
 
-.subtopbar-links li {
-  margin-right: 20px; /* Espaçamento entre os itens */
-}
-
-.subtopbar-links a {
-  text-decoration: none;
-  color: #333;
+/* Botões padrão e dropdown */
+.subtopbar-links a,
+.dropbtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #728f7f;
+  color: white;
+  padding: 10px 16px;
+  font-size: 14px;
   font-weight: bold;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.subtopbar-links a:hover {
-  color: #728f7f; /* Cor ao passar o mouse */
+/* Hover moderno */
+.subtopbar-links a:hover,
+.dropbtn:hover {
+  background-color: #ffffff;
+  transform: scale(1.03);
+}
+
+/* Dropdown */
+.dropdown-left,
+.dropdown-right {
+  position: relative;
+}
+
+/* Conteúdo do menu suspenso */
+.dropdown-content {
+  display: none; /* Esconde o menu até que seja ativado com JavaScript ou :hover */
+  position: absolute; /* Posiciona em relação ao botão pai */
+  top: 100%; /* Coloca logo abaixo do botão */
+  left: 0; /* Alinha à esquerda do botão */
+  background-color: white; /* Fundo branco */
+  min-width: 220px; /* Largura mínima */
+  max-height: 300px; /* Altura máxima */
+  overflow-y: auto; /* Se tiver muitos itens, ativa rolagem vertical */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra suave ao redor */
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+  flex-direction: column; /* (não afeta sem display: flex) organiza em coluna */
+  border-radius: 4px; /* Cantos arredondados */
+}
+
+.dropdown-content a {
+  padding: 10px 16px; /* Espaçamento interno de cada item */
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: black; /* Cor do texto */
+  display: block; /* Cada link ocupa uma linha inteira */
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1; /* Fundo muda ao passar o mouse (efeito hover) */
+}
+
+/* Ativação do dropdown */
+.dropdown-left.active .dropdown-content,
+.dropdown-right.active .dropdown-content {
+  display: block;
+}
+
+/* Ícones dentro dos botões */
+.subtopbar i {
+  font-size: 16px;
 }
 
 .sidebar-auth button {
