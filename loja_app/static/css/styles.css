@@ -269,13 +269,12 @@ body {
 }
 
 .sidebar.open {
-  top: 80px; /* mesma altura da topbar */
   left: 0;
 }
 
 /* Quando estiver visível */
 .sidebar.show {
-  top: 100px; /* Desce abaixo da topbar (que tem 60px de altura) */
+  top: 60px; /* Desce abaixo da topbar (que tem 60px de altura) */
 }
 
 .sidebar ul {
@@ -464,7 +463,7 @@ body {
   /* Quando a sidebar estiver visível (aberta), ela fica com left: 0 */
   .sidebar.show {
     left: 0;  /* Sidebar entra na tela */
-    z-index: 1000; /* Coloca a sidebar sobre a topbar */
+    z-index: 999; /* Coloca a sidebar sobre a topbar */
   }
  
   .content {
