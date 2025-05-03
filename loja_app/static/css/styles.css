@@ -861,3 +861,50 @@ main {
   background-color: #f0ad4e;
   color: white;
 }
+
+/* Adicionando uma regra global para garantir que a página ocupe 100% da altura */
+html, body {
+  height: 100%;
+  margin: 0; /* Remove as margens padrão */
+  padding: 0; /* Remove os preenchimentos padrões */
+}
+
+#content {
+  min-height: 100vh; /* Garante que o conteúdo ocupe 100% da altura da tela */
+  padding: 20px;
+  box-sizing: border-box; /* Inclui o padding no cálculo da altura */
+}
+
+/* Estilo para a página "Sobre Mim" */
+.sobre-mim {
+  width: 100%; /* Página ocupa toda a largura */
+  min-height: 100vh; /* Garantir que ocupe toda a altura da tela */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.sobre-mim h1 {
+  text-align: center;
+  color: #728f7f;
+}
+
+.sobre-mim .perfil {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid #728f7f;
+  margin: 20px auto;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Adicionando um pouco de espaçamento aos textos */
+.sobre-mim p {
+  text-align: left;
+  margin-bottom: 20px; /* Espaço entre os parágrafos */
+}
+
+.sobre-mim h3 {
+  color: #728f7f;
+}

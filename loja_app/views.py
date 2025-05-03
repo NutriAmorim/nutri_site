@@ -86,14 +86,15 @@ def pesquisa_2(request):
 
 
 # Consultas
+@login_required
 def agendamento_online(request):
     return render(request, 'loja_app/agendamento_online.html')
 
-
+@login_required
 def avaliacao_fisica(request):
     return render(request, 'loja_app/avaliacao_fisica.html')
 
-
+@login_required
 def planos_alimentares(request):
     return render(request, 'loja_app/planos_alimentares.html')
 
@@ -118,7 +119,7 @@ def normas_e_regulamento(request):
 def conheca_nosso_trabalho(request):
     return render(request, 'loja_app/conheca_nosso_trabalho.html')
 
-
+@login_required
 def sobre_mim(request):
     return render(request, 'loja_app/sobre_mim.html')
 
