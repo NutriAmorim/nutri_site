@@ -510,9 +510,6 @@ body {
     display: none; /* Remove a subtopbar no mobile */
   }
 
-  .cart-card {
-    display: none; /* Oculta o card "Meu Carrinho" no mobile */
-  }
 }
 
 /* Para telas entre 768px e 1024px (tablets) */
@@ -779,6 +776,10 @@ p, .texto-justificado, .descricao-principal {
   background-color: transparent; /* Sem fundo ao passar o mouse */
   color: white; /* Mantém branco ao passar o mouse */
 }
+
+.produtos {
+  grid-template-columns: 1fr; /* 1 produto por linha em telas pequenas */
+}
 /* Responsividade da Sidebar */
 @media (max-width: 1200px) {
   .sidebar {
@@ -816,7 +817,7 @@ p, .texto-justificado, .descricao-principal {
   position: absolute;
   right: 0;
   top: 40px;
-  background-color: #bbbbbb;
+  background-color: #f0efef;
   border: 1px solid #ccc;
   padding: 15px;
   width: 200px;
@@ -847,18 +848,18 @@ p, .texto-justificado, .descricao-principal {
 .pagina-produtos {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
-  justify-content: center; /* Centraliza verticalmente */
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin: 0 auto;
   padding: 20px;
-  max-width: 1000px; /* Largura máxima opcional */
+  max-width: 1200px; /* Largura máxima ajustada */
 }
 
 main {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
+  align-items: center;
   justify-content: center;
   text-align: center;
   padding: 20px;
@@ -869,48 +870,23 @@ main {
   flex-wrap: wrap;
   justify-content: center; /* Centraliza os itens horizontalmente */
   gap: 20px;
-  max-width: 1200px;
 }
 
 .produto-item {
-  background-color: #bbbbbb;
+  background-color: #f9f9f9; /* Fundo mais claro para o produto */
   border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 300px;
-  padding: 15px;
-  text-align: left;
-}
-
-
-/* Container principal do carrinho */
-.carrinho-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-/* Container que envolve os produtos */
-.produtos-carrinho {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;  /* Centraliza os itens na linha */
-  gap: 20px;  /* Espaçamento entre os produtos */
-  width: 100%;
-  max-width: 1200px;  /* Tamanho máximo para o contêiner dos produtos */
-  margin-bottom: 20px; /* Espaçamento inferior */
-}
-
-/* Estilo de cada item de produto */
-.produto-item {
-  width: 250px; /* Ajuste o tamanho do produto conforme necessário */
+  border-radius: 20px;
+  width: 250px; /* Aumentei a largura para 300px */
+  height: 420px; /* Ajuste a altura conforme necessário */
   text-align: center;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #bbbbbb;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Animação suave ao passar o mouse */
+}
+
+.produto-item:hover {
+  transform: translateY(-10px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
 }
 
 /* Imagem do produto */
@@ -918,45 +894,33 @@ main {
   width: 100%;
   height: auto;
   border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.produto-item h3 {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.produto-item p {
+  font-size: 1rem;
+  color: #666;
 }
 
 .produto-item button {
-  background-color: red;
+  background-color: #91cf9f; /* Cor de fundo mais chamativa */
   color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
-  margin: 5px; /* Espaçamento entre os botões */
+  margin-top: 10px;
+  transition: background-color 0.3s ease; /* Transição suave */
 }
 
 .produto-item button:hover {
-  background-color: darkred;
-}
-
-/* Centraliza o conteúdo do carrinho */
-#carrinho-cheio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 20px;
-  max-width: 1200px; /* Limita a largura */
-  width: 100%;
-}
-
-/* Estilos da tabela */
-#carrinho-cheio table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center; /* Centraliza as colunas */
-  margin-top: 20px;
-}
-
-#carrinho-cheio th, #carrinho-cheio td {
-  padding: 15px;
-  border: 1px solid #ddd;
+  background-color: #218838; /* Cor mais escura ao passar o mouse */
 }
 
 /* Estilo do botão "Ir às Compras" */
