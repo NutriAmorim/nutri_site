@@ -7,12 +7,74 @@
 
 <div class="banner-rotativo">
   <div class="slides">
-    <div class="slide ativo"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
+    <div class="slide ativo">
+      <img src="{% static 'img/banner_nutri.png' %}" alt="Banner 1">
+    </div>
+    <div class="slide">
+      <img src="{% static 'img/banner_nutri1.png' %}" alt="Banner 2">
+    </div>
+    <div class="slide">
+      <img src="{% static 'img/banner_nutri2.png' %}" alt="Banner 3">
+    </div>
+    <div class="slide">
+      <img src="{% static 'img/banner_nutri3.png' %}" alt="Banner 4">
+    </div>
   </div>
 </div>
+
+<!-- Botões -->
+<button class="botao-banner botao-anterior">&#10094;</button>
+<button class="botao-banner botao-proximo">&#10095;</button>
+
+ <div class="indicadores">
+   <span class="indicador ativo"></span>
+   <span class="indicador"></span>
+   <span class="indicador"></span>
+   <span class="indicador"></span>
+ </div>
+</div>
+
+<script>
+  let slideIndex = 0;
+  const slides = document.querySelector('.slides');
+  const indicators = document.querySelectorAll('.indicador');
+  const totalSlides = document.querySelectorAll('.slide').length;
+
+  function showSlide(index) {
+    if (index >= totalSlides) slideIndex = 0;
+    if (index < 0) slideIndex = totalSlides - 1;
+    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    indicators.forEach((dot, i) => {
+      dot.classList.toggle('ativo', i === slideIndex);
+    });
+  }
+
+  document.querySelector('.botao-proximo').addEventListener('click', () => {
+    slideIndex++;
+    showSlide(slideIndex);
+  });
+
+  document.querySelector('.botao-anterior').addEventListener('click', () => {
+    slideIndex--;
+    showSlide(slideIndex);
+  });
+
+  indicators.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      slideIndex = i;
+      showSlide(slideIndex);
+    });
+  });
+
+  // Auto-slide
+  setInterval(() => {
+    slideIndex++;
+    showSlide(slideIndex);
+  }, 5000); // troca a cada 5 segundos
+
+  // Iniciar na primeira imagem
+  showSlide(slideIndex);
+</script>
 
 <h1 class="titulo-principal">Bem-vindo ao Nutri Amorim</h1>
 <p class="descricao-principal">
